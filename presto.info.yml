@@ -1,0 +1,10 @@
+name: Presto
+core: 8.x
+type: profile
+description: 'A magical Drupal distribution.'
+version: '8.x-1.x-dev'
+distribution:
+  name: Presto
+themes:
+  - bartik
+  - seven
