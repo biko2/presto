@@ -1,6 +1,10 @@
 core = 8.x
 api = 2
 defaults[projects][subdir] = contrib
+projects[entity_reference_revisions][type] = module
+projects[entity_reference_revisions][version] = 1.2
+projects[paragraphs][type] = module
+projects[paragraphs][version] = 1.1
 libraries[drupal/console][type] = library
 libraries[drupal/console][download][type] = git
 libraries[drupal/console][download][url] = https://github.com/hechoendrupal/drupal-console.git
