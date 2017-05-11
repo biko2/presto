@@ -20,8 +20,6 @@ dependencies:
   - dblog
   - dynamic_page_cache
   - editor
-  - features
-  - features_ui
   - field_ui
   - file
   - help

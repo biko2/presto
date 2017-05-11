@@ -46,11 +46,13 @@
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
-        "composer/composer": "^1.4",
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
+        "composer/composer": "^1.4",
         "drupal-composer/drupal-security-advisories": "8.x-dev",
         "drupal/coder": "^8.2",
+        "drupal/features": "^3.5",
+        "drupal/paragraphs": "^1.1",
         "jcalderonzumba/gastonjs": "~1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsstream": "~1.2",
