@@ -1,6 +1,8 @@
 core = 8.x
 api = 2
 defaults[projects][subdir] = contrib
+projects[admin_toolbar][type] = module
+projects[admin_toolbar][version] = 1.19
 projects[entity_reference_revisions][type] = module
 projects[entity_reference_revisions][version] = 1.2
 projects[paragraphs][type] = module
