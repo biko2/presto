@@ -11,7 +11,6 @@ dependencies:
   - block_content
   - breakpoint
   - ckeditor
-  - color
   - comment
   - config
   - contact
@@ -23,7 +22,6 @@ dependencies:
   - field_ui
   - file
   - help
-  - history
   - image
   - menu_link_content
   - menu_ui
@@ -34,11 +32,9 @@ dependencies:
   - path
   - quickedit
   - rdf
-  - search
   - shortcut
   - taxonomy
   - toolbar
-  - tour
   - views
   - views_ui
 themes:
