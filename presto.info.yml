@@ -38,6 +38,7 @@ dependencies:
   - quickedit
   - rdf
   - shortcut
+  - search
   - taxonomy
   - toolbar
   - token

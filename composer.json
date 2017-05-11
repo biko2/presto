@@ -28,6 +28,10 @@
         ],
         "post-update-cmd": [
             "@composer package"
+        ],
+        "dev-update": [
+            "@composer update",
+            "rm -rf web/"
         ]
     },
     "require": {
