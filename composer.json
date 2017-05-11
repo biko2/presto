@@ -1,0 +1,89 @@
+{
+    "name": "sitback/presto",
+    "description": "A magical way to start Drupal by Sitback.",
+    "type": "drupal-profile",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Chinthaka Godawita",
+            "email": "chin@sitback.com.au"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@composer drupal-scaffold"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "require": {
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.5.0",
+        "drupal/console": "~1.0",
+        "drupal/core": "~8.3.2",
+        "drush/drush": "~8.0",
+        "webflo/drupal-finder": "^0.2.1",
+        "webmozart/path-util": "^2.3"
+    },
+    "require-dev": {
+        "behat/mink": "~1.7",
+        "behat/mink-goutte-driver": "~1.2",
+        "drupal-composer/drupal-security-advisories": "8.x-dev",
+        "drupal/coder": "^8.2",
+        "jcalderonzumba/gastonjs": "~1.0.2",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsstream": "~1.2",
+        "phpro/grumphp": "^0.11.5",
+        "phpunit/phpunit": ">=4.8.28 <5",
+        "sensiolabs/security-checker": "^4.0",
+        "squizlabs/php_codesniffer": "^3.0",
+        "symfony/css-selector": "~2.8"
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Sitback\\Presto\\": "src"
+        }
+    }
+}
