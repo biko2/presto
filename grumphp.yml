@@ -1,0 +1,33 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    tasks:
+      phpcs:
+        standard: phpcs.xml
+        show_warnings: true
+        # Required even if the phpcs.xml defines specific includes as GrumPHP
+        # runs across all files in the current commit.
+        ignore_patterns:
+          - web/core/
+          - vendor/
+          - web/modules/contrib/
+          - web/themes/contrib/
+          - web/profiles/contrib/
+          - web/libraries/
+          - web/sites/
+          - config/
+          - drush/
+          - scripts/
+      securitychecker:
+        lockfile: ./composer.lock
+        format: ~
+        end_point: ~
+        timeout: ~
+        run_always: false
+      git_blacklist:
+        keywords:
+          - "die("
+          - "var_dump("
+          - "xdebug_break"
+          - "exit;"
+        triggered_by: [php]
