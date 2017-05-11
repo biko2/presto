@@ -1,10 +1,4 @@
 <?php
-/*
- * @file
- * Based on code by Acquia in acquia/lightning, copyright (c) 2017.
- * Distributed under the GNU GPL v2 or higher. For full terms see the LICENSE
- * file.
- */
 
 namespace Sitback\Presto\Composer;
 
@@ -16,6 +10,10 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * Generates Drush make files, heavily inspired by acquia/lightning.
+ *
+ * Based on code by Acquia in acquia/lightning, copyright (c) 2017.
+ * Distributed under the GNU GPL v2 or higher. For full terms see the LICENSE
+ * file.
  */
 class Package {
 
@@ -23,6 +21,7 @@ class Package {
    * Main entry point for command.
    *
    * @param \Composer\Script\Event $event
+   *   Composer event.
    *
    * @throws \RuntimeException
    */
@@ -69,7 +68,7 @@ class Package {
       file_put_contents('drupal-org-core.make', $encoder->encode($core));
       unset($make['projects']['drupal']);
     }
-    foreach ($make['projects'] as $key => &$project) {
+    foreach ($make['projects'] as &$project) {
       if ($project['download']['type'] === 'git') {
         $tag = $project['download']['tag'];
         preg_match('/\d+\.x-\d+\.0/', $tag, $match);

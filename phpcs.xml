@@ -15,7 +15,9 @@
   <!-- Drupal's PHP & JS files -->
   <arg name="extensions" value="php,module,inc,install,test,profile,theme,js" />
 
-  <rule ref="Drupal" />
+  <rule ref="Drupal" >
+    <exclude name="Drupal.Commenting.InlineComment.DocBlock" />
+  </rule>
   <rule ref="DrupalPractice" />
 
 </ruleset>
