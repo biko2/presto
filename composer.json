@@ -33,8 +33,12 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
+        "drupal/admin_toolbar": "^1.19",
+        "drupal/big_pipe_sessionless": "^1.0",
         "drupal/console": "~1.0",
+        "drupal/context": "^1.0@alpha",
         "drupal/core": "~8.3.2",
+        "drupal/memcache": "^2.0@alpha",
         "drupal/paragraphs": "^1.1",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^0.3.0",

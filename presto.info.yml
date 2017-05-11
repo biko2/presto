@@ -6,6 +6,7 @@ version: '8.x-1.x-dev'
 distribution:
   name: Presto
 dependencies:
+  - admin_toolbar
   - automated_cron
   - block
   - block_content
@@ -15,6 +16,7 @@ dependencies:
   - comment
   - config
   - contact
+  - context
   - contextual
   - datetime
   - dblog
