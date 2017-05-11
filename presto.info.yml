@@ -15,6 +15,7 @@ dependencies:
   - comment
   - config
   - contact
+  - contact_storage
   - contextual
   - datetime
   - dblog
