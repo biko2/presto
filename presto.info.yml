@@ -19,12 +19,14 @@ dependencies:
   - contextual
   - datetime
   - dblog
+  - ds
   - dynamic_page_cache
   - editor
   - field_ui
   - file
   - help
   - image
+  - layout_discovery
   - menu_link_content
   - menu_ui
   - node
@@ -32,6 +34,7 @@ dependencies:
   - page_cache
   - paragraphs
   - path
+  - pathauto
   - quickedit
   - rdf
   - shortcut
@@ -39,6 +42,7 @@ dependencies:
   - toolbar
   - views
   - views_ui
+  - view_mode_selector
 themes:
   - bartik
   - seven
