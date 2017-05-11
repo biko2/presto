@@ -16,6 +16,7 @@ dependencies:
   - comment
   - config
   - contact
+  - context
   - contextual
   - datetime
   - dblog
