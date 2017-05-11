@@ -21,6 +21,7 @@
         "sort-packages": true
     },
     "scripts": {
+        "package": "Sitback\\Presto\\Composer\\Package::execute",
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
@@ -33,7 +34,8 @@
             "@composer drupal-scaffold"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@composer package"
         ]
     },
     "require": {
