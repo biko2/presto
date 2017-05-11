@@ -1,15 +1,13 @@
 <?php
-/*
- * @file
- * Based on code by Acquia in acquia/lightning, copyright (c) 2017.
- * Distributed under the GNU GPL v2 or higher. For full terms see the LICENSE
- * file.
- */
 
 namespace Sitback\Presto;
 
 /**
  * Contains methods for parsing and dumping data in the legacy info file format.
+ *
+ * Based on code by Acquia in acquia/lightning, copyright (c) 2017.
+ * Distributed under the GNU GPL v2 or higher. For full terms see the LICENSE
+ * file.
  */
 class IniEncoder {
 
@@ -99,16 +97,16 @@ class IniEncoder {
   /**
    * Parses data in Drupal's .info format.
    *
-   * @see https://api.drupal.org/api/drupal/includes!common.inc/function/drupal_parse_info_format/7.x
-   *
    * @param string $data
    *   A string to parse.
+   *
+   * @see https://api.drupal.org/api/drupal/includes!common.inc/function/drupal_parse_info_format/7.x
    *
    * @return array
    *   The parsed data.
    */
   public function parse($data) {
-    $info = array();
+    $info = [];
 
     if (preg_match_all('
       @^\s*                           # Start at the beginning of a line, ignoring leading whitespace
@@ -127,12 +125,10 @@ class IniEncoder {
         // Fetch the key and value string.
         $i = 0;
 
-        /**
-         * @var $key
-         * @var $value1
-         * @var $value2
-         * @var $value3
-         */
+        $key = '';
+        $value1 = '';
+        $value2 = '';
+        $value3 = '';
         foreach (['key', 'value1', 'value2', 'value3'] as $var) {
           ${$var} = isset($match[++$i]) ? $match[$i] : '';
         }
