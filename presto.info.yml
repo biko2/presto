@@ -40,9 +40,11 @@ dependencies:
   - shortcut
   - taxonomy
   - toolbar
+  - token
   - views
   - views_ui
   - view_mode_selector
+  - layout_discovery
 themes:
   - bartik
   - seven
