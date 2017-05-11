@@ -46,7 +46,6 @@
         "composer/composer": "^1.4",
         "drupal-composer/drupal-security-advisories": "8.x-dev",
         "drupal/coder": "^8.2",
-        "drupal/features": "^3.5",
         "jcalderonzumba/gastonjs": "~1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsstream": "~1.2",
