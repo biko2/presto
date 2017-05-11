@@ -6,40 +6,41 @@ version: '8.x-1.x-dev'
 distribution:
   name: Presto
 dependencies:
-  - node
-  - history
+  - automated_cron
   - block
+  - block_content
   - breakpoint
   - ckeditor
   - color
-  - config
   - comment
-  - contextual
+  - config
   - contact
-  - menu_link_content
+  - contextual
   - datetime
-  - block_content
-  - quickedit
-  - editor
-  - help
-  - image
-  - menu_ui
-  - options
-  - path
-  - page_cache
-  - dynamic_page_cache
-  - taxonomy
   - dblog
-  - search
-  - shortcut
-  - toolbar
+  - dynamic_page_cache
+  - editor
   - field_ui
   - file
+  - help
+  - history
+  - image
+  - menu_link_content
+  - menu_ui
+  - node
+  - options
+  - page_cache
+  - paragraphs
+  - path
+  - quickedit
   - rdf
+  - search
+  - shortcut
+  - taxonomy
+  - toolbar
+  - tour
   - views
   - views_ui
-  - tour
-  - automated_cron
 themes:
   - bartik
   - seven
