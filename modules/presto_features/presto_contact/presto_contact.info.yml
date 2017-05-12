@@ -1,0 +1,7 @@
+name: Presto Contact
+type: module
+description: Provides a contact page and a contact block.
+core: 8.x
+package: Presto (Configuration)
+dependencies:
+  - contact_block

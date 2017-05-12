@@ -15,6 +15,7 @@ dependencies:
   - comment
   - config
   - contact
+  - contact_block
   - contact_storage
   - contextual
   - datetime
@@ -33,6 +34,7 @@ dependencies:
   - page_cache
   - paragraphs
   - path
+  - presto_contact
   - quickedit
   - rdf
   - search

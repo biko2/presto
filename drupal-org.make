@@ -1,8 +1,12 @@
 core = 8.x
 api = 2
 defaults[projects][subdir] = contrib
+projects[contact_block][type] = module
+projects[contact_block][version] = 1.4
 projects[contact_storage][type] = module
 projects[contact_storage][version] = 1.0-beta8
+projects[context][type] = module
+projects[context][version] = 1.0-alpha1
 projects[entity_reference_revisions][type] = module
 projects[entity_reference_revisions][version] = 1.2
 projects[paragraphs][type] = module

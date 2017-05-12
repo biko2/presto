@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Contains presto_contact.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_help().
+ */
+function presto_contact_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the presto_contact module.
+    case 'help.page.presto_contact':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides a contact page and a contact block.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function presto_contact_theme() {
+  return [
+    'presto_contact' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_install().
+ */
+function presto_contact_install() {
+  // Create a basic page so we can attach the block Contact.
+  $node = Node::create(['type' => 'page']);
+  $node->set('title', 'Contact');
+  $node->set('body', ['value' => 'Don\'t hesitate to contact us.', 'format' => 'basic_html']);
+  $node->set('path', '/contact');
+  $node->enforceIsNew();
+  $node->save();
+}

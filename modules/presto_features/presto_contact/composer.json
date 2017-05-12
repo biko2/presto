@@ -1,0 +1,14 @@
+{
+  "name": "drupal/presto_contact",
+  "type": "drupal-module",
+  "description": "Provides a contact page and a contact block.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/presto_contact",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/presto_contact",
+    "source": "http://cgit.drupalcode.org/presto_contact"
+  },
+  "require": { }
+}
