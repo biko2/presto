@@ -25,17 +25,6 @@ function presto_contact_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
- * Implements hook_theme().
- */
-function presto_contact_theme() {
-  return [
-    'presto_contact' => [
-      'render element' => 'children',
-    ],
-  ];
-}
-
-/**
  * Implements hook_install().
  */
 function presto_contact_install() {
