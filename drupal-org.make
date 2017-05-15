@@ -1,6 +1,10 @@
 core = 8.x
 api = 2
 defaults[projects][subdir] = contrib
+projects[contact_block][type] = module
+projects[contact_block][version] = 1.4
+projects[contact_storage][type] = module
+projects[contact_storage][version] = 1.0-beta8
 projects[admin_toolbar][type] = module
 projects[admin_toolbar][version] = 1.19
 projects[big_pipe_sessionless][type] = module

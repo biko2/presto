@@ -15,7 +15,8 @@ dependencies:
   - comment
   - config
   - contact
-  - context
+  - contact_block
+  - contact_storage
   - contextual
   - datetime
   - dblog
@@ -50,6 +51,7 @@ dependencies:
   - metatag
   - simple_sitemap
   - presto_components
+  - presto_contact
 themes:
   - bartik
   - seven
