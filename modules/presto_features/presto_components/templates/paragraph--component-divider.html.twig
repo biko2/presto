@@ -46,22 +46,21 @@ set classes = [
 view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ]
 %}
+
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
 
-      <div class="line-{{ content.field_line_options.0['#markup'] }}">
-        <div class="header-{{ content.field_heading_options.0['#markup'] }}">
-          {{ content.field_title_formatted.0 }}
+      <div class="line-{{ content.field_line_options['#items'].getString() }}">
+        <div class="header-{{ content.field_heading_options['#items'].getString() }}">
+          {{ content.field_title_formatted[0] }}
         </div>
-        <div class="gototop-{{ content.field_gototop_options.0['#markup'] }}">
+        <div class="gototop-{{ content.field_gototop_options['#items'].getString() }}">
           <a href="#main-content" class="gototop">
-            {% if content.field_gototop_options.0['#markup'] == 'text' %}
+            {% if content.field_gototop_options['#items'].getString() == 'text' %}
               Go to top
-            {% elseif content.field_gototop_options.0['#markup'] == 'icon-1' %}
-              Icon 1
-            {% else %}
-              Icon 2
+            {% elseif content.field_gototop_options['#items'].getString() == 'icon' %}
+              Icon
             {% endif %}
           </a>
         </div>
