@@ -48,6 +48,7 @@ dependencies:
   - layout_discovery
   - google_analytics
   - metatag
+  - simple_sitemap
   - presto_components
 themes:
   - bartik
