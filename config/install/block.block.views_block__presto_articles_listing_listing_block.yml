@@ -11,7 +11,7 @@ dependencies:
 id: views_block__presto_articles_listing_listing_block
 theme: bartik
 region: content
-weight: 0
+weight: 10
 provider: null
 plugin: 'views_block:presto_articles_listing-listing_block'
 settings:
