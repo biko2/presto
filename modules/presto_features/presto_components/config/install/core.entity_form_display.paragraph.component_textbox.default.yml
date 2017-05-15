@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_textbox.field_body
+    - paragraphs.paragraphs_type.component_textbox
+  module:
+    - text
+id: paragraph.component_textbox.default
+targetEntityType: paragraph
+bundle: component_textbox
+mode: default
+content:
+  field_body:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
