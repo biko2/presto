@@ -21,6 +21,9 @@ function presto_contact_install() {
     'status' => 1,
     'promote' => 0,
     'field_fields' => [],
+    'path' => [
+      'alias' => '/contact'
+    ],
   ]);
   $node->save();
 
