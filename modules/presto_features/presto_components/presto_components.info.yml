@@ -1,0 +1,8 @@
+name: Presto Components
+core: 8.x
+type: module
+description: 'Paragraph Components.'
+version: '8.x-1.x-dev'
+distribution:
+  name: Presto (Configuration)
+
