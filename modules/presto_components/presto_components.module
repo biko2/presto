@@ -21,5 +21,8 @@ function presto_components_theme($existing, $type, $theme, $path) {
  * Implements theme_suggestions_paragraph_alter().
  */
 function presto_components_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
-  $suggestions[] = 'paragraph__component_divider';
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+  $type = $paragraph->getType();
+  $suggestions[] = "paragraph__{$type}";
 }
