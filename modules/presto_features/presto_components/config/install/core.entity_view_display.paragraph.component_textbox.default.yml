@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_textbox.field_body
+    - paragraphs.paragraphs_type.component_textbox
+  module:
+    - text
+id: paragraph.component_textbox.default
+targetEntityType: paragraph
+bundle: component_textbox
+mode: default
+content:
+  field_body:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }
