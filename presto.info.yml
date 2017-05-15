@@ -34,7 +34,6 @@ dependencies:
   - page_cache
   - paragraphs
   - path
-  - presto_contact
   - quickedit
   - rdf
   - search
@@ -44,6 +43,7 @@ dependencies:
   - tour
   - views
   - views_ui
+  - presto_contact
 themes:
   - bartik
   - seven
