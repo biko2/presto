@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.body
     - field.field.node.page.field_body_paragraphs
     - node.type.page
   module:
@@ -24,4 +25,5 @@ content:
   links:
     weight: 101
     region: content
-hidden: {  }
+hidden:
+  body: true
