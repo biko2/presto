@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * The Presto Components module file.
+ */
+
+/**
+ * Implements theme_hook().
+ */
+function presto_components_theme($existing, $type, $theme, $path) {
+  return array(
+    'paragraph__component_divider' => [
+      'template' => 'paragraph--component-divider',
+      'base hook' => 'paragraph',
+    ]
+  );
+}
+
+/**
+ * Implements theme_suggestions_paragraph_alter().
+ */
+function presto_components_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+  $type = $paragraph->getType();
+  $suggestions[] = "paragraph__{$type}";
+}

@@ -14,11 +14,8 @@ settings:
       value: text
       label: Text
     -
-      value: icon-1
-      label: 'Icon 1'
-    -
-      value: icon-2
-      label: 'Icon 2'
+      value: icon
+      label: Icon
   allowed_values_function: ''
 module: options
 locked: false
