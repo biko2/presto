@@ -46,6 +46,8 @@ dependencies:
   - views_ui
   - view_mode_selector
   - layout_discovery
+  - google_analytics
+  - metatag
   - presto_components
 themes:
   - bartik
