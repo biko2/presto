@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_block.field_block
+    - paragraphs.paragraphs_type.component_block
+  module:
+    - block_field
+id: paragraph.component_block.default
+targetEntityType: paragraph
+bundle: component_block
+mode: default
+content:
+  field_block:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: block_field
+    region: content
+hidden: {  }
