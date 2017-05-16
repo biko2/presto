@@ -11,3 +11,4 @@ dependencies:
   - link
   - text
   - options
+  - block_field
