@@ -39,33 +39,48 @@
  */
 #}
 
-{%
-set classes = [
+{% set classes = [
 'paragraph',
 'paragraph--type--' ~ paragraph.bundle|clean_class,
 view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-]
-%}
+'flex',
+'between',
+] %}
+
+{% macro goto_link(iconType) %}
+  <div class="gototop-link gototop-link-{{ iconType }}">
+    <a href="#main-content" class="gototop">
+      Go to top
+      {% if iconType == 'icon' %}
+        <i class="fa fa-arrow-up"  aria-hidden="true"></i>
+      {% endif %}
+    </a>
+  </div>
+{% endmacro %}
+
+{% import _self as inline %}
+{% set iconType = content.field_gototop_options['#items'].getString() %}
+{% set lineType = content.field_line_options['#items'].getString() %}
+{% set headerType = content.field_heading_options['#items'].getString() %}
 
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
+  <div {{ attributes.addClass(classes) }}>
     {% block content %}
-
-      <div class="line-{{ content.field_line_options['#items'].getString() }}">
-        <div class="header-{{ content.field_heading_options['#items'].getString() }}">
-          {{ content.field_title_formatted[0] }}
+      {% if content.field_title_formatted[0] != '' %}
+        <div class="flex header-wrapper line-{{ lineType }}">
+          <div class="flex-hog header line-{{ lineType }} header-{{ headerType }} text-{{ headerType }}">
+            {{ content.field_title_formatted[0] }}
+          </div>
+          {% if iconType != 'none' %}
+            {{ inline.goto_link(iconType) }}
+          {% endif %}
         </div>
-        <div class="gototop-{{ content.field_gototop_options['#items'].getString() }}">
-          <a href="#main-content" class="gototop">
-            {% if content.field_gototop_options['#items'].getString() == 'text' %}
-              Go to top
-            {% elseif content.field_gototop_options['#items'].getString() == 'icon' %}
-              Icon
-            {% endif %}
-          </a>
-        </div>
-      </div>
-
+      {% else %}
+        <hr class="flex-hog line-{{ lineType }}">
+        {% if iconType != 'none' %}
+          {{ inline.goto_link(iconType) }}
+        {% endif %}
+      {% endif %}
     {% endblock %}
   </div>
 {% endblock paragraph %}
