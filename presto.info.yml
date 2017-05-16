@@ -36,6 +36,7 @@ dependencies:
   - paragraphs
   - path
   - pathauto
+  - social_media
   - quickedit
   - rdf
   - shortcut
