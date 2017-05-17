@@ -13,7 +13,15 @@ function presto_components_theme($existing, $type, $theme, $path) {
     'paragraph__component_divider' => [
       'template' => 'paragraph--component-divider',
       'base hook' => 'paragraph',
-    ]
+    ],
+    'paragraph__component_image' => [
+      'template' => 'paragraph--component-image',
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__component_promo_bar' => [
+      'template' => 'paragraph--component-promo-bar',
+      'base hook' => 'paragraph',
+    ],
   );
 }
 

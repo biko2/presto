@@ -5,4 +5,10 @@ description: 'Paragraph Components.'
 version: '8.x-1.x-dev'
 distribution:
   name: Presto (Configuration)
-
+dependencies:
+  - paragraphs
+  - image
+  - link
+  - text
+  - options
+  - block_field

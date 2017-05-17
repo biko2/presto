@@ -8,6 +8,7 @@
 
   <!-- Code. -->
   <file>./src</file>
+  <file>./modules</file>
 
   <!-- Tests. -->
   <file>./tests</file>

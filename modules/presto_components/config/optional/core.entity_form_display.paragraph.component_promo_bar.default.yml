@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_promo_bar.field_body
+    - field.field.paragraph.component_promo_bar.field_link
+    - field.field.paragraph.component_promo_bar.field_variation_promo_bar
+    - paragraphs.paragraphs_type.component_promo_bar
+  module:
+    - link
+    - text
+id: paragraph.component_promo_bar.default
+targetEntityType: paragraph
+bundle: component_promo_bar
+mode: default
+content:
+  field_body:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_variation_promo_bar:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

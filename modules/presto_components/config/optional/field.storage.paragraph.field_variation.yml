@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_variation
+field_name: field_variation
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: image_standard
+      label: Standard
+    -
+      value: image_with_lightbox_over
+      label: 'Image with lightbox hover'
+    -
+      value: image_with_link
+      label: 'Image with link'
+    -
+      value: image_with_caption_hover
+      label: 'Image with caption hover'
+    -
+      value: image_with_caption_below
+      label: 'Image with caption below'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
