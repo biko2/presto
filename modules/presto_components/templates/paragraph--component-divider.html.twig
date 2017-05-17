@@ -51,7 +51,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   <div class="gototop-link gototop-link-{{ iconType }}">
     <a href="#main-content" class="gototop">
       Go to top
-      {% if iconType == 'icon' %}
+      {% if iconType is same as('icon') %}
         <i class="fa fa-arrow-up"  aria-hidden="true"></i>
       {% endif %}
     </a>
@@ -69,16 +69,16 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
       {% if content.field_title_formatted[0] != '' %}
         <div class="flex header-wrapper line-{{ lineType }}">
           <div class="flex-hog header line-{{ lineType }} header-{{ headerType }} text-{{ headerType }}">
-            {{ content.field_title_formatted[0] }}
+            {{- content.field_title_formatted[0] -}}
           </div>
-          {% if iconType != 'none' %}
-            {{ inline.goto_link(iconType) }}
+          {% if not iconType is same as('none') %}
+            {{- inline.goto_link(iconType) -}}
           {% endif %}
         </div>
       {% else %}
         <hr class="flex-hog line-{{ lineType }}">
-        {% if iconType != 'none' %}
-          {{ inline.goto_link(iconType) }}
+        {% if not iconType is same as('none') %}
+          {{- inline.goto_link(iconType) -}}
         {% endif %}
       {% endif %}
     {% endblock %}
