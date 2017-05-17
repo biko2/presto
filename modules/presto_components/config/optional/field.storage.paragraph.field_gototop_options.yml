@@ -11,11 +11,14 @@ type: list_string
 settings:
   allowed_values:
     -
+      value: none
+      label: 'No Back to Top Link'
+    -
       value: text
-      label: Text
+      label: 'Text only'
     -
       value: icon
-      label: Icon
+      label: 'Icon and Text'
   allowed_values_function: ''
 module: options
 locked: false
