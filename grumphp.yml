@@ -8,13 +8,8 @@ parameters:
         # Required even if the phpcs.xml defines specific includes as GrumPHP
         # runs across all files in the current commit.
         ignore_patterns:
-          - web/core/
+          - web/
           - vendor/
-          - web/modules/contrib/
-          - web/themes/contrib/
-          - web/profiles/contrib/
-          - web/libraries/
-          - web/sites/
           - config/
           - drush/
           - scripts/
