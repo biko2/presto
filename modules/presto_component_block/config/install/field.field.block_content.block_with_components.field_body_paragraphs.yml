@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.block_with_components
+    - field.storage.block_content.field_body_paragraphs
+  module:
+    - entity_reference_revisions
+id: block_content.block_with_components.field_body_paragraphs
+field_name: field_body_paragraphs
+entity_type: block_content
+bundle: block_with_components
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    target_bundles_drag_drop:
+      component_divider:
+        weight: 3
+        enabled: false
+      component_textbox:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions
