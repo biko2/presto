@@ -4,21 +4,21 @@ dependencies:
   module:
     - options
     - paragraphs
-id: paragraph.field_gototop_options
-field_name: field_gototop_options
+id: paragraph.field_variation_promo_bar
+field_name: field_variation_promo_bar
 entity_type: paragraph
 type: list_string
 settings:
   allowed_values:
     -
-      value: none
-      label: 'No Back to Top Link'
+      value: text_and_button
+      label: 'With text and button'
     -
-      value: text
-      label: 'Text only'
+      value: text_and_arrow
+      label: 'With text and arrow (full bar link)'
     -
-      value: icon
-      label: 'Icon and Text'
+      value: text_only
+      label: 'With text only'
   allowed_values_function: ''
 module: options
 locked: false

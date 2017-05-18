@@ -52,6 +52,7 @@
         "drupal/pathauto": "^1.0",
         "drupal/simple_sitemap": "^2.9",
         "drupal/social_media": "1.x-dev#5842dec",
+        "drupal/redirect": "^1.0@alpha",
         "drupal/token": "^1.0",
         "drupal/view_mode_selector": "1.x-dev",
         "drush/drush": "~8.0",

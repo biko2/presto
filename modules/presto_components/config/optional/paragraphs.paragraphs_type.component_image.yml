@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_image
+label: 'Component: Image'
+behavior_plugins: {  }

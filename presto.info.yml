@@ -7,7 +7,6 @@ distribution:
   name: Presto
 dependencies:
   - admin_toolbar
-  - automated_cron
   - block
   - block_content
   - breakpoint
