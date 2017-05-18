@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.slick
+    - field.field.media.image.field_image
+    - image.style.carousel_focal_point_wide
+    - media_entity.bundle.image
+  module:
+    - image
+id: media.image.slick
+targetEntityType: media
+bundle: image
+mode: slick
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: carousel_focal_point_wide
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

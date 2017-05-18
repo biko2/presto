@@ -51,6 +51,7 @@ dependencies:
   - simple_sitemap
   - presto_components
   - presto_contact
+  - presto_media
 themes:
   - bartik
   - seven
