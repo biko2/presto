@@ -4,10 +4,10 @@ description: Provides some sane configuration defaults for Drupal Commerce.
 core: 8.x
 package: Presto (Configuration)
 dependencies:
-  - views
-  - block
-  - node
-  - menu_link_content
-  - commerce
-  - commerce_shipping
-  - commerce_variation_cart_form
+  - drupal:views
+  - drupal:block
+  - drupal:node
+  - drupal:menu_link_content
+  - drupal:commerce
+  - drupal:commerce_shipping
+  - drupal:commerce_variation_cart_form

@@ -24,9 +24,9 @@ class RemoveDefaultProductTypes extends AbstractDemoContent {
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function createContent() {
-    $defaultProductVariationType = ProductVariationType::load('default');
-    if ($defaultProductVariationType !== NULL) {
-      $defaultProductVariationType->delete();
+    $productVariationType = ProductVariationType::load('default');
+    if ($productVariationType !== NULL) {
+      $productVariationType->delete();
     }
 
     $defaultProductType = ProductType::load('default');
