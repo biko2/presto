@@ -55,11 +55,11 @@ class Manager extends DefaultPluginManager {
     $definitions = parent::getDefinitions();
 
     // Sort definitions by weight before returning.
-    uasort($definitions, function ($a, $b) {
-      if ($a['weight'] === $b['weight']) {
+    uasort($definitions, function ($first, $second) {
+      if ($first['weight'] === $second['weight']) {
         return 0;
       }
-      return ($a['weight'] < $b['weight']) ? -1 : 1;
+      return ($first['weight'] < $second['weight']) ? -1 : 1;
     });
 
     return $definitions;
