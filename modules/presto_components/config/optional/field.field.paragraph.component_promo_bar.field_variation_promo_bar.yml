@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_variation_promo_bar
+    - paragraphs.paragraphs_type.component_promo_bar
+  module:
+    - options
+id: paragraph.component_promo_bar.field_variation_promo_bar
+field_name: field_variation_promo_bar
+entity_type: paragraph
+bundle: component_promo_bar
+label: Variation
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

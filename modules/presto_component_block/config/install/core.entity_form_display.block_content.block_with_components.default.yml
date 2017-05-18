@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.block_with_components
+    - field.field.block_content.block_with_components.field_body_paragraphs
+  module:
+    - paragraphs
+id: block_content.block_with_components.default
+targetEntityType: block_content
+bundle: block_with_components
+mode: default
+content:
+  field_body_paragraphs:
+    type: paragraphs
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

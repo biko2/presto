@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: block_with_components
+label: 'Block with components'
+revision: 1
+description: 'A block that allows you to place components within it (such as those used on a basic page).'

@@ -9,12 +9,20 @@
  * Implements theme_hook().
  */
 function presto_components_theme($existing, $type, $theme, $path) {
-  return array(
+  return [
     'paragraph__component_divider' => [
       'template' => 'paragraph--component-divider',
       'base hook' => 'paragraph',
-    ]
-  );
+    ],
+    'paragraph__component_image' => [
+      'template' => 'paragraph--component-image',
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__component_promo_bar' => [
+      'template' => 'paragraph--component-promo-bar',
+      'base hook' => 'paragraph',
+    ],
+  ];
 }
 
 /**
