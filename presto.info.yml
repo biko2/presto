@@ -7,7 +7,6 @@ distribution:
   name: Presto
 dependencies:
   - admin_toolbar
-  - automated_cron
   - block
   - block_content
   - breakpoint
@@ -52,6 +51,7 @@ dependencies:
   - simple_sitemap
   - presto_components
   - presto_contact
+  - presto_component_block
 themes:
   - bartik
   - seven

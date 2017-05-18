@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_promo_bar
+label: 'Component: Promo Bar'
+behavior_plugins: {  }

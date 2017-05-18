@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains presto_component_block.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function presto_component_block_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the presto_component_block module.
+    case 'help.page.presto_component_block':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides a block type that allows the embedding of paragraph components.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
