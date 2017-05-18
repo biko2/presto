@@ -1,0 +1,17 @@
+name: Presto Theme
+type: theme
+description: Presto Theme - A child theme of Bootstrap theme
+package: Other
+core: 8.x
+
+base theme: bootstrap
+
+libraries:
+  - presto_theme/global-styling
+
+regions:
+  content: Content
+
+libraries-override:
+  bootstrap/tooltip: false
+  bootstrap/popover: false
