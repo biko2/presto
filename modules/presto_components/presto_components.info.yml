@@ -1,14 +1,12 @@
 name: Presto Components
-core: 8.x
 type: module
-description: 'Paragraph Components.'
-version: '8.x-1.x-dev'
-distribution:
-  name: Presto (Configuration)
+description: Paragraph Components.
+core: 8.x
+package: Presto
 dependencies:
-  - paragraphs
-  - image
-  - link
-  - text
-  - options
-  - block_field
+  - drupal:paragraphs
+  - drupal:image
+  - drupal:link
+  - drupal:text
+  - drupal:options
+  - drupal:block_field
