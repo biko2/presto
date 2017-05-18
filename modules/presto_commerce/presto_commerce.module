@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains presto_commerce.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function presto_commerce_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the presto_commerce module.
+    case 'help.page.presto_commerce':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides some sane configuration defaults for Drupal Commerce.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

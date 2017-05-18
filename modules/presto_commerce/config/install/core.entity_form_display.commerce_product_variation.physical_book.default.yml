@@ -1,0 +1,62 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.physical_book
+    - field.field.commerce_product_variation.physical_book.attribute_book_binding
+    - field.field.commerce_product_variation.physical_book.dimensions
+    - field.field.commerce_product_variation.physical_book.weight
+  module:
+    - commerce_price
+    - physical
+id: commerce_product_variation.physical_book.default
+targetEntityType: commerce_product_variation
+bundle: physical_book
+mode: default
+content:
+  attribute_book_binding:
+    type: options_select
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  dimensions:
+    type: physical_dimensions_default
+    weight: 90
+    settings:
+      default_unit: ''
+      allow_unit_change: true
+    third_party_settings: {  }
+    region: content
+  price:
+    type: commerce_price_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  sku:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 99
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  weight:
+    type: physical_measurement_default
+    weight: 91
+    settings:
+      default_unit: ''
+      allow_unit_change: true
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  uid: true

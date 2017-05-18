@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ebook
+label: eBook
+orderItemType: digital_item
+generateTitle: true
+traits: {  }

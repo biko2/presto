@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_attribute.ebook_format
+    - commerce_product.commerce_product_variation_type.ebook
+    - field.storage.commerce_product_variation.attribute_ebook_format
+id: commerce_product_variation.ebook.attribute_ebook_format
+field_name: attribute_ebook_format
+entity_type: commerce_product_variation
+bundle: ebook
+label: 'eBook Format'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:commerce_product_attribute_value'
+  handler_settings:
+    target_bundles:
+      - ebook_format
+field_type: entity_reference

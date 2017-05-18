@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies: {  }
+id: australian_gst
+label: 'Australian GST'
+plugin: custom
+configuration:
+  display_label: tax
+  round: false
+  rates:
+    -
+      id: dcabcda8-9079-4d07-8823-0749a91a1b1d
+      label: GST
+      amount: '0.1'
+  territories:
+    -
+      country_code: AU
+      administrative_area: ''
+  display_inclusive: true

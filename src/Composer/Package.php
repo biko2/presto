@@ -1,8 +1,8 @@
 <?php
 
-namespace Sitback\Presto\Composer;
+namespace Drupal\presto\Composer;
 
-use Sitback\Presto\IniEncoder;
+use Drupal\presto\IniEncoder;
 use Composer\Package\PackageInterface;
 use Composer\Script\Event;
 use Composer\Util\ProcessExecutor;

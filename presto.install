@@ -1,16 +1,203 @@
 <?php
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\node\Entity\Node;
+use Drupal\shortcut\Entity\Shortcut;
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
+use Drupal\presto\Installer\Form\PrestoConfigureForm;
+use Drupal\presto\Installer\Ecommerce\Installer as EcommerceInstaller;
 
 /**
  * @file
  * Install, update and uninstall functions for the standard installation profile.
  */
 
-use Drupal\Core\Language\LanguageInterface;
-use Drupal\menu_link_content\Entity\MenuLinkContent;
-use Drupal\node\Entity\Node;
-use Drupal\user\Entity\User;
-use Drupal\user\RoleInterface;
-use Drupal\shortcut\Entity\Shortcut;
+/**
+ * Implements hook_install_tasks().
+ */
+function presto_install_tasks(&$install_state) {
+  $tasks = [];
+
+  $tasks['presto_configure_presto'] = [
+    'display_name' => t('Configure Presto'),
+    'type' => 'form',
+    'function' => PrestoConfigureForm::class,
+  ];
+
+  $tasks['presto_apply_configuration'] = [
+    'display_name' => t('Apply Presto configuration'),
+    'type' => 'batch',
+  ];
+
+  return $tasks;
+}
+
+/**
+ * Implements hook_install_tasks_alter().
+ */
+function presto_install_tasks_alter(array &$tasks, array $install_state) {
+  $tasks['install_finished']['function'] = 'presto_post_install_redirect';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function presto_form_install_configure_form_alter(
+  &$form,
+  &$form_state,
+  $form_id
+) {
+  // Clear any module install success messages.
+  drupal_get_messages('status');
+}
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function presto_install() {
+  // Set front page to "node".
+  Drupal::configFactory()->getEditable('system.site')->set('page.front', '/node')->save(TRUE);
+
+  // Allow visitor account creation with administrative approval.
+  $user_settings = Drupal::configFactory()->getEditable('user.settings');
+  $user_settings->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
+
+  // Enable default permissions for system roles.
+  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['access comments']);
+  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access comments', 'post comments', 'skip comment approval']);
+
+  // Assign user 1 the "administrator" role.
+  $user = User::load(1);
+  $user->roles[] = 'administrator';
+  $user->save();
+
+  // We install some menu links, so we have to rebuild the router, to ensure the
+  // menu links are valid.
+  Drupal::service('router.builder')->rebuildIfNeeded();
+
+  // Enable the Contact link in the footer menu.
+  /** @var \Drupal\Core\Menu\MenuLinkManagerInterface $menu_link_manager */
+  $menu_link_manager = Drupal::service('plugin.manager.menu.link');
+  $menu_link_manager->updateDefinition('contact.site_page', ['enabled' => TRUE]);
+
+  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['access site-wide contact form']);
+  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access site-wide contact form']);
+
+  // Allow authenticated users to use shortcuts.
+  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access shortcuts']);
+
+  // Populate the default shortcut set.
+  $shortcut = Shortcut::create([
+    'shortcut_set' => 'default',
+    'title' => t('Add content'),
+    'weight' => -20,
+    'link' => ['uri' => 'internal:/node/add'],
+  ]);
+  $shortcut->save();
+
+  $shortcut = Shortcut::create([
+    'shortcut_set' => 'default',
+    'title' => t('All content'),
+    'weight' => -19,
+    'link' => ['uri' => 'internal:/admin/content'],
+  ]);
+  $shortcut->save();
+
+  // Allow all users to use search.
+  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['search content']);
+  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['search content']);
+
+  // Enable the admin theme.
+  Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', TRUE)->save(TRUE);
+
+  // Create the articles page.
+  presto_create_articles_page();
+}
+
+/**
+ * Applies any Presto configuration, including installing modules.
+ *
+ * @param array $install_state
+ *   Current install state.
+ *
+ * @return array
+ *   Batch definition
+ */
+function presto_apply_configuration(array &$install_state) {
+  $batch = [
+    'title' => t('Configuring Presto'),
+    'error_message' => t('The installer has encountered an error.'),
+    'operations' => [],
+  ];
+
+  $ecommerceInstaller = EcommerceInstaller::create((array)$install_state);
+  // Install modules and create demo content if eCommerce is enabled.
+  $batch['operations'] = array_merge(
+    $batch['operations'],
+    $ecommerceInstaller->installIfEnabled()
+  );
+
+  return $batch;
+}
+
+/**
+ * Push the user off to the installed site with messaging.
+ *
+ * @param array $install_state
+ *   Current installer state.
+ *
+ * @return array
+ *   Drupal render array.
+ */
+function presto_post_install_redirect(array &$install_state) {
+  install_finished($install_state);
+
+  // Clear any messages set by installed modules.
+  drupal_get_messages('status');
+
+  drupal_set_message(t('Hey Presto! Welcome to your new Drupal site!'));
+
+  $output = [
+    '#title' => t('All done and ready to go!'),
+    'description' => [
+      '#markup' => t(
+        'Your new Drupal site is installed and ready to go! If you are not redirected in 5 seconds, <a href=":url">click here</a> to continue.',
+        [
+          ':url' => '/',
+        ]
+      )
+    ],
+    '#attached' => [
+      'http_header' => [
+        [
+          'Cache-Control',
+          'no-cache',
+        ]
+      ],
+    ],
+  ];
+
+  // Redirect via a meta tag since the installer doesn't support header-based
+  // redirects.
+  $meta_redirect = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'http-equiv' => 'refresh',
+      'content' => '0;url=/',
+    ],
+  ];
+  $output['#attached']['html_head'][] = [
+    $meta_redirect,
+    'meta_redirect',
+  ];
+
+  return $output;
+}
 
 /**
  * Creates the `/articles` page.
@@ -42,71 +229,4 @@ function presto_create_articles_page() {
     'expanded' => true,
   ]);
   $menuLink->save();
-}
-
-/**
- * Implements hook_install().
- *
- * Perform actions to set up the site for this profile.
- *
- * @see system_install()
- */
-function presto_install() {
-  // Set front page to "node".
-  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/node')->save(TRUE);
-
-  // Allow visitor account creation with administrative approval.
-  $user_settings = \Drupal::configFactory()->getEditable('user.settings');
-  $user_settings->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
-
-  // Enable default permissions for system roles.
-  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['access comments']);
-  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access comments', 'post comments', 'skip comment approval']);
-
-  // Assign user 1 the "administrator" role.
-  $user = User::load(1);
-  $user->roles[] = 'administrator';
-  $user->save();
-
-  // We install some menu links, so we have to rebuild the router, to ensure the
-  // menu links are valid.
-  \Drupal::service('router.builder')->rebuildIfNeeded();
-
-  // Enable the Contact link in the footer menu.
-  /** @var \Drupal\Core\Menu\MenuLinkManagerInterface $menu_link_manager */
-  $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
-  $menu_link_manager->updateDefinition('contact.site_page', ['enabled' => TRUE]);
-
-  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['access site-wide contact form']);
-  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access site-wide contact form']);
-
-  // Allow authenticated users to use shortcuts.
-  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access shortcuts']);
-
-  // Populate the default shortcut set.
-  $shortcut = Shortcut::create([
-    'shortcut_set' => 'default',
-    'title' => t('Add content'),
-    'weight' => -20,
-    'link' => ['uri' => 'internal:/node/add'],
-  ]);
-  $shortcut->save();
-
-  $shortcut = Shortcut::create([
-    'shortcut_set' => 'default',
-    'title' => t('All content'),
-    'weight' => -19,
-    'link' => ['uri' => 'internal:/admin/content'],
-  ]);
-  $shortcut->save();
-
-  // Allow all users to use search.
-  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['search content']);
-  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['search content']);
-
-  // Enable the admin theme.
-  \Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', TRUE)->save(TRUE);
-
-  // Create the articles page.
-  presto_create_articles_page();
 }
