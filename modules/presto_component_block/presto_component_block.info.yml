@@ -4,4 +4,4 @@ description: Provides a block type that allows the embedding of paragraph compon
 core: 8.x
 package: Presto (Configuration)
 dependencies:
-  - presto_components
+  - drupal:presto_components
