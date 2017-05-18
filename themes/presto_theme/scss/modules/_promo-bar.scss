@@ -27,7 +27,7 @@ Theming for the boilerplate promo bars
         align-self: stretch;
         align-items: center;
 
-        &:hover {
+        /*&:hover {
 
           ~ p {
             border-right: 1px solid rgba($promobarButtonBorderColor, .35);
@@ -42,7 +42,7 @@ Theming for the boilerplate promo bars
               border-left: .75em solid rgba($promobarButtonBorderColor, .35);
             }
           }
-        }
+        }*/
       }
 
       &:nth-child(2):last-child {
