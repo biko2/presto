@@ -31,7 +31,6 @@ class Installer {
     'physical' => self::DEPENDENCY_TYPE_MODULE,
     'commerce_shipping' => self::DEPENDENCY_TYPE_MODULE,
     'commerce_variation_cart_form' => self::DEPENDENCY_TYPE_MODULE,
-    'presto_commerce' => self::DEPENDENCY_TYPE_MODULE,
   ];
 
   /**
@@ -154,6 +153,16 @@ class Installer {
 
     $contentDefs = $this->demoContentManager->getDefinitions();
 
+    // Add module install task to install our commerce exports module.
+    $operations[] = [
+      [static::class, 'installDependency'],
+      [
+        'presto_commerce',
+        static::DEPENDENCY_TYPE_MODULE,
+      ],
+    ];
+
+    // Run any further content tasks.
     foreach ($contentDefs as $def) {
       $operations[] = [
         [static::class, 'createDemoContent'],
