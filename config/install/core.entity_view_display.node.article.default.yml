@@ -4,14 +4,13 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.comment
-    - field.field.node.article.field_image
+    - field.field.node.article.field_media
     - field.field.node.article.field_published_on
     - field.field.node.article.field_tags
-    - image.style.large
     - node.type.article
   module:
     - datetime
-    - image
+    - ds
     - text
     - user
 id: node.article.default
@@ -26,15 +25,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     label: hidden
-  field_image:
-    type: image
+  field_media:
     weight: 1
-    region: content
-    settings:
-      image_style: large
-      image_link: ''
-    third_party_settings: {  }
     label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: entity_reference_entity_view
+    region: content
   field_published_on:
     weight: 0
     label: above
