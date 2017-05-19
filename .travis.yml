@@ -28,5 +28,6 @@ install:
 script:
   - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
   - ./vendor/bin/phpcs --standard=phpcs.xml -s
+  - ./vendor/bin/security-checker security:check
   - cd $TRAVIS_BUILD_DIR/web
   - ./../vendor/bin/drush
