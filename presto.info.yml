@@ -35,6 +35,7 @@ dependencies:
   - paragraphs
   - path
   - pathauto
+  - social_media
   - quickedit
   - rdf
   - shortcut
@@ -52,6 +53,7 @@ dependencies:
   - presto_components
   - presto_contact
   - presto_media
+  - presto_component_block
 themes:
   - bartik
   - seven

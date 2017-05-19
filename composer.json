@@ -40,6 +40,7 @@
         "drupal/admin_toolbar": "^1.19",
         "drupal/big_pipe_sessionless": "^1.0",
         "drupal/block_field": "^1.0@alpha",
+        "drupal/bootstrap": "^3.5",
         "drupal/console": "~1.0",
         "drupal/contact_block": "^1.4",
         "drupal/contact_storage": "^1.0@beta",
@@ -56,6 +57,7 @@
         "drupal/metatag": "^1.0",
         "drupal/paragraphs": "^1.1",
         "drupal/pathauto": "^1.0",
+        "drupal/social_media": "1.x-dev#5842dec",
         "drupal/redirect": "^1.0@alpha",
         "drupal/simple_sitemap": "^2.9",
         "drupal/slick": "1.x-dev",
@@ -73,6 +75,7 @@
         "composer/composer": "^1.4",
         "drupal-composer/drupal-security-advisories": "8.x-dev",
         "drupal/coder": "^8.2",
+        "drupal/link_css": "1.x-dev#2e53337",
         "jcalderonzumba/gastonjs": "~1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsstream": "~1.2",
@@ -101,6 +104,12 @@
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
             ]
+        },
+        "patches": {
+            "drupal/social_media": {
+                "Fix undefined index error (#2836382)":
+                    "https://www.drupal.org/files/issues/2836382-drupal-settings-undefined-index_1.patch"
+            }
         }
     },
     "autoload": {
