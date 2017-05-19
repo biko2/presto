@@ -1,6 +1,6 @@
-name: Presto Theme
+name: Presto
 type: theme
-description: Presto Theme - A child theme of Bootstrap theme
+description: Presto - A child theme of Bootstrap theme
 package: Other
 core: 8.x
 
