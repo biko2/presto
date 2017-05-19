@@ -22,6 +22,7 @@ dependencies:
   - ds
   - dynamic_page_cache
   - editor
+  - entity_browser
   - field_ui
   - file
   - help
