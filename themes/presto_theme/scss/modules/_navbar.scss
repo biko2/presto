@@ -1,0 +1,36 @@
+.navbar {
+  border-bottom: 0;
+  margin-bottom: 0;
+  background: $mainMenuBackground;
+  border-bottom: 2px solid $mainMenuBorderColor;
+
+
+  &.navbar-default {
+
+    .navbar-header {
+      @extend .presto-container;
+    }
+    .navbar-nav {
+
+      > li {
+
+        > a {
+          color: $mainMenuLinkColor;
+          border-bottom: 2px solid transparent;
+          margin-bottom: -2px;
+
+          &.is-active {
+            color: $mainMenuLinkColorHover;
+            border-bottom-color: $mainMenuLinkBorderColorActive;
+          }
+
+          &:hover {
+            color: $mainMenuLinkColorHover;
+            border-bottom-color: $mainMenuLinkBorderColorHover;
+          }
+        }
+      }
+    }
+  }
+}
+

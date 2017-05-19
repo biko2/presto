@@ -48,7 +48,6 @@ set classes = [
   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   content.field_variation['#items'].getString(),
   'row',
-  'margin-vertical-large'
 ]
 %}
 
@@ -69,7 +68,7 @@ set classes = [
       <div class="{{ content.field_variation_promo_bar['#items'].getString() }}">
 
         {% if (content.field_variation_promo_bar['#items'].getString() == 'text_and_button' ) %}
-          <div class="promo-container flex middle around  padding-vertical-medium">
+          <div class="container flex middle around  padding-vertical-medium">
             <p class="promo-button-wrapper">
               {{ link(paragraph.fields.field_link.0.value.title,
                 paragraph.fields.field_link.0.value.uri,
@@ -88,7 +87,7 @@ set classes = [
 
             {{ link(link_title,
               paragraph.fields.field_link.0.value.uri,
-              { 'class':['text-white', 'full-bar', 'nav-arrow', 'promo-container', 'padding-vertical-medium']} )
+              { 'class':['text-white', 'full-bar', 'nav-arrow', 'container', 'padding-vertical-medium']} )
             }}
         {%  endif %}
 
@@ -99,7 +98,7 @@ set classes = [
 
             {{ link(link_title,
             paragraph.fields.field_link.0.value.uri,
-            { 'class':['text-white full-bar text-center promo-container padding-vertical-large']} )
+            { 'class':['text-white full-bar text-center container padding-vertical-large']} )
             }}
 
         {%  endif %}

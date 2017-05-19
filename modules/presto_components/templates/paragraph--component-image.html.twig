@@ -47,6 +47,8 @@ set classes = [
   'paragraph--type--' ~ paragraph.bundle|clean_class,
   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   content.field_variation['#items'].getString(),
+  'clearfix',
+  'container',
 ]
 %}
 
@@ -69,59 +71,47 @@ set classes = [
   {# set image_lightbox = content.field_image.0|merge({'#image_style': 'large'}) #}
   {# file_url(image['#item'].entity.uri.value) #}
 
-
-  <div{{ attributes.addClass(classes) }}>
+  <figure{{ attributes.addClass(classes) }}>
 
     {% if (content.field_variation['#items'].getString() == 'image_standard' ) %}
-      <figure class="clearfix">
-        {{ content.field_image }}
-        <div class="figcaption-wrap"></div>
-      </figure>
+      {{ content.field_image }}
     {% endif %}
 
     {% if (content.field_variation['#items'].getString() == 'image_with_lightbox_over' ) %}
-      <figure class="clearfix">
+      <a class="lightbox lightbox-enabled" href="{{ image_uri }}" {{ data_caption }}>
         {{ content.field_image }}
-        <a class="lightbox ilightbox-enabled" href="{{ image_uri }}" {{ data_caption }}></a>
-      </figure>
+      </a>
     {%  endif %}
 
     {% if (content.field_variation['#items'].getString() == 'image_with_link' ) %}
-      <figure class="clearfix animated-overlay overlay-alt">
         <a class="img-link" href="{{ link_url }}" {{ data_caption }} >
           {{ content.field_image }}
+          <figcaption>
+            <div class="thumb-info thumb-info-alt"><i class="ss-link"></i></div>
+          </figcaption>
         </a>
-        <figcaption>
-          <div class="thumb-info thumb-info-alt"><i class="ss-link"></i></div>
-        </figcaption>
-      </figure>
-
     {%  endif %}
 
     {% if (content.field_variation['#items'].getString() == 'image_with_caption_hover' ) %}
-      <figure class="clearfix animated-overlay overlay-style caption-hover clearfix">
-        {{ content.field_image }}
-        <a class="lightbox ilightbox-enabled" href="{{ image_lightbox }}" data-caption="{{ data_caption }}"></a>
-        <div class="figcaption-wrap"></div>
-        <figcaption>
-          <div class="thumb-info">
-            <h4>{{ data_caption }}</h4>
-          </div>
-        </figcaption>
-      </figure>
+        <a class="lightbox ilightbox-enabled" href="{{ image_lightbox }}" data-caption="{{ data_caption }}">
+          {{ content.field_image }}
+          <figcaption>
+            <div class="thumb-info">
+              <h4>{{ data_caption }}</h4>
+            </div>
+          </figcaption>
+        </a>
     {%  endif %}
 
     {% if (content.field_variation['#items'].getString() == 'image_with_caption_below' ) %}
-      <figure class="clearfix">
-        {{ content.field_image }}
-        <div class="figcaption-wrap"></div>
-      </figure>
-      <div class="image-caption clearfix" style>
-        <h4>{{ data_caption }}</h4>
-      </div>
+      {{ content.field_image }}
+      <figcaption class="margin-bottom-medium">
+        <div class="image-caption clearfix" style>
+          <p>{{ data_caption }}</p>
+        </div>
+      </figcaption>
     {%  endif %}
-
-  </div>
+  </figure>
 
 {% endif %}
 

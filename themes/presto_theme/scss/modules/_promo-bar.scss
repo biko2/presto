@@ -11,10 +11,11 @@ Theming for the boilerplate promo bars
 
   p {
     font-size: 120%;
-    line-height: 2;
+    line-height: 1.7;
+    color: $white;
   }
 
-  .promo-container {
+  .container {
 
     > p {
 
@@ -141,19 +142,6 @@ Theming for the boilerplate promo bars
     &:hover {
       color: $promobarLinkColor;
       background-color: $promobarLinkColorHover;
-    }
-  }
-}
-
-@each $breakpoint in $breakpoints {
-  $name: nth($breakpoint, 1);
-  $size: nth($breakpoint, 2);
-  $container: nth($breakpoint, 3);
-  @media only screen and (min-width: $size) {
-    .promo-container {
-      width: 100%;
-      padding-left: calc((100% - #{$container})/2 + 15px);
-      padding-right: calc((100% - #{$container})/2 + 15px);
     }
   }
 }

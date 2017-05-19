@@ -4,15 +4,21 @@
 @import '../node_modules/flexboxgrid-sass/flexboxgrid';
 // @import 'scss/font-awesome';
 
+@import 'https://fonts.googleapis.com/css?family=Open+Sans|Neuton:200,400';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
 
 @import 'base/flexbox-grid-overrides';
+
 @import 'base/spacing';
 @import 'base/colours';
 @import 'base/typography';
 
 @import 'structure/flex';
 
+@import 'modules/page';
+@import 'modules/navbar';
+@import 'modules/textbox';
+@import 'modules/images';
 @import 'modules/buttons';
 @import 'modules/dividers';
 @import 'modules/promo-bar';
