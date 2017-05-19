@@ -6,7 +6,7 @@ version: '8.x-1.x-dev'
 distribution:
   name: Presto
 dependencies:
-  - admin_toolbar
+  # Core
   - block
   - block_content
   - breakpoint
@@ -14,12 +14,9 @@ dependencies:
   - comment
   - config
   - contact
-  - contact_block
-  - contact_storage
   - contextual
   - datetime
   - dblog
-  - ds
   - dynamic_page_cache
   - editor
   - field_ui
@@ -32,24 +29,30 @@ dependencies:
   - node
   - options
   - page_cache
-  - paragraphs
   - path
-  - pathauto
-  - social_media
   - quickedit
   - rdf
   - shortcut
   - search
   - taxonomy
   - toolbar
-  - token
   - views
   - views_ui
-  - view_mode_selector
-  - layout_discovery
+  # Contrib
+  - admin_toolbar
+  - contact_block
+  - contact_storage
+  - ds
   - google_analytics
+  - layout_discovery
+  - paragraphs
+  - pathauto
+  - social_media
   - metatag
   - simple_sitemap
+  - token
+  - view_mode_selector
+  # Custom
   - presto_components
   - presto_contact
   - presto_component_block
