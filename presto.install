@@ -23,14 +23,14 @@ function presto_create_articles_page() {
     'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
     'uid' => 1,
     'status' => 1,
+    'promote' => 0,
     'field_fields' => [],
+    'path' => [
+      'alias' => '/articles'
+    ],
   ]);
   $node->save();
-
-  // Create pathauto alias.
-  Drupal::service('pathauto.generator')
-        ->updateEntityAlias($node, 'insert');
-
+  
   // Create menu link.
   $menuLink = MenuLinkContent::create([
     'title' => 'Articles',
