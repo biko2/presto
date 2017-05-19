@@ -52,6 +52,7 @@
         "drupal/paragraphs": "^1.1",
         "drupal/pathauto": "^1.0",
         "drupal/simple_sitemap": "^2.9",
+        "drupal/social_media": "1.x-dev#5842dec",
         "drupal/redirect": "^1.0@alpha",
         "drupal/token": "^1.0",
         "drupal/view_mode_selector": "1.x-dev",
@@ -94,6 +95,12 @@
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
             ]
+        },
+        "patches": {
+            "drupal/social_media": {
+                "Fix undefined index error (#2836382)":
+                    "https://www.drupal.org/files/issues/2836382-drupal-settings-undefined-index_1.patch"
+            }
         }
     },
     "autoload": {
