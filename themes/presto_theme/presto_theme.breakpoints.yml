@@ -1,0 +1,24 @@
+presto_theme.xs:
+  label: xs
+  mediaQuery: '(min-width: 480px)'
+  weight: 1
+  multipliers:
+    - 1x
+presto_theme.sm:
+  label: sm
+  mediaQuery: '(min-width: 768px)'
+  weight: 1
+  multipliers:
+    - 1x
+presto_theme.md:
+  label: md
+  mediaQuery: '(min-width: 992px)'
+  weight: 1
+  multipliers:
+    - 1x
+presto_theme.lg:
+  label: lg
+  mediaQuery: '(min-width: 1200px)'
+  weight: 1
+  multipliers:
+    - 1x

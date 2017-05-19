@@ -5,3 +5,7 @@
 /node_modules/
 /bower_components/
 .sass-cache/
+*.css.map
+# Optional eslint cache
+.eslintcache
+

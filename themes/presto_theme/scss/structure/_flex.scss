@@ -1,0 +1,17 @@
+.flex {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  &.between {
+    justify-content: space-between;
+  }
+
+  &.around {
+    justify-content: space-around;
+  }
+
+ .flex-hog {
+   flex-basis: 100%;
+ }
+}
