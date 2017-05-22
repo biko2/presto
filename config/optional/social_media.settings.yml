@@ -7,6 +7,9 @@ social_media:
     default_img: 1
     weight: 1
     attributes: "target|_blank\r\nclass|facebook-share"
+    drupalSettings: ''
+    library: ''
+    img: ''
   facebook_msg:
     enable: 0
     api_url: 'FB.ui({method: ''send'',link: ''[current-page:url]''})'
@@ -26,6 +29,9 @@ social_media:
     default_img: 1
     weight: 3
     attributes: "target|_blank\r\nclass|linkedin"
+    drupalSettings: ''
+    library: ''
+    img: ''
   twitter:
     enable: 1
     api_url: 'https://twitter.com/intent/tweet?url=[current-page:url]&status=[current-page:title]+[current-page:url]'
@@ -34,6 +40,9 @@ social_media:
     default_img: 1
     weight: 4
     attributes: "target|_blank\r\nclass|twitter"
+    drupalSettings: ''
+    library: ''
+    img: ''
   email:
     enable: 1
     api_url: 'mailto:?subject=[current-page:title]&body=Check out this site [current-page:url]'
@@ -42,4 +51,7 @@ social_media:
     default_img: 1
     weight: 5
     attributes: class|email
+    drupalSettings: ''
+    library: ''
+    img: ''
 langcode: en
