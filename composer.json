@@ -71,7 +71,8 @@
         "drush/drush": "~8.0",
         "npm-asset/slick-carousel": "^1.5",
         "webflo/drupal-finder": "^0.3.0",
-        "webmozart/path-util": "^2.3"
+        "webmozart/path-util": "^2.3",
+        "npm-asset/dropzone": "^4.2"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -106,6 +107,10 @@
             "web/libraries/slick": [
                 "npm-asset/slick-carousel",
                 "bower-asset/slick-carousel"
+            ],
+            "web/libraries/dropzone" :[
+                "npm-asset/dropzone",
+                "bower-asset/dropzone"
             ],
             "web/libraries/{$name}": [
                 "type:drupal-library",
