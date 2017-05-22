@@ -30,7 +30,6 @@ class Installer {
     'commerce_log' => self::DEPENDENCY_TYPE_MODULE,
     'physical' => self::DEPENDENCY_TYPE_MODULE,
     'commerce_shipping' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_variation_cart_form' => self::DEPENDENCY_TYPE_MODULE,
   ];
 
   /**
