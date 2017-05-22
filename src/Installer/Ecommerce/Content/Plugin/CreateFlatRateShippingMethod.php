@@ -2,7 +2,6 @@
 
 namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
 
-use Drupal\commerce_order\Entity\OrderType;
 use Drupal\commerce_shipping\Entity\ShippingMethod;
 
 /**
