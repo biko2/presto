@@ -5,7 +5,7 @@ social_media:
     api_url: 'http://www.facebook.com/share.php?u=[current-page:url]&title=[current-page:title]'
     api_event: href
     default_img: 1
-    weight: '1'
+    weight: 1
     attributes: "target|_blank\r\nclass|facebook-share"
     drupalSettings: ''
     library: ''
@@ -18,7 +18,7 @@ social_media:
     library: social_media/facebook
     text: 'Facebook messenger'
     default_img: 1
-    weight: '2'
+    weight: 2
     attributes: "target|_blank\r\nclass|facebook-msg"
     img: ''
   linkedin:
@@ -27,7 +27,7 @@ social_media:
     api_event: href
     text: Linkedin
     default_img: 1
-    weight: '3'
+    weight: 3
     attributes: "target|_blank\r\nclass|linkedin"
     drupalSettings: ''
     library: ''
@@ -38,7 +38,7 @@ social_media:
     api_event: href
     text: Twitter
     default_img: 1
-    weight: '4'
+    weight: 4
     attributes: "target|_blank\r\nclass|twitter"
     drupalSettings: ''
     library: ''
@@ -49,11 +49,9 @@ social_media:
     api_event: href
     text: Email
     default_img: 1
-    weight: '5'
+    weight: 5
     attributes: class|email
     drupalSettings: ''
     library: ''
     img: ''
 langcode: en
-_core:
-  default_config_hash: ijnKXqWRB4kppnr81AwvgimHom2cxgEO4qTWDKxud84
