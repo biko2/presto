@@ -10,7 +10,7 @@ field_name: field_slideshow
 entity_type: paragraph
 bundle: component_slideshow
 label: Slideshow
-description: ''
+description: 'To create a slideshow, please go to Content > Media > Add new media > Slideshow'
 required: true
 translatable: false
 default_value: {  }
