@@ -1,3 +1,4 @@
+uuid: 96c79161-dd60-4aa9-bd22-ef52fca03d6c
 langcode: en
 status: true
 dependencies:
@@ -5,10 +6,12 @@ dependencies:
     - social_media
   theme:
     - bartik
+_core:
+  default_config_hash: ZT4GpiuERHcE52YunPd3wrMxx8BJwJMovYPjMPET5m8
 id: socialsharingblock
 theme: bartik
 region: content
-weight: 5
+weight: 9
 provider: null
 plugin: social_sharing_block
 settings:
