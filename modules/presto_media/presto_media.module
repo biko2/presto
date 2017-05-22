@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Contains media related functions.
+ */
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function presto_media_preprocess_views_view(&$variables) {
+
+  $thunder_media_browser = [
+    'media_browser_dropzone',
+  ];
+
+  if (in_array($variables['view']->id(), $thunder_media_browser)) {
+    //$variables['view_array']['#attached']['library'][] = 'thunder_media/entity_browser_view';
+    $variables['view_array']['#attached']['library'][] = 'presto_media/entity_browser_view';
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function presto_media_page_attachments(array &$page) {
+  //$page['#attached']['library'][] = 'thunder_media/gallery';
+  $page['#attached']['library'][] = 'presto_media/entity_browser_view';
+}
+
+
+/**
+ * Implements hook_views_pre_render().
+ */
+/*function presto_media_views_pre_render(ViewExecutable $view) {
+  if (isset($view) && ($view->storage->id() == 'media_browser_dropzone')) {
+    $view->element['#attached']['library'][] = 'presto_media/entity_browser_view';
+  }
+}*/

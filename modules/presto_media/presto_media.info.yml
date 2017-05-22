@@ -11,3 +11,5 @@ dependencies:
   - drupal:slick_media
   - drupal:slick
   - drupal:video_embed_field
+  - drupal:dropzonejs
+  - drupal:dropzonejs_eb_widget
