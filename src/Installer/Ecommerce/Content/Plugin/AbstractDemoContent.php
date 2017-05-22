@@ -2,6 +2,7 @@
 
 namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
 
+use Drupal;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Plugin\PluginBase;
@@ -64,6 +65,27 @@ abstract class AbstractDemoContent extends PluginBase implements
       $plugin_definition,
       $entityTypeManager
     );
+  }
+
+  /**
+   * Loads the main store.
+   *
+   * @return int
+   *   Loaded store ID or NULL if one couldn't be found.
+   */
+  protected function loadStoreId() {
+    $query = Drupal::entityQuery('commerce_store');
+    $result = $query->execute();
+
+    // There should only ever be one value returned so we naively use the first
+    // item in the array. This should generally be safe as this should only run
+    // within a Drupal site install context.
+    $storeId = NULL;
+    if (count($result) > 0) {
+      $storeId = reset($result);
+    }
+
+    return $storeId;
   }
 
   /**

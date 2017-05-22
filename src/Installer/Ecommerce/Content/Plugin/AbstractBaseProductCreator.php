@@ -88,25 +88,4 @@ abstract class AbstractBaseProductCreator extends AbstractDemoContent {
     return $attributeValue;
   }
 
-  /**
-   * Loads the main store.
-   *
-   * @return int
-   *   Loaded store ID or NULL if one couldn't be found.
-   */
-  private function loadStoreId() {
-    $query = Drupal::entityQuery('commerce_store');
-    $result = $query->execute();
-
-    // There should only ever be one value returned so we naively use the first
-    // item in the array. This should generally be safe as this should only run
-    // within a Drupal site install context.
-    $storeId = NULL;
-    if (count($result) > 0) {
-      $storeId = reset($result);
-    }
-
-    return $storeId;
-  }
-
 }
