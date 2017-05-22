@@ -5,8 +5,6 @@ dependencies:
     - social_media
   theme:
     - bartik
-_core:
-  default_config_hash: ZT4GpiuERHcE52YunPd3wrMxx8BJwJMovYPjMPET5m8
 id: socialsharingblock
 theme: bartik
 region: content
