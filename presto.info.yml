@@ -49,6 +49,7 @@ dependencies:
   - layout_discovery
   - google_analytics
   - metatag
+  - redirect
   - simple_sitemap
   - presto_components
   - presto_contact
