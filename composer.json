@@ -94,6 +94,10 @@
             "web/core": [
                 "type:drupal-core"
             ],
+            "web/libraries/slick": [
+                "npm-asset/slick-carousel",
+                "bower-asset/slick-carousel"
+            ],
             "web/libraries/{$name}": [
                 "type:drupal-library",
                 "type:bower-asset",
