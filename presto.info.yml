@@ -49,6 +49,7 @@ dependencies:
   - pathauto
   - social_media
   - metatag
+  - redirect
   - simple_sitemap
   - token
   - view_mode_selector
