@@ -2,7 +2,7 @@
  * @file
  * Defines the behavior of the media entity browser view.
  *
- * Based on code by Thunder in project/thunder/thunder_media, copyright (c) 2017.
+ * Based on code by Burda in BurdaMagazinOrg/thunder, copyright (c) 2017.
  * Distributed under the GNU GPL v2 or higher. For full terms see the LICENSE
  * file.
  */
