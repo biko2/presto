@@ -1,0 +1,13 @@
+name: Presto Media
+type: module
+description: Configuration for media.
+core: 8.x
+package: Presto
+dependencies:
+  - drupal:focal_point
+  - drupal:media_entity
+  - drupal:media_entity_image
+  - drupal:media_entity_slideshow
+  - drupal:slick_media
+  - drupal:slick
+  - drupal:video_embed_field

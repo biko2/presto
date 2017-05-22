@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.icon_box
+    - field.field.media.image.field_image
+    - image.style.icon_box_focal_point
+    - media_entity.bundle.image
+  module:
+    - image
+id: media.image.icon_box
+targetEntityType: media
+bundle: image
+mode: icon_box
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: icon_box_focal_point
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true
