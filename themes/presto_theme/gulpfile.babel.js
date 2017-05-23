@@ -15,23 +15,22 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import through from 'through2';
 
-const BASE = './';
 const OUTPUT_JS_FILE = 'presto.min.js';
 
 const src = {
-  js: `${BASE}/js/src/**/*.js`,
-  scss: `${BASE}/scss/**/*.scss`,
-  images: `${BASE}/images`,
-  fonts: `${BASE}/fonts`,
-  bootstrap: `${BASE}/node_modules/bootstrap-sass/assets/stylesheets`
+  js: 'js/src/**/*.js',
+  scss: 'scss/**/*.scss',
+  images: 'images',
+  fonts: 'fonts',
+  bootstrap: 'node_modules/bootstrap-sass/assets/stylesheets'
 };
 
 const dest = {
-  js: `${BASE}/js/compiled`,
-  css: `${BASE}/css`,
-  maps: `maps`,
-  images: `${BASE}/images`,
-  fonts: `${BASE}/fonts`
+  js: 'js/compiled',
+  css: 'css',
+  maps: 'maps',
+  images: 'images',
+  fonts: 'fonts'
 }
 
 
@@ -55,7 +54,7 @@ gulp.task('development', ['js', 'scss'], () => {
 
   gulp.watch(src.scss, ['scss']);
   gulp.watch(src.js, ['js']);
-  // gulp.watch(`${BASE}/**/*.php`, browserSync.reload);
+  // gulp.watch('**/*.php', browserSync.reload);
 });
 
 
