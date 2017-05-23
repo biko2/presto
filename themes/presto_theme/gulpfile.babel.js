@@ -15,22 +15,23 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import through from 'through2';
 
-const base = './';
+const BASE = './';
+const OUTPUT_JS_FILE = 'presto.min.js';
 
 const src = {
-  js: `${base}/js/src/**/*.js`,
-  scss: `${base}/scss/**/*.scss`,
-  images: `${base}/images`,
-  fonts: `${base}/fonts`,
-  bootstrap: `${base}/node_modules/bootstrap-sass/assets/stylesheets`
+  js: `${BASE}/js/src/**/*.js`,
+  scss: `${BASE}/scss/**/*.scss`,
+  images: `${BASE}/images`,
+  fonts: `${BASE}/fonts`,
+  bootstrap: `${BASE}/node_modules/bootstrap-sass/assets/stylesheets`
 };
 
 const dest = {
-  js: `${base}/js/compiled`,
-  css: `${base}/css`,
+  js: `${BASE}/js/compiled`,
+  css: `${BASE}/css`,
   maps: `maps`,
-  images: `${base}/images`,
-  fonts: `${base}/fonts`
+  images: `${BASE}/images`,
+  fonts: `${BASE}/fonts`
 }
 
 
@@ -54,7 +55,7 @@ gulp.task('development', ['js', 'scss'], () => {
 
   gulp.watch(src.scss, ['scss']);
   gulp.watch(src.js, ['js']);
-  // gulp.watch(`${base}/**/*.php`, browserSync.reload);
+  // gulp.watch(`${BASE}/**/*.php`, browserSync.reload);
 });
 
 
@@ -85,7 +86,7 @@ gulp.task('js', () => {
   let bundledStream = through();
 
   bundledStream
-    .pipe(source('presto.js'))
+    .pipe(source(OUTPUT_JS_FILE))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(uglify({
