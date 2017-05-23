@@ -116,3 +116,4 @@ gulp.task('js', () => {
 // Tasks
 // ------------------------------------------------------
 gulp.task('default', ['development']);
+gulp.task('build', ['scss', 'js']);
