@@ -12,7 +12,7 @@ import uglify from 'gulp-uglify';
 const base = './';
 
 const src = {
-  js: `${base}/js/**/*.js`,
+  js: `${base}/js-src/**/*.js`,
   scss: `${base}/scss/**/*.scss`,
   images: `${base}/images`,
   fonts: `${base}/fonts`,
@@ -74,8 +74,10 @@ gulp.task('scss', () => {
 // ------------------------------------------------------
 gulp.task('js', () => {
   return gulp.src(src.js)
-    .pipe(concat('all.js'))
+    .pipe(sourcemaps.init())
+    .pipe(concat('presto_theme_concatenated.js'))
     .pipe(uglify({mangle:false}))
+    .pipe(sourcemaps.write(dest.maps))
     .pipe(gulp.dest(dest.js));
 });
 

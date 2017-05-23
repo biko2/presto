@@ -2,3 +2,7 @@ global-styling:
   css:
     theme:
       css/style.css: { media: screen }
+  js:
+    js/presto_theme_concatenated.js: {}
+  dependencies:
+    - core/jquery
