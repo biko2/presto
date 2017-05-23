@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: carousel_focal_point_wide
+label: 'Carousel Focal Point (Wide)'
+effects:
+  05c5b5d7-d9cd-40c0-b4ef-7d9c27b84460:
+    uuid: 05c5b5d7-d9cd-40c0-b4ef-7d9c27b84460
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 1200
+      height: 400

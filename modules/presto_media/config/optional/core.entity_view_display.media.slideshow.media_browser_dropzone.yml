@@ -1,0 +1,103 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_browser_dropzone
+    - field.field.media.slideshow.field_media_images
+    - media_entity.bundle.slideshow
+  module:
+    - ds
+    - slick_media
+id: media.slideshow.media_browser_dropzone
+targetEntityType: media
+bundle: slideshow
+mode: media_browser_dropzone
+content:
+  field_media_images:
+    weight: 0
+    label: above
+    settings:
+      vanilla: true
+      optionset: default
+      optionset_thumbnail: ''
+      skin: default
+      skin_thumbnail: ''
+      image_style: ''
+      thumbnail_style: ''
+      thumbnail_effect: ''
+      thumbnail_position: ''
+      media_switch: ''
+      view_mode: slick
+      ratio: ''
+      iframe_lazy: true
+      image: ''
+      title: ''
+      link: ''
+      layout: ''
+      class: ''
+      cache: 0
+      sizes: ''
+      current_view_mode: default
+      background: false
+      caption:
+        field_image: '0'
+      breakpoints:
+        xs:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+        sm:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+        md:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+        lg:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+        xl:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+      override: false
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      thumbnail: ''
+      preserve_keys: false
+      thumbnail_caption: ''
+      visible_items: 0
+      skin_arrows: ''
+      skin_dots: ''
+      style: ''
+      icon: ''
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      responsive_image_style: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
+      id: ''
+      overlay: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: slick_media
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

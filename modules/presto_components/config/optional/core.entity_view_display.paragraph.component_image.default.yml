@@ -3,12 +3,11 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.component_image.field_caption
-    - field.field.paragraph.component_image.field_image
     - field.field.paragraph.component_image.field_link
+    - field.field.paragraph.component_image.field_media
     - field.field.paragraph.component_image.field_variation
     - paragraphs.paragraphs_type.component_image
   module:
-    - image
     - link
     - options
 id: paragraph.component_image.default
@@ -23,15 +22,6 @@ content:
     third_party_settings: {  }
     type: basic_string
     region: content
-  field_image:
-    weight: 0
-    label: hidden
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
-    region: content
   field_link:
     weight: 2
     label: inline
@@ -43,6 +33,15 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
+  field_media:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
     region: content
   field_variation:
     weight: 3

@@ -22,6 +22,7 @@ dependencies:
   - ds
   - dynamic_page_cache
   - editor
+  - entity_browser
   - field_ui
   - file
   - help
@@ -35,6 +36,7 @@ dependencies:
   - paragraphs
   - path
   - pathauto
+  - social_media
   - quickedit
   - rdf
   - shortcut
@@ -48,9 +50,12 @@ dependencies:
   - layout_discovery
   - google_analytics
   - metatag
+  - redirect
   - simple_sitemap
   - presto_components
   - presto_contact
+  - presto_media
+  - presto_component_block
 themes:
   - bartik
   - seven

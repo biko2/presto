@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: icon_box_focal_point
+label: 'Icon Box Focal Point'
+effects:
+  255ad465-c94a-455a-8946-2c5f3b63781b:
+    uuid: 255ad465-c94a-455a-8946-2c5f3b63781b
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 200

@@ -52,6 +52,7 @@ set classes = [
 ]
 %}
 
+
 {% if (view_mode == 'preview') %}
   {# Case when you edit the node. #}
   {% block paragraph %}
@@ -61,11 +62,12 @@ set classes = [
       {% endblock %}
     </div>
   {% endblock paragraph %}
+
 {% else %}
+
   {% set data_caption = content.field_caption['#items'].0.value|raw  %}
   {% set link_url = content.field_link['#items'].0.getUrl().uri %}
-  {% set image_uri = file_url(content.field_image.0['#item'].entity.uri.value) %}
-  {# set image_lightbox = content.field_image.0|merge({'#image_style': 'large'}) #}
+  {% set image_uri = file_url(content.field_media[0]['#media'].get('field_image').entity.uri.value) %}
 
   {% set image_type = content.field_variation['#items'].getString() %}
 
@@ -94,4 +96,5 @@ set classes = [
         {{ content.field_image }}
       </a>
   </figure>
+
 {% endif %}
