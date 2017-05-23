@@ -12,15 +12,6 @@ The recommended way to install Presto is to use our [Composer project scaffoldin
 composer create-project sitback/presto-project MYPROJECT --stability dev --no-interaction
 ```
 
-If you don't want to use Composer, you can always install Presto the traditional Drupal way by either using `drush` or by downloading a release from our [drupal.org project page](https://www.drupal.org/project/presto):
-
-```bash
-cd my-drupal-site/
-drush dl presto
-```
-
-You can find further information about how to install Drupal [on drupal.org](https://www.drupal.org/docs/8/install).
-
 ## Included in Presto
 
 ~~You can demo most of the below functionality on our demo site~~ (coming soon!)
