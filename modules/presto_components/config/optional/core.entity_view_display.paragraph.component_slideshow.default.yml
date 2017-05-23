@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_slideshow.field_slideshow
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.component_slideshow
+  module:
+    - media_entity
+id: paragraph.component_slideshow.default
+targetEntityType: paragraph
+bundle: component_slideshow
+mode: default
+content:
+  field_slideshow:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+hidden: {  }

@@ -10,3 +10,4 @@ dependencies:
   - drupal:text
   - drupal:options
   - drupal:block_field
+  - presto_media
