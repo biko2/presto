@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: book_binding
+label: 'Book Binding'
+elementType: radios

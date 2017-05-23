@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ebook
+label: eBook
+description: 'eBooks are delivered digitally to customers and may have different tax rules.'
+variationType: ebook
+injectVariationFields: true
+traits: {  }
