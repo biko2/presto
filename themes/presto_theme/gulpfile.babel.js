@@ -3,16 +3,22 @@
 import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
 import clean from 'gulp-clean-css';
-import concat from 'gulp-concat';
 import gulp from 'gulp';
+import gutil from 'gulp-util';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
+import browserify from 'browserify';
+import babelify from 'babelify';
+import globby from 'globby';
+import source from 'vinyl-source-stream';
+import buffer from 'vinyl-buffer';
+import through from 'through2';
 
 const base = './';
 
 const src = {
-  js: `${base}/js-src/**/*.js`,
+  js: `${base}/js/src/**/*.js`,
   scss: `${base}/scss/**/*.scss`,
   images: `${base}/images`,
   fonts: `${base}/fonts`,
@@ -20,7 +26,7 @@ const src = {
 };
 
 const dest = {
-  js: `${base}/js`,
+  js: `${base}/js/compiled`,
   css: `${base}/css`,
   maps: `maps`,
   images: `${base}/images`,
@@ -61,8 +67,11 @@ gulp.task('scss', () => {
       outputStyle: 'compressed',
       includePaths: [src.bootstrap]
     }))
-      .on('error', sass.logError)
-    .pipe(autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false }))
+    .on('error', sass.logError)
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions', 'iOS 8'],
+      cascade: false
+    }))
     .pipe(clean())
     .pipe(sourcemaps.write(dest.maps))
     .pipe(gulp.dest(dest.css))
@@ -73,12 +82,34 @@ gulp.task('scss', () => {
 // Javascript
 // ------------------------------------------------------
 gulp.task('js', () => {
-  return gulp.src(src.js)
-    .pipe(sourcemaps.init())
-    .pipe(concat('presto_theme_concatenated.js'))
-    .pipe(uglify({mangle:false}))
+  let bundledStream = through();
+
+  bundledStream
+    .pipe(source('presto.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify({
+      mangle: false
+    }))
+    .on('error', gutil.log)
     .pipe(sourcemaps.write(dest.maps))
     .pipe(gulp.dest(dest.js));
+
+  globby([src.js]).then((entries) => {
+    let bundler = browserify({
+      entries,
+      debug: true,
+      transform: [ babelify ]
+    })
+    // Drupal adds this in itself.
+    .ignore('jquery');
+
+    bundler.bundle().pipe(bundledStream);
+  }).catch((err) => {
+    bundledStream.emit('error', err);
+  });
+
+  return bundledStream;
 });
 
 
