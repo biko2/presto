@@ -73,10 +73,10 @@
         "drupal/video_embed_field": "^1.5",
         "drupal/view_mode_selector": "1.x-dev",
         "drush/drush": "~8.0",
-        "npm-asset/slick-carousel": "^1.5",
+        "npm-asset/dropzone": "^4",
+        "npm-asset/slick-carousel": "^1",
         "webflo/drupal-finder": "^0.3.0",
-        "webmozart/path-util": "^2.3",
-        "npm-asset/dropzone": "^4.2"
+        "webmozart/path-util": "^2.3"
     },
     "require-dev": {
         "behat/mink": "~1.7",
