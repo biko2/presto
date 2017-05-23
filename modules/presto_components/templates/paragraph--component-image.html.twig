@@ -66,7 +66,7 @@ set classes = [
 {% else %}
 
   {% set data_caption = content.field_caption['#items'].0.value|raw  %}
-  {% set link_url = content.field_link['#items'].0.getUrl().uri %}
+  {% set link_url = content.field_link['#items'].0.getUrl() %}
   {% set image_uri = file_url(content.field_media[0]['#media'].get('field_image').entity.uri.value) %}
 
   {% set image_type = content.field_variation['#items'].getString() %}
@@ -77,15 +77,15 @@ set classes = [
   {% endif %}
 
   {% if image_type is same as('image_with_link') and (not link_url is empty) %}
-    {% set link_href = 'href=' ~ link_url %}
+    {% set link_href = link_url %}
     {% set data_caption = content.field_link['#items'].0.title %}
   {% elseif image_type is same as('image_with_lightbox_over') and (not image_uri is empty) %}
-    {% set link_href = 'href=' ~ image_uri %}
+    {% set link_href = image_uri %}
     {% set data_caption = '<i class="fa fa-2x fa-fw fa-picture-o"></i>' %}
   {% endif %}
 
   <figure{{ attributes.addClass(classes) }}>
-      <a {{ link_href }} {{ lightbox }} data-caption="{{ data_caption }}">
+      <a href="{{ link_href }}" {{ lightbox }} data-caption="{{ data_caption }}">
         {% if data_caption is not empty %}
           <figcaption class="{{ image_type }}">
             <p>
