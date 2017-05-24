@@ -3,10 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.component_slideshow.field_slideshow
-    - image.style.thumbnail
     - paragraphs.paragraphs_type.component_slideshow
-  module:
-    - media_entity
 id: paragraph.component_slideshow.default
 targetEntityType: paragraph
 bundle: component_slideshow
@@ -16,9 +13,9 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: thumbnail
-      image_link: ''
+      view_mode: slick
+      link: false
     third_party_settings: {  }
-    type: media_thumbnail
+    type: entity_reference_entity_view
     region: content
 hidden: {  }
