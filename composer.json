@@ -112,10 +112,6 @@
                 "npm-asset/slick-carousel",
                 "bower-asset/slick-carousel"
             ],
-            "web/libraries/dropzone" :[
-                "npm-asset/dropzone",
-                "bower-asset/dropzone"
-            ],
             "web/libraries/{$name}": [
                 "type:drupal-library",
                 "type:bower-asset",
