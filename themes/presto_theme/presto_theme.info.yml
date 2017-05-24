@@ -10,18 +10,16 @@ libraries:
   - presto_theme/global-styling
 
 regions:
-  page_top: 'Page top'
   navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
   header: 'Top Bar'
   highlighted: 'Highlighted'
   help: 'Help'
   content: 'Content'
-  sidebar_first: 'Sidebar Primary'
-  sidebar_second: 'Sidebar Secondary'
-  footer_first: 'Footer Primary'
-  footer_second: 'Footer Secondary'
-  copyright: 'Copyright'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  footer: 'Footer'
+  page_top: 'Page top'
   page_bottom: 'Page bottom'
 
 libraries-override:

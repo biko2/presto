@@ -9,10 +9,19 @@
   $container: nth($breakpoint, 3);
   @media only screen and (min-width: $size) {
     .presto-container,
+    %container,
     .container {
       width: 100%;
       padding-left: calc((100% - #{$container})/2 + 15px);
       padding-right: calc((100% - #{$container})/2 + 15px);
     }
+  }
+}
+
+.container-fluid {
+
+  .col-sm-12 {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

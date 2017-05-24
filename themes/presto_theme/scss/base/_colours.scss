@@ -42,15 +42,15 @@ $mainMenuBackground: $heroQuintenary;
 $mainMenuLinkColor: $heroSecondary;
 $mainMenuLinkColorHover: $heroTertiary;
 $mainMenuLinkBorderColor: transparent;
-$mainMenuLinkBorderColorActive: $heroPrimary;
+$mainMenuLinkBorderColorActive: $heroTertiary;
 $mainMenuLinkBorderColorHover: $heroQuarternary;
-$mainMenuBorderColor: $heroTertiary;
+$mainMenuBorderColor: $heroPrimary;
 
 $siteButtonTextColor: $white;
 $siteButtonBorderColor: $heroPrimary;
 $siteButtonArrowColor: $white;
 $siteButtonBackgroundColor: $heroPrimary;
-$siteButtonTextColorHover: $white;
+$siteButtonTextColorHover: $heroPrimary;
 $siteButtonBorderColorHover: $heroPrimary;
 $siteButtonArrowColorHover: $heroPrimary;
 $siteButtonBackgroundColorHover: $white;
@@ -69,3 +69,6 @@ $promobarButtonTextColorHover: $white;
 $promobarButtonBorderColorHover: $heroSecondary;
 $promobarButtonArrowColorHover: $white;
 $promobarButtonBackgroundColorHover: $heroSecondary;
+
+$footerLink: $white;
+$footerLinkHover: $heroQuarternary;

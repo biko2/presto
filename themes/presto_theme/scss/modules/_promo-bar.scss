@@ -27,23 +27,6 @@ Theming for the boilerplate promo bars
         padding-left: 2em;
         align-self: stretch;
         align-items: center;
-
-        /*&:hover {
-
-          ~ p {
-            border-right: 1px solid rgba($promobarButtonBorderColor, .35);
-            border-top-right-radius: 20px;
-            border-bottom-right-radius: 20px;
-
-            &::before {
-              border-left: .75em solid $heroTertiary;
-            }
-
-            &::after {
-              border-left: .75em solid rgba($promobarButtonBorderColor, .35);
-            }
-          }
-        }*/
       }
 
       &:nth-child(2):last-child {

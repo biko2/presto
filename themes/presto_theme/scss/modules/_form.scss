@@ -1,0 +1,49 @@
+.contact-form {
+  @extend %container;
+
+  form {
+
+    label {
+
+      &::after {
+        margin-left: .25em;
+      }
+    }
+
+    .form-control {
+
+      &:focus {
+        border-color: $heroPrimary;
+        box-shadow:  inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba($heroPrimary, .6)
+      }
+    }
+
+    .form-actions {
+
+      button {
+        padding-right: 1.5em;
+        background: $heroTertiary;
+        border-color: $heroTertiary;
+
+        span {
+          color: $white;
+          transition: color .5s;
+
+          &::before {
+            content: '\f06e';
+            font-family: 'FontAwesome';
+          }
+        }
+
+        &:hover {
+          background: $white;
+          color: $heroPrimary;
+
+          span {
+            color: $heroPrimary;
+          }
+        }
+      }
+    }
+  }
+}
