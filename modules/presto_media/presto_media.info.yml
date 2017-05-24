@@ -4,12 +4,12 @@ description: Configuration for media.
 core: 8.x
 package: Presto
 dependencies:
-  - drupal:focal_point
-  - drupal:media_entity
-  - drupal:media_entity_image
-  - drupal:media_entity_slideshow
-  - drupal:slick_media
-  - drupal:slick
-  - drupal:video_embed_field
-  - drupal:dropzonejs
+  - focal_point:focal_point
+  - media_entity:media_entity
+  - media_entity_image:media_entity_image
+  - media_entity_slideshow:media_entity_slideshow
+  - slick_media:slick_media
+  - slick:slick
+  - video_embed_field:video_embed_field
+  - dropzonejs:dropzonejs
   - drupal:dropzonejs_eb_widget

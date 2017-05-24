@@ -8,5 +8,5 @@ dependencies:
   - drupal:block
   - drupal:node
   - drupal:menu_link_content
-  - drupal:commerce
-  - drupal:commerce_shipping
+  - commerce:commerce
+  - commerce_shipping:commerce_shipping
