@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.book
+    - field.field.commerce_product.book.body
+    - field.field.commerce_product.book.stores
+    - field.field.commerce_product.book.variations
+  module:
+    - commerce_product
+    - text
+id: commerce_product.book.default
+targetEntityType: commerce_product
+bundle: book
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: -4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  variations:
+    type: commerce_add_to_cart
+    weight: 10
+    label: above
+    settings:
+      combine: true
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  stores: true
+  uid: true

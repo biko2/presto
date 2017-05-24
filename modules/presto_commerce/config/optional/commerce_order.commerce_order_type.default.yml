@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_checkout
+    - commerce_shipping
+third_party_settings:
+  commerce_checkout:
+    checkout_flow: default
+  commerce_shipping:
+    shipment_type: default
+label: Default
+id: default
+workflow: order_default
+traits: {  }
+refresh_mode: customer
+refresh_frequency: 300
+sendReceipt: true
+receiptBcc: ''

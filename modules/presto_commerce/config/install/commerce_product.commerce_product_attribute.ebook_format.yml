@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ebook_format
+label: 'eBook Format'
+elementType: radios

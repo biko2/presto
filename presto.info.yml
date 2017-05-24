@@ -6,7 +6,7 @@ version: '8.x-1.x-dev'
 distribution:
   name: Presto
 dependencies:
-  - admin_toolbar
+  # Core
   - block
   - block_content
   - breakpoint
@@ -14,12 +14,9 @@ dependencies:
   - comment
   - config
   - contact
-  - contact_block
-  - contact_storage
   - contextual
   - datetime
   - dblog
-  - ds
   - dynamic_page_cache
   - editor
   - entity_browser
@@ -33,28 +30,42 @@ dependencies:
   - node
   - options
   - page_cache
-  - paragraphs
   - path
-  - pathauto
-  - social_media
   - quickedit
   - rdf
   - shortcut
   - search
   - taxonomy
   - toolbar
-  - token
   - views
   - views_ui
-  - view_mode_selector
-  - layout_discovery
+  # Contrib
+  - admin_toolbar
+  - contact_block
+  - contact_storage
+  - dropzonejs
+  - dropzonejs_eb_widget
+  - ds
+  - focal_point
   - google_analytics
+  - layout_discovery
+  - media_entity
+  - media_entity_image
+  - media_entity_slideshow
   - metatag
+  - paragraphs
+  - pathauto
   - redirect
+  - slick
+  - slick_media
+  - social_media
   - simple_sitemap
+  - token
+  - video_embed_field
+  - view_mode_selector
+  # Custom
   - presto_components
   - presto_contact
-  - presto_media
   - presto_component_block
 themes:
   - bartik

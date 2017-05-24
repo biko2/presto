@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_tax
+third_party_settings:
+  commerce_tax:
+    taxable_type: digital_goods
+label: 'Digital Item'
+id: digital_item
+purchasableEntityType: commerce_product_variation
+orderType: default
+traits: {  }

@@ -1,0 +1,12 @@
+name: Presto Commerce
+type: module
+description: Provides some sane configuration defaults for Drupal Commerce.
+core: 8.x
+package: Presto (Configuration)
+dependencies:
+  - drupal:views
+  - drupal:block
+  - drupal:node
+  - drupal:menu_link_content
+  - commerce:commerce
+  - commerce_shipping:commerce_shipping
