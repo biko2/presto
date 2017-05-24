@@ -137,7 +137,7 @@
             },
             "drupal/commerce": {
                 "AddToCartForm should support all purchasable entities (#2827721)":
-                    "https://patch-diff.githubusercontent.com/raw/drupalcommerce/commerce/pull/582.diff"
+                    "https://www.drupal.org/files/issues/presto-commerce-add-to-cart-variations.patch"
             }
         },
         "asset-library-overrides": {
