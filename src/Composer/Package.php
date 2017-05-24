@@ -73,9 +73,8 @@ class Package {
 
           // If a key doesn't exist, generate one by stripping out the vendor
           // prefix.
-          if (!array_key_exists('key', $override)) {
-            $key = basename($libraryName);
-          } else {
+          $key = basename($libraryName);
+          if (array_key_exists('key', $override)) {
             $key = $override['key'];
             unset($override['key']);
           }
