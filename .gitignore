@@ -6,6 +6,8 @@
 /bower_components/
 .sass-cache/
 *.css.map
+composer.lock
+
 # Optional eslint cache
 .eslintcache
 
