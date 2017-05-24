@@ -1,5 +1,4 @@
 slideshow:
-  version: VERSION
   css:
     theme:
       css/bartik_slick_fix.css: {}
