@@ -17,6 +17,10 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Package {
 
+  // The name of the property under 'extra' in composer.json that stores asset
+  // overrides.
+  const ASSET_OVERRIDE_PROP = 'asset-library-overrides';
+
   /**
    * Main entry point for command.
    *
@@ -28,12 +32,14 @@ class Package {
   public static function execute(Event $event) {
     $composer = $event->getComposer();
     $encoder = new IniEncoder();
+
     // Convert the lock file to a make file using Drush's make-convert command.
-    $bin_dir = $composer->getConfig()->get('bin-dir');
+    $binDir = $composer->getConfig()->get('bin-dir');
     $make = NULL;
     $executor = new ProcessExecutor();
-    $executor->execute($bin_dir . '/drush make-convert composer.lock', $make);
+    $executor->execute($binDir . '/drush make-convert composer.lock', $make);
     $make = Yaml::parse($make);
+
     // Include any drupal-library packages in the make file.
     $libraries = $composer
       ->getRepositoryManager()
@@ -42,13 +48,50 @@ class Package {
     $libraries = array_filter($libraries, function (PackageInterface $package) {
       return $package->getType() === 'drupal-library';
     });
+
     // Drop the vendor prefixes.
     foreach ($libraries as $library) {
-      $old_key = $library->getName();
-      $new_key = basename($old_key);
-      $make['libraries'][$new_key] = $make['libraries'][$old_key];
-      unset($make['libraries'][$old_key]);
+      $oldKey = $library->getName();
+      $newKey = basename($oldKey);
+      $make['libraries'][$newKey] = $make['libraries'][$oldKey];
+      unset($make['libraries'][$oldKey]);
     }
+
+    // Check for any asset library overrides and apply if so. Also drop the
+    // vendor name from the library.
+    if (array_key_exists('libraries', $make)) {
+      /** @var array[] $overrides */
+      $overrides = $composer->getPackage()->getExtra();
+
+      if (array_key_exists(static::ASSET_OVERRIDE_PROP, $overrides)) {
+        /** @var array $override */
+        foreach ($overrides[static::ASSET_OVERRIDE_PROP] as $libraryName => $override) {
+          // Skip unsupported packages.
+          if (!array_key_exists($libraryName, $make['libraries'])) {
+            continue;
+          }
+
+          // If a key doesn't exist, generate one by stripping out the vendor
+          // prefix.
+          if (!array_key_exists('key', $override)) {
+            $key = basename($libraryName);
+          } else {
+            $key = $override['key'];
+            unset($override['key']);
+          }
+
+          $makeDef = $make['libraries'][$libraryName];
+          unset($make['libraries'][$libraryName]);
+          $make['libraries'][$key] = $makeDef;
+
+          // Apply all overrides.
+          foreach ($override as $overrideKey => $overrideValue) {
+            $make['libraries'][$key][$overrideKey] = $overrideValue;
+          }
+        }
+      }
+    }
+
     if (isset($make['projects']['drupal'])) {
       // Always use drupal.org's core repository, or patches will not apply.
       $make['projects']['drupal']['download']['url'] = 'https://git.drupal.org/project/drupal.git';
@@ -68,6 +111,7 @@ class Package {
       file_put_contents('drupal-org-core.make', $encoder->encode($core));
       unset($make['projects']['drupal']);
     }
+
     foreach ($make['projects'] as &$project) {
       if ($project['download']['type'] === 'git') {
         if (!array_key_exists('tag', $project['download'])) {
