@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_payment_example
+id: dummy_payment
+label: 'Dummy Payment'
+weight: null
+plugin: example_onsite
+configuration:
+  api_key: MY_AWESOME_API_KEY
+  mode: test
+  payment_method_types:
+    - credit_card
+  redirect_method: post

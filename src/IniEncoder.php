@@ -1,6 +1,6 @@
 <?php
 
-namespace Sitback\Presto;
+namespace Drupal\presto;
 
 /**
  * Contains methods for parsing and dumping data in the legacy info file format.
