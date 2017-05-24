@@ -22,7 +22,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "package": "Sitback\\Presto\\Composer\\Package::execute",
+        "package": "Drupal\\presto\\Composer\\Package::execute",
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "post-install-cmd": [
             "@composer drupal-scaffold"
@@ -47,7 +47,6 @@
         "drupal/commerce": "^2.0@beta",
         "drupal/commerce_shipping": "^2.0@beta",
         "drupal/commerce_stripe": "1.x-dev#6604117",
-        "drupal/console": "~1.0",
         "drupal/contact_block": "^1.4",
         "drupal/contact_storage": "^1.0@beta",
         "drupal/core": "~8.3.2",
@@ -72,11 +71,8 @@
         "drupal/token": "^1.0",
         "drupal/video_embed_field": "^1.5",
         "drupal/view_mode_selector": "1.x-dev",
-        "drush/drush": "~8.0",
         "npm-asset/dropzone": "^4",
-        "npm-asset/slick-carousel": "^1",
-        "webflo/drupal-finder": "^0.3.0",
-        "webmozart/path-util": "^2.3"
+        "npm-asset/slick-carousel": "^1"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -84,14 +80,18 @@
         "composer/composer": "^1.4",
         "drupal-composer/drupal-security-advisories": "8.x-dev",
         "drupal/coder": "^8.2",
+        "drupal/console": "~1.0",
         "drupal/link_css": "1.x-dev#2e53337",
+        "drush/drush": "~8.0",
         "jcalderonzumba/gastonjs": "~1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsstream": "~1.2",
         "phpro/grumphp": "^0.11.5",
         "phpunit/phpunit": ">=4.8.28 <5",
         "sensiolabs/security-checker": "^4.0",
-        "symfony/css-selector": "~2.8"
+        "symfony/css-selector": "~2.8",
+        "webflo/drupal-finder": "^0.3.0",
+        "webmozart/path-util": "^2.3"
     },
     "replace": {
         "npm-asset/jquery": "*",
@@ -138,6 +138,22 @@
             "drupal/commerce": {
                 "AddToCartForm should support all purchasable entities (#2827721)":
                     "https://patch-diff.githubusercontent.com/raw/drupalcommerce/commerce/pull/582.diff"
+            }
+        },
+        "asset-library-overrides": {
+            "npm-asset/slick-carousel": {
+                "key": "slick_lib",
+                "directory_name": "slick",
+                "download": {
+                    "type": "get",
+                    "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip"
+                }
+            },
+            "npm-asset/dropzone": {
+                "download": {
+                    "type": "get",
+                    "url": "https://github.com/enyo/dropzone/archive/v4.2.0.zip"
+                }
             }
         }
     },
