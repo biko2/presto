@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.icon_box
+    - field.field.media.slideshow.field_media_images
+    - media_entity.bundle.slideshow
+  module:
+    - ds
+id: media.slideshow.icon_box
+targetEntityType: media
+bundle: slideshow
+mode: icon_box
+content:
+  field_media_images:
+    weight: 0
+    label: above
+    settings:
+      view_mode: icon_box
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

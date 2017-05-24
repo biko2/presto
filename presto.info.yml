@@ -19,6 +19,7 @@ dependencies:
   - dblog
   - dynamic_page_cache
   - editor
+  - entity_browser
   - field_ui
   - file
   - help
@@ -42,16 +43,25 @@ dependencies:
   - admin_toolbar
   - contact_block
   - contact_storage
+  - dropzonejs
+  - dropzonejs_eb_widget
   - ds
+  - focal_point
   - google_analytics
   - layout_discovery
+  - media_entity
+  - media_entity_image
+  - media_entity_slideshow
+  - metatag
   - paragraphs
   - pathauto
-  - social_media
-  - metatag
   - redirect
+  - slick
+  - slick_media
+  - social_media
   - simple_sitemap
   - token
+  - video_embed_field
   - view_mode_selector
   # Custom
   - presto_components

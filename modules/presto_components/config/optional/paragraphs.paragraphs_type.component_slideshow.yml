@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_slideshow
+label: 'Component: Slideshow'
+behavior_plugins: {  }

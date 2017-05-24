@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.component_image.field_caption
     - field.field.paragraph.component_image.field_link
     - field.field.paragraph.component_image.field_media
@@ -10,10 +11,10 @@ dependencies:
   module:
     - link
     - options
-id: paragraph.component_image.default
+id: paragraph.component_image.preview
 targetEntityType: paragraph
 bundle: component_image
-mode: default
+mode: preview
 content:
   field_caption:
     weight: 1
@@ -38,8 +39,8 @@ content:
     weight: 4
     label: hidden
     settings:
-      link: true
-      view_mode: default
+      view_mode: icon_box
+      link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
