@@ -41,8 +41,6 @@ dependencies:
   - views_ui
   # Contrib
   - admin_toolbar
-  - contact_block
-  - contact_storage
   - dropzonejs
   - dropzonejs_eb_widget
   - ds
