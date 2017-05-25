@@ -22,6 +22,6 @@ regions:
   page_top: 'Page top'
   page_bottom: 'Page bottom'
 
-libraries-override:
-  bootstrap/tooltip: false
-  bootstrap/popover: false
+#libraries-override:
+#  bootstrap/tooltip: false
+#  bootstrap/popover: false
