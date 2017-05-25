@@ -1,0 +1,130 @@
+.block-views-blockpresto-product-listing-listing-block {
+
+  .block-title {
+    @extend %container;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  .view-content {
+    @extend %container;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .views-row {
+      flex: 1 1 50%;
+
+      &:nth-child(2n-1) {
+        padding-right: 1em;
+      }
+
+      &:nth-child(2n-2) {
+        padding-left: 1em;
+      }
+
+      .field--name-title {
+        font-size: 130%;
+        font-family: $font-neuton;
+        margin-bottom: .75em;
+        color: $heroPrimary;
+
+        &[class*="variation"] {
+          font-family: $font-open;
+          font-size: 100%;
+          margin-bottom: 0;
+          color: $textColor;
+          float: left;
+        }
+      }
+
+      .field--name-sku {
+        font-size: 80%;
+        float: left;
+        margin-left: .5em;
+        line-height: 1.7;
+
+        &::before {
+          content: '[';
+        }
+        &::after {
+          content: ']';
+        }
+      }
+
+      .field--name-price {
+        float: none;
+        clear: both;
+        margin-top: 4em;
+
+        .field--label {
+          display: none;
+
+          &::after {
+            content: ':';
+          }
+        }
+
+        .field--item {
+          font-size: 180%;
+          margin-bottom: 1em;
+        }
+      }
+
+      .field--name-variations {
+
+        .field--label {
+          display: none;
+        }
+
+        legend {
+          font-size: 100%;
+
+          span {
+
+            &::after {
+              margin-left: .5em;
+            }
+          }
+        }
+
+        .form-item {
+
+          label {
+
+            .input-group {
+
+              .input-group-addon {
+
+                .glyphicon-refresh {
+
+                  &::before {
+                    content: '\f10c';
+                    font-family: FontAwesome;
+                  }
+                }
+
+                input {
+
+                  &:checked {
+
+                    + .input-group-addon {
+
+                      .glyphicon-refresh {
+
+                        &::before {
+                          content: '\f192';
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
