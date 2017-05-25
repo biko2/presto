@@ -2,7 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3ca20fbf911a42debffcaccaffffefce)](https://www.codacy.com/app/sitback/presto?utm_source=github.com&utm_medium=referral&utm_content=Sitback/presto&utm_campaign=badger) [![Build Status](https://travis-ci.org/Sitback/presto.svg?branch=8.x-1.x)](https://travis-ci.org/Sitback/presto)
 
-Presto is a Drupal distribution with batteries included. It sets up some sane content editing defaults and helps you kickstart your site with Drupal Commerce.
+Presto is a Drupal 8 distribution with batteries included! It sets up some sane content editing defaults and helps you kickstart your site with Drupal Commerce.
 
 ## Installing Presto
 The recommended way to install Presto is to use our [Composer project scaffolding](https://github.com/Sitback/presto-project):
@@ -10,7 +10,7 @@ The recommended way to install Presto is to use our [Composer project scaffoldin
 composer create-project sitback/presto-project MYPROJECT --stability dev --no-interaction
 ```
 
-You can also [download a pre-packaged tarball off drupal.org](https://www.drupal.org/project/presto), however, due to limitations of the drupal.org packager, **installing eCommerce is not supported in this installation method**.
+You can also [download a pre-packaged tarball off drupal.org](https://www.drupal.org/project/presto), however, due to limitations of the drupal.org packager, **installing eCommerce is not supported with this installation method**.
 
 **Note:** Only PHP 5.6 and above are officially supported. The profile should run under PHP 5.5 however it isn't tested and may have unforeseen quirks.
 
