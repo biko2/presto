@@ -100,6 +100,10 @@
           }
         }
 
+        .field-suffix {
+          display: none;
+        }
+
         .form-actions {
 
           button {
@@ -153,7 +157,7 @@
                 background-color: transparent;
                 display: inline;
                 padding-left: 0;
-                padding-right: 1em;
+                margin-right: 1em;
 
                 .glyphicon-refresh {
 
