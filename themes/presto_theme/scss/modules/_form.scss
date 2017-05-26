@@ -48,3 +48,36 @@
     }
   }
 }
+
+
+.preview {
+  background: $light-grey;
+  padding: 4em 1em 1em;
+  position: relative;
+  margin-top: 2em;
+
+  &::before {
+    content: 'Message Preview';
+    font-family: $headingText;
+    font-size: 120%;
+    margin-top: 0;
+    background: $white;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 1em;
+  }
+  &.form-wrapper {
+
+    .field--label {
+      @extend h5;
+      margin-bottom: .25em;
+    }
+
+    .field--item {
+      font-size: 110%;
+    }
+  }
+}
