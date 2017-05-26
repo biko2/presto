@@ -1,8 +1,27 @@
+lity:
+  header: true
+  remote: https://github.com/jsor/lity
+  version: 2.x
+  license:
+    name: MIT
+    url: https://github.com/jsor/lity/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    /libraries/lity/dist/lity.js: { weight: -5, minified: true }
+  css:
+    base:
+      /libraries/lity/dist/lity.css: {}
+  dependencies:
+    - core/jquery
+
 global-styling:
   css:
     theme:
       css/style.css: { media: screen }
   js:
-    js/compiled/presto.min.js: {}
+    js/compiled/presto.min.js: { defer: true, minified: true }
   dependencies:
+    - presto_theme/lity
+    - core/drupal
     - core/jquery
+    - core/drupalSettings
