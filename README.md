@@ -16,7 +16,7 @@ You can also [download a pre-packaged tarball off drupal.org](https://www.drupal
 
 ## Included in Presto
 
-~~You can demo most of the below functionality on our demo site~~ (coming soon!)
+~~You can demo most of the below functionality on our demo site~~ (coming soon!). In the meantime, [you can spin up a new free instance on simplytest.me](https://simplytest.me/project/presto) (this does not include eCommerce due to the limitations outline above).
 
 Presto includes the following functionality pre-configured and ready to use right out-of-the-box:
 
