@@ -7,10 +7,10 @@ lity:
     url: https://github.com/jsor/lity/blob/master/LICENSE
     gpl-compatible: true
   js:
-    /libraries/lity/dist/lity.js: { weight: -5, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/lity/2.2.2/lity.min.js: { type: external, weight: -5, minified: true }
   css:
     base:
-      /libraries/lity/dist/lity.css: {}
+      https://cdnjs.cloudflare.com/ajax/libs/lity/2.2.2/lity.min.css: { type: external, minified: true }
   dependencies:
     - core/jquery
 
@@ -21,7 +21,6 @@ global-styling:
   js:
     js/compiled/presto.min.js: { defer: true, minified: true }
   dependencies:
-    - presto_theme/lity
     - core/drupal
     - core/jquery
     - core/drupalSettings
