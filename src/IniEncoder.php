@@ -21,7 +21,12 @@ class IniEncoder {
    *   The serialized data.
    */
   public function encode(array $input) {
-    return implode("\n", $this->doEncode($input));
+    $serialisedData = $this->doEncode($input);
+
+    // Create a new line at the end of the file.
+    $serialisedData[] = '';
+
+    return implode("\n", $serialisedData);
   }
 
   /**
@@ -75,9 +80,8 @@ class IniEncoder {
     if ($keys) {
       return $head . '[' . implode('][', $keys) . ']';
     }
-    else {
-      return $head;
-    }
+
+    return $head;
   }
 
   /**
