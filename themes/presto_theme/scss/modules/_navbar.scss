@@ -9,6 +9,13 @@
 
     .navbar-header {
       @extend .presto-container;
+      margin-left: 15px;
+      margin-right: 15px;
+
+      @media only screen and (min-width: $screen-sm) {
+        margin-left: -15px;
+        margin-right: -15px;
+      }
     }
     .navbar-nav {
 

@@ -7,10 +7,14 @@
   $name: nth($breakpoint, 1);
   $size: nth($breakpoint, 2);
   $container: nth($breakpoint, 3);
-  @media only screen and (min-width: $size) {
-    .presto-container,
-    %container,
-    .container {
+
+  .presto-container,
+  %container,
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @media only screen and (min-width: $size) {
       width: 100%;
       padding-left: calc((100% - #{$container})/2 + 15px);
       padding-right: calc((100% - #{$container})/2 + 15px);
