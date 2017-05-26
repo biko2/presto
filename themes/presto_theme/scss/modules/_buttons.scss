@@ -1,6 +1,6 @@
 .button {
   position: relative;
-  padding: 1em 3em 1em 1.5em;
+  padding: 1em 1.5em 1em 1.5em;
   text-align: left;
   display: inline-block;
   border: 1px solid $siteButtonBorderColor;
@@ -40,6 +40,7 @@
     border: 1px solid $promobarButtonBorderColor;
     color: $promobarButtonTextColor;
     background: $promobarButtonBackgroundColor;
+    padding-right: 3em;
     transition: background .5s 0, border-color 1s 5s, color .5s 0;
 
     &::after {

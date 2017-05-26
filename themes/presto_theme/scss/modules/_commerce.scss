@@ -211,3 +211,96 @@
     }
   }
 }
+
+.cart-form {
+  @extend %container;
+
+  .field--name-title {
+    font-size: 130%;
+    font-family: $font-neuton;
+    margin-bottom: 0;
+    color: $heroPrimary;
+  }
+
+  th,
+  td {
+
+    &.views-field-unit-price__number {
+      display: none;
+    }
+  }
+
+  .order-total-line-value,
+  .views-field-total-price__number {
+    font-size: 150%;
+    font-family: monospace;
+    text-align: right;
+  }
+
+
+  .form-actions {
+
+    button + button {
+      margin-left: 1em;
+    }
+  }
+
+  .field--name-sku {
+    font-size: 80%;
+    float: none;
+    clear: both;
+    line-height: 1;
+    margin-bottom: .75em;
+
+    &::before {
+      content: '[';
+    }
+    &::after {
+      content: ']';
+    }
+  }
+
+  .field--name-price {
+    float: none;
+    clear: both;
+
+    .field--label {
+      display: none;
+
+      &::after {
+        content: ':';
+      }
+    }
+
+    .field--item {
+      font-size: 180%;
+      margin-bottom: 1em;
+    }
+  }
+
+  .delete-order-item {
+    padding-right: 1.5em;
+  }
+
+  .glyphicon-ok {
+
+    &::before {
+      content: '\f021';
+      font-family: FontAwesome;
+      color: $white;
+      float: right;
+      margin-left: 1em;
+    }
+  }
+
+  .glyphicon-trash {
+
+    &::before {
+      content: '\f014';
+      font-family: FontAwesome;
+      color: $white;
+      float: right;
+      margin-left: 1em;
+    }
+  }
+}
