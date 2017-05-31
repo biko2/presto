@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.ebook
+    - core.entity_view_mode.commerce_product_variation.cart
+    - field.field.commerce_product_variation.ebook.attribute_ebook_format
+id: commerce_product_variation.ebook.cart
+targetEntityType: commerce_product_variation
+bundle: ebook
+mode: cart
+content:
+  sku:
+    label: hidden
+    type: string
+    weight: 1
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  attribute_ebook_format: true
+  price: true
+  product_id: true
