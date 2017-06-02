@@ -13,7 +13,7 @@
         margin-bottom: 2em;
 
       * {
-        font-family: $font-neuton;
+        font-family: $headingFont;
         font-size: 120%;
       }
     }
@@ -21,7 +21,6 @@
 
   .field--name-field-media {
     margin-bottom: 3em;
-    background: $heroQuintenary;
     line-height: 1;
 
     > .field--item {

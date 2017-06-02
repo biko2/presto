@@ -5,10 +5,14 @@
   font-size: 120%;
 
   &.alert-success {
-    background: lightgreen;
+    background: $success;
+  }
+
+  &.alert-error {
+    background: $error;
   }
 
   &.alert-danger {
-    background: salmon;
+    background: $danger;
   }
 }

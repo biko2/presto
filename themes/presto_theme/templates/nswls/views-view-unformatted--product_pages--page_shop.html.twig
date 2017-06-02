@@ -1,0 +1,9 @@
+<div class="row">
+  <ul class="products product-list">
+    {% for row in rows %}
+      <li class="col-md-4 col-sm-6 col-xs-12 product product-item">
+        {{ row.content }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>

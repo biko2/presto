@@ -1,17 +1,8 @@
 $heroPrimary: #820263;
 $heroSecondary: #2E294E;
 $heroTertiary: #D90368;
-$heroQuarternary: #FFD400;
 $heroQuintenary: #EAEAEA;
-
-/* Coolors Exported Palette - coolors.co/50514f-f25f5c-ffe066-247ba0-70c1b3 */
-
-/* RGB */
-$color1: rgba(80, 81, 79, 1);
-$color2: rgba(242, 95, 92, 1);
-$color3: rgba(255, 224, 102, 1);
-$color4: rgba(36, 123, 160, 1);
-$color5: rgba(112, 193, 179, 1);
+$heroQuarternary: #FFD400;
 
 /* RGB */
 $color1: rgba(85, 221, 224, 1);
@@ -20,61 +11,72 @@ $color3: rgba(47, 72, 88, 1);
 $color4: rgba(246, 174, 45, 1);
 $color5: rgba(242, 100, 25, 1);
 
+$turquoise-blue: $color1;
+$calypso: $color2;
+$pickled-bluewood: $color3;
+$sea-buckthorn: $color4;
+$flamingo: $color5;
+
 $white: #fff;
 $black: #333;
 $grey: #aaa;
 $light-grey: #f2f2f2;
 
-
-$darkLiver: $color1;
-$sunset-orange: $color2;
-$mustard: $color3;
-$lapis-lazuli: $color4;
-$green-sheen: $color5;
+$success: green;
+$danger: red;
+$error: darkred;
 
 $textColor: $black;
+$backgroundColor: $white;
 
-$linkColor: $heroTertiary;
-$linkColorHover: $heroSecondary;
+$textShadowColor: $black;
+
+$linkColor: $pickled-bluewood;
+$linkColorHover: $calypso;
+
 $linkColorInverted: $white;
-$linkColorHoverInverted: $heroSecondary;
+$linkColorHoverInverted: $sea-buckthorn;
 
 $dividerColor: $grey;
-
 $dividerLinkColor: $linkColor;
 $dividerLinkColorHover: $linkColorHover;
 
-$mainMenuBackground: $heroQuintenary;
-$mainMenuLinkColor: $heroSecondary;
-$mainMenuLinkColorHover: $heroTertiary;
+$mainMenuBackground: transparent;
+$mainMenuTextColor: $pickled-bluewood;
+$mainMenuBorderColor: transparent;
+$mainMenuLinkColor: $pickled-bluewood;
 $mainMenuLinkBorderColor: transparent;
-$mainMenuLinkBorderColorActive: $heroTertiary;
-$mainMenuLinkBorderColorHover: $heroQuarternary;
-$mainMenuBorderColor: $heroPrimary;
+$mainMenuLinkColorHover: $calypso;
+$mainMenuLinkBorderColorHover: $turquoise-blue;
+$mainMenuLinkBorderColorActive: $sea-buckthorn;
+$mainMenuBackgroundHover: $light-grey;
 
-$siteButtonTextColor: $white;
-$siteButtonBorderColor: $heroPrimary;
-$siteButtonArrowColor: $white;
-$siteButtonBackgroundColor: $heroPrimary;
-$siteButtonTextColorHover: $heroPrimary;
-$siteButtonBorderColorHover: $heroPrimary;
-$siteButtonArrowColorHover: $heroPrimary;
-$siteButtonBackgroundColorHover: $white;
+$footerBackground: $calypso;
+$footerTextColor: $white;
+$footerBorderColor: transparent;
+$footerLinkColor: $linkColorInverted;
+$footerLinkBorderColor: transparent;
+$footerLinkColorHover: $linkColorHoverInverted;
+$footerLinkBorderColorHover: $sea-buckthorn;
+$footerLinkBorderColorActive: $sea-buckthorn;
 
-$promobarBackgroundColor: $heroTertiary;
-$promobarBackgroundColorHover: lighten($heroTertiary, .2);
+$promobarBackgroundColor: $flamingo;
+$promobarBackgroundColorHover: $sea-buckthorn;
 $promobarTextColor: $white;
+
 $promobarLinkColor: $linkColorInverted;
 $promobarLinkColorHover: $linkColorHoverInverted;
 
-$promobarButtonTextColor: $white;
-$promobarButtonBorderColor: $white;
-$promobarButtonArrowColor: $white;
-$promobarButtonBackgroundColor: transparent;
-$promobarButtonTextColorHover: $white;
-$promobarButtonBorderColorHover: $heroSecondary;
-$promobarButtonArrowColorHover: $white;
-$promobarButtonBackgroundColorHover: $heroSecondary;
 
-$footerLink: $white;
-$footerLinkHover: $heroQuarternary;
+$siteButtonTextColor: $white;
+$siteButtonBorderColor: $calypso;
+$siteButtonArrowColor: $white;
+$siteButtonBackgroundColor: $calypso;
+
+$siteButtonTextColorHover: $white;
+$siteButtonArrowColorHover: $white;
+$siteButtonBorderColorHover: $pickled-bluewood;
+$siteButtonBackgroundColorHover: $pickled-bluewood;
+
+$imageCaptionBackgroundColor: $pickled-bluewood;
+$imageCaptionColor: $white;
