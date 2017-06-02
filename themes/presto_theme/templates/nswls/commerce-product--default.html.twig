@@ -28,21 +28,22 @@
   {{ product.variations }}
 </div>
 
-{% if product.field_regular_price|render|striptags|trim != '' %}
-  <a href="{{ product_url }}">
-    <span class="onsale">On Sale!</span>
-  </a>
-{% endif %}
-
 <div class="product-listing-wrapper">
+  {% if product.field_regular_price|render|striptags|trim != '' %}
+    <a class="on-sale-tag" href="{{ product_url }}">
+      <span class="onsale">Sale!</span>
+    </a>
+  {% endif %}
   <div class="product-listing-action-wrapper">
     <div class="add-to-cart-wrapper">
       <a class="add-to-cart" data-action="cart">
-        Add to Cart
+        <i class="fa fa-2x fa-fw fa-shopping-cart"></i>
+        <span>Add to Cart</span>
       </a>
     </div>
     <div class="view-details-wrapper">
       <a href="{{ product_url }}" title="View details for {{ product.title|render|striptags|trim }}">
+        <i class="fa fa-2x fa-fw fa-list"></i>
         View Details
       </a>
     </div>
@@ -56,46 +57,16 @@
   </div>
   <div class="product-list-info-wrapper">
     <a href="{{ product_url }}">
-      <h4>{{ product.title }}</h4>
+      <h4>{{ product.title|render|striptags|trim }}</h4>
+      <h5>[ {{ product.variation_sku|render|striptags|trim }} ]</h5>
       <span class="price">
-        {% if product.field_regular_price|render|striptags|trim != '' %}
-          <del class="amount">{{ product.field_regular_price|render|striptags|trim }}</del>
-          <span class="amount">{{ product.variation_price|render|striptags|trim }}</span>
-        {% else %}
-          <span class="amount">{{ product.variation_price|render|striptags }}</span>
-        {% endif %}
+          <span class="current-price amount">{{ product.variation_price }}</span>
+          {% if product.field_regular_price|render|striptags|trim != '' %}
+            <span class="regular-price amount">
+            ( Was: <del>{{ product.field_regular_price }}</del> )
+            </span>
+          {% endif %}
       </span>
     </a>
   </div>
 </div>
-
-{# <span class="product-thumb-info">
-   <a class="add-to-cart-product" data-action="cart">
-      <span class="fa fa-shopping-cart">Add to Cart</span>
-  </a>
-  <a href="{{ product_url }}">
-    <span class="product-thumb-info-image">
-      <span class="product-thumb-info-act">
-        <span class="product-thumb-info-act-left">View <i class="fa fa-plus"></i> Details</span>
-      </span>
-      {% if thumbnail.entity.fileuri %}
-        <img alt="" class="img-responsive" src="{{ file_url(thumbnail.entity.fileuri) }}">
-      {% else %}
-        <img alt="" class="img-responsive" src="http://fillmurray.com/800/800">
-      {% endif %}
-    </span>
-  </a>
-  <span class="product-thumb-info-content">
-    <a href="{{ product_url }}">
-      <h4>{{ product.title }}</h4>
-      <span class="price">
-        {% if product.field_regular_price|render|striptags|trim != '' %}
-          <del><span class="amount">{{ product.field_regular_price|render|striptags|trim }}</span></del>
-          <ins><span class="amount">{{ product.variation_price|render|striptags|trim }}</span></ins>
-          {% else %}
-          <span class="amount">{{ product.variation_price|render|striptags }}</span>
-        {% endif %}
-      </span>
-    </a>
-  </span>
-</span> #}

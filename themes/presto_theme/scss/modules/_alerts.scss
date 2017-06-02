@@ -1,5 +1,6 @@
 .alert {
   @extend %container;
+  flex-grow: 1;
   padding: 2em;
   text-align: center;
   font-size: 120%;
@@ -15,4 +16,8 @@
   &.alert-danger {
     background: $danger;
   }
+}
+
+.region-highlighted {
+  @extend .row;
 }

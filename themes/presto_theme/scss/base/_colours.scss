@@ -17,14 +17,20 @@ $pickled-bluewood: $color3;
 $sea-buckthorn: $color4;
 $flamingo: $color5;
 
+$frostee: #edf9ed;
+$we-peep: #f7dad6;
+$geyser:  #d0d9dd;
+$maverick: #dac0cb;
+
 $white: #fff;
 $black: #333;
 $grey: #aaa;
 $light-grey: #f2f2f2;
 
-$success: green;
-$danger: red;
-$error: darkred;
+$success: $frostee;
+$danger: $we-peep;
+$information: $geyser;
+$error: $maverick;
 
 $textColor: $black;
 $backgroundColor: $white;
@@ -36,6 +42,16 @@ $linkColorHover: $calypso;
 
 $linkColorInverted: $white;
 $linkColorHoverInverted: $sea-buckthorn;
+
+$productItemBackground: $calypso;
+$productItemBackgroundHover: $pickled-bluewood;
+$productItemLinkColor: $white;
+$productItemLinkColorHover: $turquoise-blue;
+$productItemNormalPrice: $grey;
+$productItemSKUColor: $grey;
+
+$productItemOnSaleTagColor: $white;
+$productItemOnSaleTagBackground: $flamingo;
 
 $dividerColor: $grey;
 $dividerLinkColor: $linkColor;
