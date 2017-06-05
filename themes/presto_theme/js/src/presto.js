@@ -1,6 +1,6 @@
 'use strict';
 
-(function($, window, document, undefined) {
+(function($, window, document) {
 
   let f = {
     addToCartInList: (el) => {
@@ -10,7 +10,7 @@
         $form.submit();
       }
     }
-  }
+  };
 
   $(document).ready( () => {
     $('[data-action="cart"]').on('click', (el) => {
@@ -18,4 +18,4 @@
     });
   });
 
-})(jQuery, window, document);
+}(jQuery, window, document));

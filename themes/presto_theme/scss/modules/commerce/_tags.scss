@@ -1,0 +1,75 @@
+.field--name-field-tag,
+.field--name-field-category {
+  margin-top: 3em;
+
+  .field--item {
+    display: inline-block;
+    margin-bottom: .5em;
+  }
+
+  a {
+    @extend .btn;
+    @extend .btn-xs;
+  }
+}
+
+.field--name-field-category {
+  clear: left;
+
+  .field--item {
+
+    a {
+      border-radius: 0;
+      display: inline-block;
+      padding: .25em .5em;
+
+      border-bottom-color: $tagButtonBorderColor;
+      color: $tagButtonTextColor;
+      background: $tagButtonBackgroundColor;
+      border-bottom-color: $categoryButtonBorderColor;
+      color: $categoryButtonTextColor;
+      background: $categoryButtonBackgroundColor;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+
+      &:hover {
+        border-bottom-color: $categoryButtonBorderColorHover;
+        color: $categoryButtonTextColorHover;
+        background: $categoryButtonBackgroundColorHover;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+      }
+    }
+  }
+}
+
+.field--name-field-tag {
+
+  .field--item {
+
+    a {
+      border-radius: 0;
+      display: inline-block;
+      padding: .25em .5em;
+
+      border-bottom-color: $tagButtonBorderColor;
+      color: $tagButtonTextColor;
+      background: $tagButtonBackgroundColor;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+
+      &:hover {
+        border-bottom-color: $tagButtonBorderColorHover;
+        color: $tagButtonTextColorHover;
+        background: $tagButtonBackgroundColorHover;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+      }
+    }
+  }
+}
+

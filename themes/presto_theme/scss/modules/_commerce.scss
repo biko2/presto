@@ -13,7 +13,7 @@
   @extend %container;
 }
 
-.block-views-blockpresto-product-listing-listing-block {
+/* .block-views-blockpresto-product-listing-listing-block {
 
   .block-title {
     @extend %container;
@@ -109,35 +109,6 @@
           display: none;
         }
 
-        .form-actions {
-
-          button {
-            padding-right: 1.5em;
-
-            &::before {
-              content: '\f07a';
-              font-family: FontAwesome;
-              margin-right: .5em;
-              display: inline-block;
-              font-size: 140%;
-              color: $heroQuarternary;
-            }
-
-            &:focus,
-            &:active {
-              background: $white;
-              border-color: $heroTertiary;
-              color: $textColor;
-            }
-            &:hover {
-
-              &::before {
-                color: $heroTertiary;
-              }
-            }
-          }
-        }
-
         .form-type-number {
 
           label {
@@ -215,7 +186,7 @@
       }
     }
   }
-}
+} */
 
 .cart-form {
   @extend %container;

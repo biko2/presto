@@ -17,23 +17,41 @@ $pickled-bluewood: $color3;
 $sea-buckthorn: $color4;
 $flamingo: $color5;
 
-$frostee: #edf9ed;
-$we-peep: #f7dad6;
-$geyser:  #d0d9dd;
-$maverick: #dac0cb;
-
 $white: #fff;
 $black: #333;
 $grey: #aaa;
 $light-grey: #f2f2f2;
 
-$success: $frostee;
-$danger: $we-peep;
-$information: $geyser;
-$error: $maverick;
-
 $textColor: $black;
 $backgroundColor: $white;
+
+$siteButtonTextColor: $white;
+$siteButtonBorderColor: $calypso;
+$siteButtonArrowColor: $white;
+$siteButtonBackgroundColor: $calypso;
+$siteButtonTextColorHover: $white;
+$siteButtonArrowColorHover: $white;
+$siteButtonBorderColorHover: $pickled-bluewood;
+$siteButtonBackgroundColorHover: $pickled-bluewood;
+
+$tagButtonTextColor: $calypso;
+$tagButtonBorderColor: $turquoise-blue;
+$tagButtonArrowColor: $calypso;
+$tagButtonBackgroundColor: $light-grey;
+$tagButtonTextColorHover: $white;
+$tagButtonArrowColorHover: $white;
+$tagButtonBorderColorHover: $turquoise-blue;
+$tagButtonBackgroundColorHover: $calypso;
+
+$categoryButtonTextColor: $white;
+$categoryButtonBorderColor: $flamingo;
+$categoryButtonArrowColor: $white;
+$categoryButtonBackgroundColor: $sea-buckthorn;
+$categoryButtonTextColorHover: $white;
+$categoryButtonArrowColorHover: $white;
+$categoryButtonBorderColorHover: $calypso;
+$categoryButtonBackgroundColorHover: $flamingo;
+
 
 $textShadowColor: $black;
 
@@ -83,16 +101,50 @@ $promobarTextColor: $white;
 $promobarLinkColor: $linkColorInverted;
 $promobarLinkColorHover: $linkColorHoverInverted;
 
-
-$siteButtonTextColor: $white;
-$siteButtonBorderColor: $calypso;
-$siteButtonArrowColor: $white;
-$siteButtonBackgroundColor: $calypso;
-
-$siteButtonTextColorHover: $white;
-$siteButtonArrowColorHover: $white;
-$siteButtonBorderColorHover: $pickled-bluewood;
-$siteButtonBackgroundColorHover: $pickled-bluewood;
-
 $imageCaptionBackgroundColor: $pickled-bluewood;
 $imageCaptionColor: $white;
+
+$commerceVariantSelectedColor: $calypso;
+$commerceVariantUnselectedColor: $calypso;
+$commerceVariantLoadingColor: $grey;
+
+
+
+/*
+  Start messaging colours:
+    - Success
+    - Error
+    - Danger
+    - Info
+*/
+$honeydew: #edffed;
+$forest-green: #209920;
+
+$we-peep: #f7dad6;
+$dark-candy-apple-red: #a40000;
+
+$geyser:  #d0d9dd;
+$steel-blue: #3f88a8;
+
+$maverick: #dac0cb;
+$dark-raspberry: #82234a;
+
+$success: $honeydew;
+$successText: $forest-green;
+
+$danger: $we-peep;
+$dangerText: $dark-candy-apple-red;
+
+$information: $geyser;
+$informationText: $steel-blue;
+
+$error: $maverick;
+$errorText: $dark-raspberry;
+/*
+  End messaging colours:
+*/
+
+$paymentMethodExpiredColor: $dangerText;
+
+$orderCompletedTextColor: $successText;
+$orderCanceledTextColor: $dangerText;
