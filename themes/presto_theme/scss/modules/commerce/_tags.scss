@@ -17,10 +17,12 @@
   clear: left;
 
   .field--item {
+    display: inline-block;
+    float: left;
+    margin-right: .25em;
 
     a {
       border-radius: 0;
-      display: inline-block;
       padding: .25em .5em;
 
       border-bottom-color: $tagButtonBorderColor;
@@ -48,10 +50,12 @@
 .field--name-field-tag {
 
   .field--item {
+    display: inline-block;
+    float: left;
+    margin-right: .25em;
 
     a {
       border-radius: 0;
-      display: inline-block;
       padding: .25em .5em;
 
       border-bottom-color: $tagButtonBorderColor;

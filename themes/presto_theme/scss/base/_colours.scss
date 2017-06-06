@@ -1,9 +1,10 @@
-$heroPrimary: #820263;
+/* $heroPrimary: #820263;
 $heroSecondary: #2E294E;
 $heroTertiary: #D90368;
 $heroQuintenary: #EAEAEA;
 $heroQuarternary: #FFD400;
 
+ */
 /* RGB */
 $color1: rgba(85, 221, 224, 1);
 $color2: rgba(51, 101, 138, 1);
@@ -24,6 +25,8 @@ $light-grey: #f2f2f2;
 
 $textColor: $black;
 $backgroundColor: $white;
+
+$formInputBorderColor: $flamingo;
 
 $siteButtonTextColor: $white;
 $siteButtonBorderColor: $calypso;
@@ -51,6 +54,11 @@ $categoryButtonTextColorHover: $white;
 $categoryButtonArrowColorHover: $white;
 $categoryButtonBorderColorHover: $calypso;
 $categoryButtonBackgroundColorHover: $flamingo;
+
+$slideshowControlColor: $sea-buckthorn;
+
+$blockQuoteBorderColor: $light-grey;
+$blockQuoteColor: $flamingo;
 
 
 $textShadowColor: $black;
