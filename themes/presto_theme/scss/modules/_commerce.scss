@@ -188,6 +188,20 @@
   }
 } */
 
+.layout-region-checkout-secondary {
+
+  .order-total-line {
+
+    &.order-total-line__subtotal {
+      @extend h4;
+    }
+
+    &.order-total-line__total {
+      @extend h3;
+    }
+  }
+}
+
 .cart-form {
   @extend %container;
 
@@ -196,10 +210,8 @@
   }
 
   .field--name-title {
-    font-size: 130%;
-    font-family: $headingFont;
+    @extend h4;
     margin-bottom: 0;
-    color: $heroPrimary;
   }
 
   th,
@@ -207,6 +219,14 @@
 
     &.views-field-unit-price__number {
       display: none;
+    }
+  }
+
+  th {
+    @extend h4;
+
+    &.views-field-remove-button {
+      visibility: hidden;
     }
   }
 

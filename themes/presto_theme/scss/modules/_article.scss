@@ -56,39 +56,11 @@
     padding: 2em 0 0;
     text-align: right;
 
-    .field--label {
-      display: none;
-    }
-
-    .field__items {
-      @extend %container;
-      font-size: 80%;
-
-      .field--item {
-        border-bottom: 1px solid $heroPrimary;
-        display: inline-block;
-        margin-bottom: 1em;
-        border-radius: 2px;
-
-        a {
-          display: block;
-          padding: .25em .75em;
-          color: $white;
-          background: $heroTertiary;
-          transition: background .5s;
-
-          &:hover {
-            background: $heroPrimary;
-          }
-        }
-      }
-
-      &::before {
-        content: 'Tagged as:';
-        display: inline-block;
-        color: $black;
-        padding-right: 1em;
-      }
+    &::before {
+      content: 'Tagged as:';
+      display: inline-block;
+      color: $black;
+      padding-right: 1em;
     }
   }
 }
