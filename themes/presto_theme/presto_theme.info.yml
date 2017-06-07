@@ -11,9 +11,9 @@ libraries:
   - presto_theme/global-styling
 
 regions:
+  header: 'Nav Logo'
   navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
-  header: 'Top Bar'
   highlighted: 'Highlighted'
   help: 'Help'
   content: 'Content'

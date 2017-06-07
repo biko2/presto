@@ -1,8 +1,6 @@
-.user-orders {
+// .user-orders {
 
-  .table-responsive {
-    @extend %container;
-
+  .table {
     thead {
 
       th {
@@ -10,22 +8,26 @@
       }
     }
 
-    tbody {
+    &.table-responsive {
+      @extend %container;
 
-      td {
+      tbody {
 
-        &.views-field-total-price__number {
-          @extend h4;
-        }
+        td {
 
-        .Canceled {
-          color: $orderCanceledTextColor;
-        }
+          &.views-field-total-price__number {
+            @extend h4;
+          }
 
-        .Completed {
-          color: $orderCompletedTextColor;
+          .Canceled {
+            color: $orderCanceledTextColor;
+          }
+
+          .Completed {
+            color: $orderCompletedTextColor;
+          }
         }
       }
     }
   }
-}
+// }

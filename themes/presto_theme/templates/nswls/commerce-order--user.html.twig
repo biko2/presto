@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Template for orders in the 'user' view mode.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - order: The rendered order fields.
+ *   Use 'order' to print them all, or print a subset such as
+ *   'order.order_number'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ order|without('order_number') }}
+ *   @endcode
+ * - order_entity: The order entity.
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes }}>
+  <div class="container customer-information">
+    <table class="table table-hover table-striped">
+
+      {{ order.mail }}
+
+      {% if order.shipping_information %}
+        <tr class="customer-information__shipping">
+          <td class="field__label">{{ 'Shipping information'|t }}</td>
+          <td>{{ order.shipping_information }}</td>
+        </tr>
+      {% endif %}
+      {% if order.billing_information %}
+        <tr class="customer-billing">
+          <td class="field__label">{{ 'Billing information'|t }}</td>
+          <td>{{ order.billing_information }}</td>
+        </tr>
+      {% endif %}
+    </table>
+
+
+    <table class="table table-hover table-striped order-information">
+      <thead>
+        <tr>
+          <th>Completed orders</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>{{ order.completed }}</td></tr>
+        <tr><td>{{ order.placed }}</td></tr>
+        <tr><td>{{ order.state }}</td></tr>
+        <tr><td>{{ order.order_items }}</td></tr>
+        <tr><td>{{ order.total_price }}</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
