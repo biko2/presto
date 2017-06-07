@@ -1,6 +1,6 @@
+
 .btn {
   position: relative;
-  padding: 1em 1.5em 1em 1.5em;
   text-align: left;
   display: inline-block;
   border: 1px solid $siteButtonBorderColor;
@@ -12,6 +12,10 @@
     color: $siteButtonTextColorHover;
     border-color: $siteButtonBorderColorHover;
     background: $siteButtonBackgroundColorHover;
+  }
+
+  .fa {
+    color: $siteButtonTextColor;
   }
 
   &.navigation {

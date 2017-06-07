@@ -1,3 +1,4 @@
+.view-presto-product-listing,
 .view-product-pages {
   @extend %container;
 
@@ -12,7 +13,7 @@
     }
   }
 
-  .view-content {
+  // .view-content {
 
     .product-list {
       list-style-type: none;
@@ -132,7 +133,7 @@
             cursor: pointer;
             transition: background .5s;
 
-/*             &::before {
+          /* &::before {
               font-family: FontAwesome;
               font-size: 150%;
               display: block;
@@ -160,22 +161,22 @@
           transform: rotate(90deg);
           transform-origin: top left;
 
-/*           a {
+          /* a {
 
             &::before {
               content: '\f07a';
             }
           }
- *///          top: -100%;
+       *///          top: -100%;
         }
 
         .view-details-wrapper {
-//          top: 100%;
+         // top: 100%;
           left: 50%;
           transform: rotate(90deg);
           transform-origin: bottom left;
 
-/*           a {
+          /* a {
 
             &::before {
               content: '\f03a';
@@ -191,15 +192,14 @@
 
           .add-to-cart-wrapper {
             transform: rotate(0);
-//            top: 0;
+            // top: 0;
           }
           .view-details-wrapper {
             transform: rotate(0);
-//            top: 0;
+          // top: 0;
           }
         }
       }
     }
-
-  }
+  // }
 }
