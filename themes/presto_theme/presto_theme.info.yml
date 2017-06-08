@@ -1,19 +1,18 @@
 name: Presto
 type: theme
-description: Presto - A Bootstrap 3-based theme that adds styling for all of Presto's functionality
+description: Presto - A child theme of Bootstrap theme
 package: Other
 core: 8.x
 
 base theme: bootstrap
 
 libraries:
-  - presto_theme/lity
   - presto_theme/global-styling
 
 regions:
+  header: 'Nav Logo'
   navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
-  header: 'Top Bar'
   highlighted: 'Highlighted'
   help: 'Help'
   content: 'Content'
