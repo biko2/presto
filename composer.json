@@ -75,7 +75,6 @@
         "swiftmailer/swiftmailer": "^5.4.8",
         "npm-asset/blazy": "^1",
         "npm-asset/dropzone": "^4",
-        "npm-asset/lity": "^2",
         "npm-asset/slick-carousel": "^1"
     },
     "require-dev": {
@@ -146,6 +145,7 @@
         },
         "asset-library-overrides": {
             "swiftmailer/swiftmailer": {
+                "exclude": true,
                 "key": "swiftmailer_lib",
                 "directory_name": "swiftmailer",
                 "download": {
@@ -171,12 +171,6 @@
                 "download": {
                     "type": "get",
                     "url": "https://github.com/dinbror/blazy/archive/1.8.2.zip"
-                }
-            },
-            "npm-asset/lity": {
-                "download": {
-                    "type": "get",
-                    "url": "https://github.com/jsor/lity/archive/v2.2.2.zip"
                 }
             }
         }
