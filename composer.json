@@ -71,6 +71,8 @@
         "drupal/token": "^1.0",
         "drupal/video_embed_field": "^1.5",
         "drupal/view_mode_selector": "1.x-dev",
+        "drupal/swiftmailer": "^1.0@beta",
+        "swiftmailer/swiftmailer": "^5.4.8",
         "npm-asset/blazy": "^1",
         "npm-asset/dropzone": "^4",
         "npm-asset/lity": "^2",
@@ -143,6 +145,14 @@
             }
         },
         "asset-library-overrides": {
+            "swiftmailer/swiftmailer": {
+                "key": "swiftmailer_lib",
+                "directory_name": "swiftmailer",
+                "download": {
+                    "type": "get",
+                    "url": "https://github.com/swiftmailer/swiftmailer/archive/v5.4.8.zip"
+                }
+            },
             "npm-asset/slick-carousel": {
                 "key": "slick_lib",
                 "directory_name": "slick",
