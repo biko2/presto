@@ -27,17 +27,6 @@
       }
     }
 
-    .region-navigation-collapsible,
-    .region-navigation {
-      @extend .clearfix;
-
-      nav {
-        @media screen and (min-width: $screen-sm-min) {
-          float: right;
-        }
-      }
-    }
-
     .navbar-nav {
       > li {
         > a {
@@ -94,5 +83,12 @@
     height: 0;
     overflow: hidden;
     transition: ease .35s height, visibility;
+  }
+
+  .region-navigation-collapsible {
+    @media screen and (min-width: $screen-sm-min) {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 }
