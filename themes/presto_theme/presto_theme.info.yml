@@ -7,6 +7,7 @@ core: 8.x
 base theme: bootstrap
 
 libraries:
+  - presto_theme/lity
   - presto_theme/global-styling
 
 regions:
