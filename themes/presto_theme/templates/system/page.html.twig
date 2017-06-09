@@ -72,7 +72,9 @@
         <div class="{{ container }}">
       {% endif %}
       <div class="navbar-header">
-        {{ page.navigation }}
+        {% if page.navigation_collapsible %}
+          {{ page.navigation }}
+        {% endif %}
 
         {# .btn-navbar is used as the toggle for collapsed navbar content #}
         {% if page.navigation_collapsible %}
@@ -87,6 +89,10 @@
         {# Header #}
         {% if page.header %}
           {{ page.header }}
+        {% endif %}
+
+        {% if not page.navigation_collapsible %}
+          {{ page.navigation }}
         {% endif %}
       </div>
 
