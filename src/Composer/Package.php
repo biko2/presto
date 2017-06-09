@@ -71,6 +71,12 @@ class Package {
             continue;
           }
 
+          // Remove excluded packages.
+          if (array_key_exists('exclude', $override) && $override['exclude'] === TRUE) {
+            unset($make['libraries'][$libraryName]);
+            continue;
+          }
+
           // If a key doesn't exist, generate one by stripping out the vendor
           // prefix.
           $key = basename($libraryName);
