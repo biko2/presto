@@ -1,41 +1,49 @@
+
 .navbar {
   border-bottom: 0;
   margin-bottom: 0;
   background: $mainMenuBackground;
   border-bottom: 2px solid $mainMenuBorderColor;
 
-
   &.navbar-default {
 
     .navbar-header {
-      margin-left: 15px;
-      margin-right: 15px;
-      width: 100%;
+      margin: 0;
+      // width: 100%;
       display: block;
 
-      @media only screen and (min-width: $screen-sm) {
-        margin-left: -15px;
-        margin-right: -15px;
+      @media screen and (min-width: $screen-sm-min) {
+        display: flex;
       }
 
-      .region-navigation {
-        @extend .clearfix;
+      // .region-header {
+      //   @extend .clearfix;
+      // }
 
-        nav {
-          float: right;
+      .logo {
+        img {
+          width: auto;
+          height: $navbar-height; // - ($padding-base-vertical * 2);
+          padding: $padding-base-vertical $padding-base-horizontal;
         }
       }
     }
+
     .navbar-nav {
-
       > li {
-
         > a {
           color: $mainMenuLinkColor;
           border-bottom: 2px solid $mainMenuLinkBorderColor;
           margin-bottom: -2px;
           padding-left: 2.5em;
           padding-right: 2.5em;
+          box-sizing: content-box;
+          text-align: center;
+
+          @media screen and (min-width: $screen-sm-min) {
+            text-align: left;
+          }
+
 
           &.is-active {
             color: $mainMenuLinkColorHover;
@@ -54,8 +62,41 @@
 }
 
 .navbar-right {
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $screen-sm-min) {
     margin-right: 0;
   }
 }
 
+.navbar-collapse {
+  overflow: hidden;
+
+  .container-fluid & {
+    margin: 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+  }
+
+  &.collapse:not(.in),
+  &.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: ease .35s height, visibility;
+  }
+}
+
+.region-navigation,
+.region-navigation-collapsible {
+
+  @media screen and (min-width: $screen-sm-min) {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.region-navigation {
+  width: 100%;
+}

@@ -7,6 +7,19 @@
   }
 }
 
+.control-label {
+  &.form-required {
+    &::after {
+      content: '\002a';
+      font-size: 8px;
+      line-height: 2;
+      padding: 0.5em;
+      vertical-align: text-top;
+      color: $dangerText;
+    }
+  }
+}
+
 .form-control {
   // padding: $button-input-padding;
   &:focus {

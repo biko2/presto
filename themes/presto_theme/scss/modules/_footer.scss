@@ -11,6 +11,10 @@
     flex-direction: row;
     justify-content: space-between;
 
+    a, p, h2, h3, h4, h5, h6 {
+      color: $footerLinkColor;
+    }
+
     nav {
 
       li {
@@ -29,7 +33,7 @@
       }
     }
 
-    .block-social-media {
+    .social-sharing-block {
 
       .block-title {
         display: none;

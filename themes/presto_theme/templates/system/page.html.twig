@@ -72,7 +72,10 @@
         <div class="{{ container }}">
       {% endif %}
       <div class="navbar-header">
-        {{ page.navigation }}
+        {% if page.navigation_collapsible %}
+          {{ page.navigation }}
+        {% endif %}
+
         {# .btn-navbar is used as the toggle for collapsed navbar content #}
         {% if page.navigation_collapsible %}
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -82,11 +85,20 @@
             <span class="icon-bar"></span>
           </button>
         {% endif %}
+
+        {# Header #}
+        {% if page.header %}
+          {{ page.header }}
+        {% endif %}
+
+        {% if not page.navigation_collapsible %}
+          {{ page.navigation }}
+        {% endif %}
       </div>
 
       {# Navigation (collapsible) #}
       {% if page.navigation_collapsible %}
-        <div id="navbar-collapse" class="navbar-collapse collapse in">
+        <div id="navbar-collapse" class="navbar-collapse collapse">
           {{ page.navigation_collapsible }}
         </div>
       {% endif %}
@@ -101,15 +113,6 @@
 {% block main %}
   <div role="main" class="main-container {{ container }} js-quickedit-main-content">
     <div class="row">
-
-      {# Header #}
-      {% if page.header %}
-        {% block header %}
-          <div class="col-xs-12" role="heading">
-            {{ page.header }}
-          </div>
-        {% endblock %}
-      {% endif %}
 
       {# Sidebar First #}
       {% if page.sidebar_first %}

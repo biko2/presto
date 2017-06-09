@@ -1,14 +1,14 @@
-.user-orders {
 
-  .table-responsive {
-    @extend %container;
+// .user-orders {
 
+  .table {
     thead {
 
       th {
         @extend h4;
       }
     }
+
 
     tbody {
 
@@ -28,4 +28,5 @@
       }
     }
   }
-}
+
+// }
