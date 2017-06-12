@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Form;
+namespace Drupal\presto\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Defines a form that configures Presto's additional functionality.
  *
- * @package Drupal\presto\Installer\Form
+ * @package Drupal\presto\Form
  */
 class PrestoConfigureForm extends FormBase {
 
