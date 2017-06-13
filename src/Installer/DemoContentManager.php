@@ -6,6 +6,7 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\presto\Annotation\PrestoDemoContent;
+use Drupal\presto\Mixins\WeightedPluginManagerTrait;
 use Traversable;
 
 /**
@@ -14,6 +15,8 @@ use Traversable;
  * @package Drupal\presto\Installer
  */
 class DemoContentManager extends DefaultPluginManager {
+
+  use WeightedPluginManagerTrait;
 
   /**
    * Manager constructor.
@@ -51,16 +54,7 @@ class DemoContentManager extends DefaultPluginManager {
    */
   public function getDefinitions() {
     $definitions = parent::getDefinitions();
-
-    // Sort definitions by weight before returning.
-    uasort($definitions, function ($first, $second) {
-      if ($first['weight'] === $second['weight']) {
-        return 0;
-      }
-      return ($first['weight'] < $second['weight']) ? -1 : 1;
-    });
-
-    return $definitions;
+    return $this->sortByWeight($definitions);
   }
 
   /**
