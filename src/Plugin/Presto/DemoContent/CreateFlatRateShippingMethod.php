@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal\commerce_shipping\Entity\ShippingMethod;
 
@@ -13,7 +13,7 @@ use Drupal\commerce_shipping\Entity\ShippingMethod;
  *     weight = 7
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class CreateFlatRateShippingMethod extends AbstractDemoContent {
 

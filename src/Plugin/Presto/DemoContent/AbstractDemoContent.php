@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * Sets up base functionality for demo content creation plugins.
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 abstract class AbstractDemoContent extends PluginBase implements
     ContainerFactoryPluginInterface {
@@ -50,6 +50,9 @@ abstract class AbstractDemoContent extends PluginBase implements
 
   /**
    * {@inheritdoc}
+   *
+   * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+   * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
    */
   public static function create(
     ContainerInterface $container,

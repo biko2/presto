@@ -46,7 +46,7 @@ class Installer {
   /**
    * The demo content creation manager.
    *
-   * @var \Drupal\presto\Installer\Ecommerce\Content\Manager
+   * @var \Drupal\presto\Installer\Ecommerce\DemoContentManager
    */
   private $demoContentManager;
 
@@ -55,7 +55,7 @@ class Installer {
    *
    * @param array $installState
    *   Current install state.
-   * @param \Drupal\presto\Installer\Ecommerce\Content\Manager $manager
+   * @param \Drupal\presto\Installer\Ecommerce\DemoContentManager $manager
    *   The demo content creation manager.
    */
   public function __construct(
@@ -246,16 +246,16 @@ class Installer {
     drupal_set_time_limit(0);
 
     // Needs to be resolved manually since we don't have a context.
-    /** @var \Drupal\presto\Installer\Ecommerce\Content\Manager $demoContentManager */
+    /** @var \Drupal\presto\Installer\Ecommerce\DemoContentManager $demoContentManager */
     $demoContentManager = Drupal::service(
-      'plugin.manager.presto.ecommerce_demo_content'
+      'plugin.manager.presto.demo_content'
     );
 
     $definition = $demoContentManager->getDefinition($pluginId);
     /** @var \Drupal\Core\StringTranslation\TranslatableMarkup $label */
     $label = $definition['label'];
 
-    /** @var \Drupal\presto\Installer\Ecommerce\Content\Plugin\AbstractDemoContent $instance */
+    /** @var \Drupal\presto\Plugin\Presto\DemoContent\AbstractDemoContent $instance */
     $instance = $demoContentManager->createInstance($pluginId);
     $instance->createContent();
 

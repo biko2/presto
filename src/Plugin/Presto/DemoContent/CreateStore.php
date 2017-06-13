@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal;
 use Drupal\commerce_store\Entity\Store;
@@ -14,7 +14,7 @@ use Drupal\commerce_store\Entity\Store;
  *     weight = 1
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class CreateStore extends AbstractDemoContent {
 

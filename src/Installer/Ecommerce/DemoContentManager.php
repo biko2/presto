@@ -1,21 +1,21 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content;
+namespace Drupal\presto\Installer\Ecommerce;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\presto\Annotation\PrestoEcommerceDemoContent;
-use Drupal\presto\Installer\Ecommerce\Content\Plugin\AbstractDemoContent;
+use Drupal\presto\Plugin\Presto\DemoContent\AbstractDemoContent;
 
 /**
  * Class Manager.
  *
  * Creates demo content using demo content creation plugins.
  *
- * @package Drupal\presto\Installer\Ecommerce\Content
+ * @package Drupal\presto\Installer\Ecommerce
  */
-class Manager extends DefaultPluginManager {
+class DemoContentManager extends DefaultPluginManager {
 
   /**
    * Manager constructor.
@@ -34,7 +34,7 @@ class Manager extends DefaultPluginManager {
     ModuleHandlerInterface $moduleHandler
   ) {
     parent::__construct(
-      'Installer/Ecommerce/Content/Plugin',
+      'Plugin/Presto/DemoContent',
       $namespaces,
       $moduleHandler,
       AbstractDemoContent::class,

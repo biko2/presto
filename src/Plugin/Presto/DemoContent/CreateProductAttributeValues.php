@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal\commerce_product\Entity\ProductAttributeValue;
 
@@ -13,7 +13,7 @@ use Drupal\commerce_product\Entity\ProductAttributeValue;
  *     weight = 2
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class CreateProductAttributeValues extends AbstractDemoContent {
 

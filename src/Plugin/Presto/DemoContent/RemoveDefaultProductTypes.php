@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal\commerce_product\Entity\ProductType;
 use Drupal\commerce_product\Entity\ProductVariationType;
@@ -14,7 +14,7 @@ use Drupal\commerce_product\Entity\ProductVariationType;
  *     weight = 0
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class RemoveDefaultProductTypes extends AbstractDemoContent {
 

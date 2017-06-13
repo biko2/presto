@@ -1,4 +1,4 @@
 services:
-  plugin.manager.presto.ecommerce_demo_content:
-    class: Drupal\presto\Installer\Ecommerce\Content\Manager
+  plugin.manager.presto.demo_content:
+    class: Drupal\presto\Installer\Ecommerce\DemoContentManager
     parent: default_plugin_manager

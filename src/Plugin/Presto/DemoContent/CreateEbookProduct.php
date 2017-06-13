@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 /**
  * Creates the demo Drupal Commerce store.
@@ -11,7 +11,7 @@ namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
  *     weight = 6
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class CreateEbookProduct extends AbstractBaseProductCreator {
 
