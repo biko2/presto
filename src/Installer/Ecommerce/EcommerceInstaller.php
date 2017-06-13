@@ -3,6 +3,7 @@
 namespace Drupal\presto\Installer\Ecommerce;
 
 use Drupal;
+use Drupal\presto\Installer\DemoContentManager;
 use Drupal\presto\Installer\DemoContentTypes;
 use Drupal\presto\Installer\InstallerException;
 use Drupal\presto\Installer\InstallerInterface;
