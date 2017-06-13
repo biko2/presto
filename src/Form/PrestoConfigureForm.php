@@ -96,6 +96,11 @@ class PrestoConfigureForm extends FormBase {
       $form_state->set(['optional_dependencies', $optionalDep['id']], $instance);
     }
 
+    // Hide optional dependencies fieldset if the config form is empty.
+    if (count(Element::children($form['optional_dependencies'])) === 0) {
+      $form['optional_dependencies']['#access'] = FALSE;
+    }
+
     $form['ecommerce'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('eCommerce'),
