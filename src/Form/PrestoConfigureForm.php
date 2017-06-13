@@ -37,6 +37,7 @@ class PrestoConfigureForm extends FormBase {
     // Only enable commerce if this profile was installed via Composer
     // (which is when the below interface will exist).
     $enableCommerce = FALSE;
+    /** @noinspection ClassConstantCanBeUsedInspection */
     if (interface_exists('CommerceGuys\Intl\Currency\CurrencyInterface')) {
       $enableCommerce = TRUE;
     }

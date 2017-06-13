@@ -3,14 +3,14 @@
 namespace Drupal\presto\Installer\Ecommerce;
 
 use Drupal;
-use Drupal\presto\Installer\Ecommerce\Content\Manager as DemoContentManager;
+use Drupal\presto\Installer\InstallerInterface;
 
 /**
  * Presto eCommerce module + content installer.
  *
  * @package Drupal\presto\Installer\Ecommerce
  */
-class Installer {
+class Installer implements InstallerInterface {
 
   const DEPENDENCY_TYPE_MODULE = 'module';
   const DEPENDENCY_TYPE_THEME = 'theme';
@@ -76,16 +76,13 @@ class Installer {
    */
   public static function create(array $installState) {
     $demoContentManager = Drupal::service(
-      'plugin.manager.presto.ecommerce_demo_content'
+      'plugin.manager.presto.demo_content'
     );
     return new static($installState, $demoContentManager);
   }
 
   /**
-   * Sets up all install tasks if they're enabled.
-   *
-   * @return array
-   *   A batch operations definition with all enabled install tasks.
+   * {@inheritdoc}
    */
   public function installIfEnabled() {
     $operations = [];
@@ -202,13 +199,13 @@ class Installer {
       case static::DEPENDENCY_TYPE_MODULE:
         /** @var \Drupal\Core\Extension\ModuleInstaller $moduleInstaller */
         $moduleInstaller = Drupal::service('module_installer');
-        $moduleInstaller->install([$dependency], TRUE);
+        $moduleInstaller->install([$dependency]);
         break;
 
       case static::DEPENDENCY_TYPE_THEME:
         /** @var \Drupal\Core\Extension\ThemeInstaller $themeInstaller */
         $themeInstaller = Drupal::service('theme_installer');
-        $themeInstaller->install([$dependency], TRUE);
+        $themeInstaller->install([$dependency]);
         break;
 
       default:

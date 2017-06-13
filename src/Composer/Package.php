@@ -134,6 +134,8 @@ class Package {
         unset($project['download']);
       }
     }
+    unset($project);
+
     file_put_contents('drupal-org.make', $encoder->encode($make));
   }
 
