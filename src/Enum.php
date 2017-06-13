@@ -3,6 +3,7 @@
 namespace Drupal\presto;
 
 use InvalidArgumentException;
+use ReflectionClass;
 
 /**
  * Defines an enumeration base class.
@@ -21,16 +22,28 @@ abstract class Enum {
    */
   protected static $values = [];
 
+  // @codingStandardsIgnoreStart
   /**
    * Enums can't be instantiated.
    */
   private function __construct() {
+    // Do nothing.
   }
+  // @codingStandardsIgnoreEnd
 
+  /**
+   * Get all constants.
+   *
+   * @return array
+   *   Constant values, keyed by constant name.
+   *
+   * @throws \ReflectionException
+   */
   public static function getAll() {
     $class = static::class;
     if (!array_key_exists($class, static::$values)) {
-
+      $reflection = new ReflectionClass($class);
+      static::$values[$class] = $reflection->getConstants();
     }
 
     return static::$values[$class];
@@ -44,9 +57,11 @@ abstract class Enum {
    *
    * @return bool
    *   TRUE if the value is defined, FALSE otherwise.
+   *
+   * @throws \ReflectionException
    */
   public static function exists($value) {
-    return in_array($value, static::getAll(), true);
+    return in_array($value, static::getAll(), TRUE);
   }
 
   /**
@@ -57,6 +72,8 @@ abstract class Enum {
    *
    * @throws \InvalidArgumentException
    *   If the value is not defined.
+   *
+   * @throws \ReflectionException
    */
   public static function assertExists($value) {
     if (static::exists($value) === FALSE) {
