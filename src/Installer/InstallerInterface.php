@@ -24,6 +24,8 @@ interface InstallerInterface {
    *
    * @return array
    *   A batch operations definition with all enabled install tasks.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
   public function installIfEnabled();
 

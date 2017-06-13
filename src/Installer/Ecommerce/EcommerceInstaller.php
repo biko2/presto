@@ -5,8 +5,9 @@ namespace Drupal\presto\Installer\Ecommerce;
 use Drupal;
 use Drupal\presto\Installer\DemoContentManager;
 use Drupal\presto\Installer\DemoContentTypes;
-use Drupal\presto\Installer\InstallerException;
+use Drupal\presto\Installer\DependencyTypes;
 use Drupal\presto\Installer\InstallerInterface;
+use Drupal\presto\Mixins\DrupalDependencyInstallerTrait;
 
 /**
  * Presto eCommerce module + content installer.
@@ -15,8 +16,7 @@ use Drupal\presto\Installer\InstallerInterface;
  */
 class EcommerceInstaller implements InstallerInterface {
 
-  const DEPENDENCY_TYPE_MODULE = 'module';
-  const DEPENDENCY_TYPE_THEME = 'theme';
+  use DrupalDependencyInstallerTrait;
 
   /**
    * All eCommerce dependencies.
@@ -24,19 +24,19 @@ class EcommerceInstaller implements InstallerInterface {
    * @var array
    */
   private $dependencies = [
-    'commerce' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_order' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_price' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_product' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_cart' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_checkout' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_payment' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_payment_example' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_promotion' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_tax' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_log' => self::DEPENDENCY_TYPE_MODULE,
-    'physical' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_shipping' => self::DEPENDENCY_TYPE_MODULE,
+    'commerce' => DependencyTypes::MODULE,
+    'commerce_order' => DependencyTypes::MODULE,
+    'commerce_price' => DependencyTypes::MODULE,
+    'commerce_product' => DependencyTypes::MODULE,
+    'commerce_cart' => DependencyTypes::MODULE,
+    'commerce_checkout' => DependencyTypes::MODULE,
+    'commerce_payment' => DependencyTypes::MODULE,
+    'commerce_payment_example' => DependencyTypes::MODULE,
+    'commerce_promotion' => DependencyTypes::MODULE,
+    'commerce_tax' => DependencyTypes::MODULE,
+    'commerce_log' => DependencyTypes::MODULE,
+    'physical' => DependencyTypes::MODULE,
+    'commerce_shipping' => DependencyTypes::MODULE,
   ];
 
   /**
@@ -162,7 +162,7 @@ class EcommerceInstaller implements InstallerInterface {
       [static::class, 'installDependency'],
       [
         'presto_commerce',
-        static::DEPENDENCY_TYPE_MODULE,
+        DependencyTypes::MODULE,
       ],
     ];
 
@@ -175,57 +175,6 @@ class EcommerceInstaller implements InstallerInterface {
     }
 
     return $operations;
-  }
-
-  /**
-   * Installs a Drupal dependency (e.g. a module or a theme).
-   *
-   * This is a Drupal batch callback operation and as such, needs to be both a
-   * public and a static function so that the Batch API can access it outside
-   * the context of this class.
-   *
-   * @param string $dependency
-   *   Dependency machine name.
-   * @param string $type
-   *   Dependency type.
-   * @param array $context
-   *   Batch context.
-   *
-   * @throws Drupal\Core\Extension\ExtensionNameLengthException
-   * @throws Drupal\Core\Extension\MissingDependencyException
-   * @throws \Drupal\presto\Installer\InstallerException
-   */
-  public static function installDependency($dependency, $type, array &$context) {
-    // Reset time limit so we don't timeout.
-    drupal_set_time_limit(0);
-
-    switch ($type) {
-      case static::DEPENDENCY_TYPE_MODULE:
-        /** @var \Drupal\Core\Extension\ModuleInstaller $moduleInstaller */
-        $moduleInstaller = Drupal::service('module_installer');
-        $moduleInstaller->install([$dependency]);
-        break;
-
-      case static::DEPENDENCY_TYPE_THEME:
-        /** @var \Drupal\Core\Extension\ThemeInstaller $themeInstaller */
-        $themeInstaller = Drupal::service('theme_installer');
-        $themeInstaller->install([$dependency]);
-        break;
-
-      default:
-        throw new InstallerException(
-          "Unknown dependency type '{$type}'."
-        );
-    }
-
-    $context['results'][] = $dependency;
-    $context['message'] = t(
-      'Installed @dependency_type %dependency.',
-      [
-        '@dependency_type' => $type,
-        '%dependency' => $dependency,
-      ]
-    );
   }
 
   /**

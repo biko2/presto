@@ -3,6 +3,14 @@ services:
     class: Drupal\presto\Installer\DemoContentManager
     parent: default_plugin_manager
 
+  plugin.manager.presto.optional_dependencies:
+    class: Drupal\presto\Installer\OptionalDependencies\OptionalDependencyManager
+    parent: default_plugin_manager
+
+  presto.install.optional_dependencies:
+    class: Drupal\presto\Installer\OptionalDependencies\OptionalDependenciesInstaller
+    arguments: ['@plugin.manager.presto.optional_dependencies']
+
   presto.installer.ecommerce:
     class: Drupal\presto\Installer\Ecommerce\EcommerceInstaller
     arguments: ['@plugin.manager.presto.demo_content']

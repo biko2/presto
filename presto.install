@@ -136,10 +136,19 @@ function presto_apply_configuration(array &$install_state) {
     'operations' => [],
   ];
 
-  /** @var Drupal\presto\Installer\Ecommerce\EcommerceInstaller $ecommerceInstaller */
+  // Install optional dependencies if they're enabled.
+  /** @var \Drupal\presto\Installer\InstallerInterface $optionalDepsInstaller */
+  $optionalDepsInstaller = Drupal::service('presto.install.optional_dependencies');
+  $optionalDepsInstaller->setInstallState((array) $install_state);
+  $batch['operations'] = array_merge(
+    $batch['operations'],
+    $optionalDepsInstaller->installIfEnabled()
+  );
+
+  // Install modules and create demo content if eCommerce is enabled.
+  /** @var Drupal\presto\Installer\InstallerInterface $ecommerceInstaller */
   $ecommerceInstaller = Drupal::service('presto.installer.ecommerce');
   $ecommerceInstaller->setInstallState((array) $install_state);
-  // Install modules and create demo content if eCommerce is enabled.
   $batch['operations'] = array_merge(
     $batch['operations'],
     $ecommerceInstaller->installIfEnabled()
