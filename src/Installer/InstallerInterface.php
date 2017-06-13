@@ -10,6 +10,16 @@ namespace Drupal\presto\Installer;
 interface InstallerInterface {
 
   /**
+   * Set current Drupal install state.
+   *
+   * @param array $installState
+   *   Install state to set.
+   *
+   * @return $this
+   */
+  public function setInstallState(array $installState);
+
+  /**
    * Sets up all install tasks if they're enabled.
    *
    * @return array

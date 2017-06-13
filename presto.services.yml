@@ -2,3 +2,7 @@ services:
   plugin.manager.presto.demo_content:
     class: Drupal\presto\Installer\Ecommerce\DemoContentManager
     parent: default_plugin_manager
+
+  presto.installer.ecommerce:
+    class: Drupal\presto\Installer\Ecommerce\EcommerceInstaller
+    arguments: ['@plugin.manager.presto.demo_content']

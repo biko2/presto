@@ -3,6 +3,7 @@
 namespace Drupal\presto\Installer\Ecommerce;
 
 use Drupal;
+use Drupal\presto\Installer\InstallerException;
 use Drupal\presto\Installer\InstallerInterface;
 
 /**
@@ -10,7 +11,7 @@ use Drupal\presto\Installer\InstallerInterface;
  *
  * @package Drupal\presto\Installer\Ecommerce
  */
-class Installer implements InstallerInterface {
+class EcommerceInstaller implements InstallerInterface {
 
   const DEPENDENCY_TYPE_MODULE = 'module';
   const DEPENDENCY_TYPE_THEME = 'theme';
@@ -53,32 +54,25 @@ class Installer implements InstallerInterface {
   /**
    * PrestoEcommerceInstaller constructor.
    *
-   * @param array $installState
-   *   Current install state.
    * @param \Drupal\presto\Installer\Ecommerce\DemoContentManager $manager
    *   The demo content creation manager.
+   * @param array $installState
+   *   Current install state.
    */
   public function __construct(
-    array $installState,
-    DemoContentManager $manager
+    DemoContentManager $manager,
+    array $installState = []
   ) {
     $this->installState = $installState;
     $this->demoContentManager = $manager;
   }
 
   /**
-   * Creates a new instance of this class.
-   *
-   * @param array $installState
-   *   Current install state.
-   *
-   * @return static
+   * {@inheritdoc}
    */
-  public static function create(array $installState) {
-    $demoContentManager = Drupal::service(
-      'plugin.manager.presto.demo_content'
-    );
-    return new static($installState, $demoContentManager);
+  public function setInstallState(array $installState) {
+    $this->installState = $installState;
+    return $this;
   }
 
   /**
@@ -106,6 +100,9 @@ class Installer implements InstallerInterface {
    *   TRUE if allowed, FALSE otherwise.
    */
   private function shouldInstallModules() {
+    if (!array_key_exists('presto_ecommerce_enabled', $this->installState)) {
+      return FALSE;
+    }
     return (bool) $this->installState['presto_ecommerce_enabled'];
   }
 
@@ -116,6 +113,9 @@ class Installer implements InstallerInterface {
    *   TRUE if allowed, FALSE otherwise.
    */
   private function shouldInstallDemoContent() {
+    if (!array_key_exists('presto_ecommerce_install_demo_content', $this->installState)) {
+      return FALSE;
+    }
     $create = (bool) $this->installState['presto_ecommerce_install_demo_content'];
     return $this->shouldInstallModules() && $create;
   }
@@ -189,7 +189,7 @@ class Installer implements InstallerInterface {
    *
    * @throws Drupal\Core\Extension\ExtensionNameLengthException
    * @throws Drupal\Core\Extension\MissingDependencyException
-   * @throws InstallerException
+   * @throws \Drupal\presto\Installer\InstallerException
    */
   public static function installDependency($dependency, $type, array &$context) {
     // Reset time limit so we don't timeout.
