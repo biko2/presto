@@ -5,8 +5,9 @@ namespace Drupal\presto\Plugin\Presto\DemoContent;
 /**
  * Creates the demo Drupal Commerce store.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "create_ebook_product",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Create eBook product"),
  *     weight = 6
  * )

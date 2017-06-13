@@ -8,8 +8,9 @@ use Drupal\commerce_product\Entity\ProductVariationType;
 /**
  * Removes the default product types as we create our own.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "remove_default_products",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Remove default product types"),
  *     weight = 0
  * )

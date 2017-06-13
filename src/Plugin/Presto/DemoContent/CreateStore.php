@@ -8,8 +8,9 @@ use Drupal\commerce_store\Entity\Store;
 /**
  * Creates the demo Drupal Commerce store.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "store",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Create Drupal Commerce demo store"),
  *     weight = 1
  * )

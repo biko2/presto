@@ -1,19 +1,18 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce;
+namespace Drupal\presto\Installer;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\presto\Annotation\PrestoEcommerceDemoContent;
+use Drupal\presto\Annotation\PrestoDemoContent;
 use Drupal\presto\Plugin\Presto\DemoContent\AbstractDemoContent;
+use Traversable;
 
 /**
- * Class Manager.
- *
  * Creates demo content using demo content creation plugins.
  *
- * @package Drupal\presto\Installer\Ecommerce
+ * @package Drupal\presto\Installer
  */
 class DemoContentManager extends DefaultPluginManager {
 
@@ -29,7 +28,7 @@ class DemoContentManager extends DefaultPluginManager {
    *   The module handler.
    */
   public function __construct(
-    \Traversable $namespaces,
+    Traversable $namespaces,
     CacheBackendInterface $cacheBackend,
     ModuleHandlerInterface $moduleHandler
   ) {
@@ -38,7 +37,7 @@ class DemoContentManager extends DefaultPluginManager {
       $namespaces,
       $moduleHandler,
       AbstractDemoContent::class,
-      PrestoEcommerceDemoContent::class
+      PrestoDemoContent::class
     );
 
     $this->alterInfo('presto_ecommerce_demo_content_info');
@@ -63,6 +62,23 @@ class DemoContentManager extends DefaultPluginManager {
     });
 
     return $definitions;
+  }
+
+  /**
+   * Filters plugin definitions by a type.
+   *
+   * @param string $type
+   *   Type to filter by.
+   *
+   * @return array
+   *   A list of filtered plugin definitions.
+   */
+  public function getFilteredDefinitions($type) {
+    $all = $this->getDefinitions();
+
+    return array_filter($all, function ($definition) use ($type) {
+      return $definition['type'] === $type;
+    });
   }
 
 }

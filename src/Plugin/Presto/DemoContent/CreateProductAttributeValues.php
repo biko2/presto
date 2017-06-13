@@ -7,8 +7,9 @@ use Drupal\commerce_product\Entity\ProductAttributeValue;
 /**
  * Creates a set of demo product attribute values.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "product_attribute_values",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Create Drupal Commerce product attribute values"),
  *     weight = 2
  * )

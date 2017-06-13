@@ -9,8 +9,9 @@ use Drupal\node\Entity\Node;
 /**
  * Creates the product listing page.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "create_product_listing",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Create product listing page"),
  *     weight = 10
  * )

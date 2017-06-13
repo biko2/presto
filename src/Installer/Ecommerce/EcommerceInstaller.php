@@ -3,6 +3,7 @@
 namespace Drupal\presto\Installer\Ecommerce;
 
 use Drupal;
+use Drupal\presto\Installer\DemoContentTypes;
 use Drupal\presto\Installer\InstallerException;
 use Drupal\presto\Installer\InstallerInterface;
 
@@ -47,14 +48,14 @@ class EcommerceInstaller implements InstallerInterface {
   /**
    * The demo content creation manager.
    *
-   * @var \Drupal\presto\Installer\Ecommerce\DemoContentManager
+   * @var \Drupal\presto\Installer\DemoContentManager
    */
   private $demoContentManager;
 
   /**
    * PrestoEcommerceInstaller constructor.
    *
-   * @param \Drupal\presto\Installer\Ecommerce\DemoContentManager $manager
+   * @param \Drupal\presto\Installer\DemoContentManager $manager
    *   The demo content creation manager.
    * @param array $installState
    *   Current install state.
@@ -151,7 +152,9 @@ class EcommerceInstaller implements InstallerInterface {
   private function addDemoContentOperations() {
     $operations = [];
 
-    $contentDefs = $this->demoContentManager->getDefinitions();
+    $contentDefs = $this->demoContentManager->getFilteredDefinitions(
+      DemoContentTypes::ECOMMERCE
+    );
 
     // Add module install task to install our commerce exports module.
     $operations[] = [
@@ -243,7 +246,7 @@ class EcommerceInstaller implements InstallerInterface {
     drupal_set_time_limit(0);
 
     // Needs to be resolved manually since we don't have a context.
-    /** @var \Drupal\presto\Installer\Ecommerce\DemoContentManager $demoContentManager */
+    /** @var \Drupal\presto\Installer\DemoContentManager $demoContentManager */
     $demoContentManager = Drupal::service(
       'plugin.manager.presto.demo_content'
     );

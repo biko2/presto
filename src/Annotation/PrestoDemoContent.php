@@ -11,7 +11,7 @@ use Drupal\Component\Annotation\Plugin;
  *
  * @Annotation
  */
-class PrestoEcommerceDemoContent extends Plugin {
+class PrestoDemoContent extends Plugin {
 
   /**
    * Plugin ID.
@@ -19,6 +19,13 @@ class PrestoEcommerceDemoContent extends Plugin {
    * @var string
    */
   public $id;
+
+  /**
+   * Plugin type (e.g. 'ecommerce').
+   *
+   * @var string
+   */
+  public $type;
 
   /**
    * The human-readable name of the plugin.
