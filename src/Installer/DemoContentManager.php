@@ -6,7 +6,6 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\presto\Annotation\PrestoDemoContent;
-use Drupal\presto\Plugin\Presto\DemoContent\AbstractDemoContent;
 use Traversable;
 
 /**
@@ -36,7 +35,7 @@ class DemoContentManager extends DefaultPluginManager {
       'Plugin/Presto/DemoContent',
       $namespaces,
       $moduleHandler,
-      AbstractDemoContent::class,
+      DemoContentInterface::class,
       PrestoDemoContent::class
     );
 

@@ -6,6 +6,7 @@ use Drupal;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Plugin\PluginBase;
+use Drupal\presto\Installer\DemoContentInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -16,7 +17,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 abstract class AbstractDemoContent extends PluginBase implements
-    ContainerFactoryPluginInterface {
+    ContainerFactoryPluginInterface,
+    DemoContentInterface {
 
   /**
    * Entity manager.
@@ -90,10 +92,5 @@ abstract class AbstractDemoContent extends PluginBase implements
 
     return $storeId;
   }
-
-  /**
-   * Creates a piece of demo content.
-   */
-  abstract public function createContent();
 
 }
