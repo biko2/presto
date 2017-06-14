@@ -75,21 +75,19 @@ class PrestoConfigureForm extends FormBase {
 
     $form_state->set('optional_dependencies', []);
     foreach ($optionalDeps as $optionalDep) {
-      $pluginConfig = [];
-
       /** @var \Drupal\presto\Installer\OptionalDependencies\OptionalDependencyInterface $instance */
       $instance = $this->optionalDependencyManager->createInstance(
-        $optionalDep['id'],
-        $pluginConfig
+        $optionalDep['id']
       );
 
+      $pluginForm = [];
       $subFormState = SubformState::createForSubform(
-        $pluginConfig,
+        $pluginForm,
         $form,
         $form_state
       );
       $form['optional_dependencies'][$optionalDep['id']] = $instance->buildConfigurationForm(
-        $pluginConfig,
+        $pluginForm,
         $subFormState
       );
 
