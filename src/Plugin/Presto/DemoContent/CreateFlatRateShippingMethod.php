@@ -1,19 +1,20 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal\commerce_shipping\Entity\ShippingMethod;
 
 /**
  * Creates the 'flat rate' shipment method.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "create_flat_rate_shipment_method",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Create Flat Rate shipment method"),
  *     weight = 7
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class CreateFlatRateShippingMethod extends AbstractDemoContent {
 

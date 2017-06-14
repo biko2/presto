@@ -5,13 +5,13 @@ namespace Drupal\presto\Annotation;
 use Drupal\Component\Annotation\Plugin;
 
 /**
- * Defines a new 'Demo Content' annotation type.
+ * Defines a new Presto optional dependency.
  *
  * @package Drupal\presto\Annotation
  *
  * @Annotation
  */
-class PrestoEcommerceDemoContent extends Plugin {
+class PrestoOptionalDependency extends Plugin {
 
   /**
    * Plugin ID.
@@ -33,6 +33,6 @@ class PrestoEcommerceDemoContent extends Plugin {
    *
    * @var int
    */
-  public $weight;
+  public $weight = 0;
 
 }

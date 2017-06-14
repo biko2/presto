@@ -1,16 +1,50 @@
 <?php
 
-namespace Drupal\presto\Installer\Form;
+namespace Drupal\presto\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Form\SubformState;
+use Drupal\Core\Render\Element;
+use Drupal\presto\Installer\OptionalDependencies\OptionalDependenciesInstaller;
+use Drupal\presto\Installer\OptionalDependencies\OptionalDependencyManager;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines a form that configures Presto's additional functionality.
  *
- * @package Drupal\presto\Installer\Form
+ * @package Drupal\presto\Form
  */
 class PrestoConfigureForm extends FormBase {
+
+  /**
+   * The optional dependency manager.
+   *
+   * @var \Drupal\presto\Installer\OptionalDependencies\OptionalDependencyManager
+   */
+  private $optionalDependencyManager;
+
+  /**
+   * PrestoConfigureForm constructor.
+   *
+   * @param \Drupal\presto\Installer\OptionalDependencies\OptionalDependencyManager $manager
+   *   The optional dependency manager.
+   */
+  public function __construct(OptionalDependencyManager $manager) {
+    $this->optionalDependencyManager = $manager;
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+   * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('plugin.manager.presto.optional_dependencies')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -21,12 +55,49 @@ class PrestoConfigureForm extends FormBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['#title'] = $this->t('Configure Presto functionality');
 
     // Clear any module success messages.
     drupal_get_messages('status');
+
+    // Add configuration forms for optional deps if defined.
+    $optionalDeps = $this->optionalDependencyManager->getDefinitions();
+    $form['optional_dependencies'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Optional Dependencies'),
+      '#collapsible' => FALSE,
+      '#tree' => TRUE,
+    ];
+
+    $form_state->set('optional_dependencies', []);
+    foreach ($optionalDeps as $optionalDep) {
+      /** @var \Drupal\presto\Installer\OptionalDependencies\OptionalDependencyInterface $instance */
+      $instance = $this->optionalDependencyManager->createInstance(
+        $optionalDep['id']
+      );
+
+      $pluginForm = [];
+      $subFormState = SubformState::createForSubform(
+        $pluginForm,
+        $form,
+        $form_state
+      );
+      $form['optional_dependencies'][$optionalDep['id']] = $instance->buildConfigurationForm(
+        $pluginForm,
+        $subFormState
+      );
+
+      $form_state->set(['optional_dependencies', $optionalDep['id']], $instance);
+    }
+
+    // Hide optional dependencies fieldset if the config form is empty.
+    if (count(Element::children($form['optional_dependencies'])) === 0) {
+      $form['optional_dependencies']['#access'] = FALSE;
+    }
 
     $form['ecommerce'] = [
       '#type' => 'fieldset',
@@ -37,6 +108,7 @@ class PrestoConfigureForm extends FormBase {
     // Only enable commerce if this profile was installed via Composer
     // (which is when the below interface will exist).
     $enableCommerce = FALSE;
+    /** @noinspection ClassConstantCanBeUsedInspection */
     if (interface_exists('CommerceGuys\Intl\Currency\CurrencyInterface')) {
       $enableCommerce = TRUE;
     }
@@ -113,6 +185,24 @@ class PrestoConfigureForm extends FormBase {
     $install_state[0]['form_state_values'] = $this->value(
       $form_state->getValues()
     );
+
+    // Submit any plugin forms.
+    $install_state[0][OptionalDependenciesInstaller::CONFIG_KEY] = [];
+    $depConfig =& $install_state[0][OptionalDependenciesInstaller::CONFIG_KEY];
+    foreach (Element::children($form['optional_dependencies']) as $dependencyId) {
+      /** @var \Drupal\presto\Installer\OptionalDependencies\OptionalDependencyInterface $instance */
+      /** @noinspection ReferenceMismatchInspection */
+      $instance = $form_state->get(['optional_dependencies', $dependencyId]);
+
+      $subFormState = SubformState::createForSubform(
+        $form['optional_dependencies'][$dependencyId],
+        $form,
+        $form_state
+      );
+
+      $instance->submitConfigurationForm($form, $subFormState);
+      $depConfig[$dependencyId] = $instance->getConfiguration();
+    }
 
     $buildInfo['args'] = $install_state;
 

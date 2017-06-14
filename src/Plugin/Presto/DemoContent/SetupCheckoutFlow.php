@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal;
 use Drupal\Core\Config\FileStorage;
@@ -8,13 +8,14 @@ use Drupal\Core\Config\FileStorage;
 /**
  * Sets up the checkout flow.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "setup_checkout_flow",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Setup checkout flow"),
  *     weight = 4
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class SetupCheckoutFlow extends AbstractDemoContent {
 

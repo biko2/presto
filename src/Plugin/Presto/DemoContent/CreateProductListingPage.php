@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
@@ -9,13 +9,14 @@ use Drupal\node\Entity\Node;
 /**
  * Creates the product listing page.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "create_product_listing",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Create product listing page"),
  *     weight = 10
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class CreateProductListingPage extends AbstractDemoContent {
 

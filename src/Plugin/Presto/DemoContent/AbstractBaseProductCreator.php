@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal;
 use Drupal\commerce_product\Entity\Product;
@@ -10,7 +10,7 @@ use Drupal\commerce_product\Entity\ProductVariation;
 /**
  * Base class for all product creating classes.
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 abstract class AbstractBaseProductCreator extends AbstractDemoContent {
 

@@ -1,19 +1,20 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content\Plugin;
+namespace Drupal\presto\Plugin\Presto\DemoContent;
 
 use Drupal\commerce_product\Entity\ProductAttributeValue;
 
 /**
  * Creates a set of demo product attribute values.
  *
- * @PrestoEcommerceDemoContent(
+ * @PrestoDemoContent(
  *     id = "product_attribute_values",
+ *     type = \Drupal\presto\Installer\DemoContentTypes::ECOMMERCE,
  *     label = @Translation("Create Drupal Commerce product attribute values"),
  *     weight = 2
  * )
  *
- * @package Drupal\presto\Installer\Ecommerce\Content\Plugin
+ * @package Drupal\presto\Plugin\Presto\DemoContent
  */
 class CreateProductAttributeValues extends AbstractDemoContent {
 

@@ -8,11 +8,11 @@
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\Entity\Node;
+use Drupal\presto\Form\PrestoConfigureForm;
+use Drupal\presto\Installer\Ecommerce\EcommerceInstaller;
 use Drupal\shortcut\Entity\Shortcut;
 use Drupal\user\Entity\User;
 use Drupal\user\RoleInterface;
-use Drupal\presto\Installer\Form\PrestoConfigureForm;
-use Drupal\presto\Installer\Ecommerce\Installer as EcommerceInstaller;
 
 /**
  * Implements hook_install_tasks().
@@ -136,8 +136,19 @@ function presto_apply_configuration(array &$install_state) {
     'operations' => [],
   ];
 
-  $ecommerceInstaller = EcommerceInstaller::create((array)$install_state);
+  // Install optional dependencies if they're enabled.
+  /** @var \Drupal\presto\Installer\InstallerInterface $optionalDepsInstaller */
+  $optionalDepsInstaller = Drupal::service('presto.install.optional_dependencies');
+  $optionalDepsInstaller->setInstallState((array) $install_state);
+  $batch['operations'] = array_merge(
+    $batch['operations'],
+    $optionalDepsInstaller->installIfEnabled()
+  );
+
   // Install modules and create demo content if eCommerce is enabled.
+  /** @var Drupal\presto\Installer\InstallerInterface $ecommerceInstaller */
+  $ecommerceInstaller = Drupal::service('presto.installer.ecommerce');
+  $ecommerceInstaller->setInstallState((array) $install_state);
   $batch['operations'] = array_merge(
     $batch['operations'],
     $ecommerceInstaller->installIfEnabled()

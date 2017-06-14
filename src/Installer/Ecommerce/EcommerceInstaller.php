@@ -3,17 +3,20 @@
 namespace Drupal\presto\Installer\Ecommerce;
 
 use Drupal;
-use Drupal\presto\Installer\Ecommerce\Content\Manager as DemoContentManager;
+use Drupal\presto\Installer\DemoContentManager;
+use Drupal\presto\Installer\DemoContentTypes;
+use Drupal\presto\Installer\DependencyTypes;
+use Drupal\presto\Installer\InstallerInterface;
+use Drupal\presto\Mixins\DrupalDependencyInstallerTrait;
 
 /**
  * Presto eCommerce module + content installer.
  *
  * @package Drupal\presto\Installer\Ecommerce
  */
-class Installer {
+class EcommerceInstaller implements InstallerInterface {
 
-  const DEPENDENCY_TYPE_MODULE = 'module';
-  const DEPENDENCY_TYPE_THEME = 'theme';
+  use DrupalDependencyInstallerTrait;
 
   /**
    * All eCommerce dependencies.
@@ -21,19 +24,19 @@ class Installer {
    * @var array
    */
   private $dependencies = [
-    'commerce' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_order' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_price' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_product' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_cart' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_checkout' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_payment' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_payment_example' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_promotion' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_tax' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_log' => self::DEPENDENCY_TYPE_MODULE,
-    'physical' => self::DEPENDENCY_TYPE_MODULE,
-    'commerce_shipping' => self::DEPENDENCY_TYPE_MODULE,
+    'commerce' => DependencyTypes::MODULE,
+    'commerce_order' => DependencyTypes::MODULE,
+    'commerce_price' => DependencyTypes::MODULE,
+    'commerce_product' => DependencyTypes::MODULE,
+    'commerce_cart' => DependencyTypes::MODULE,
+    'commerce_checkout' => DependencyTypes::MODULE,
+    'commerce_payment' => DependencyTypes::MODULE,
+    'commerce_payment_example' => DependencyTypes::MODULE,
+    'commerce_promotion' => DependencyTypes::MODULE,
+    'commerce_tax' => DependencyTypes::MODULE,
+    'commerce_log' => DependencyTypes::MODULE,
+    'physical' => DependencyTypes::MODULE,
+    'commerce_shipping' => DependencyTypes::MODULE,
   ];
 
   /**
@@ -46,46 +49,36 @@ class Installer {
   /**
    * The demo content creation manager.
    *
-   * @var \Drupal\presto\Installer\Ecommerce\Content\Manager
+   * @var \Drupal\presto\Installer\DemoContentManager
    */
   private $demoContentManager;
 
   /**
    * PrestoEcommerceInstaller constructor.
    *
+   * @param \Drupal\presto\Installer\DemoContentManager $manager
+   *   The demo content creation manager.
    * @param array $installState
    *   Current install state.
-   * @param \Drupal\presto\Installer\Ecommerce\Content\Manager $manager
-   *   The demo content creation manager.
    */
   public function __construct(
-    array $installState,
-    DemoContentManager $manager
+    DemoContentManager $manager,
+    array $installState = []
   ) {
     $this->installState = $installState;
     $this->demoContentManager = $manager;
   }
 
   /**
-   * Creates a new instance of this class.
-   *
-   * @param array $installState
-   *   Current install state.
-   *
-   * @return static
+   * {@inheritdoc}
    */
-  public static function create(array $installState) {
-    $demoContentManager = Drupal::service(
-      'plugin.manager.presto.ecommerce_demo_content'
-    );
-    return new static($installState, $demoContentManager);
+  public function setInstallState(array $installState) {
+    $this->installState = $installState;
+    return $this;
   }
 
   /**
-   * Sets up all install tasks if they're enabled.
-   *
-   * @return array
-   *   A batch operations definition with all enabled install tasks.
+   * {@inheritdoc}
    */
   public function installIfEnabled() {
     $operations = [];
@@ -109,6 +102,9 @@ class Installer {
    *   TRUE if allowed, FALSE otherwise.
    */
   private function shouldInstallModules() {
+    if (!array_key_exists('presto_ecommerce_enabled', $this->installState)) {
+      return FALSE;
+    }
     return (bool) $this->installState['presto_ecommerce_enabled'];
   }
 
@@ -119,6 +115,9 @@ class Installer {
    *   TRUE if allowed, FALSE otherwise.
    */
   private function shouldInstallDemoContent() {
+    if (!array_key_exists('presto_ecommerce_install_demo_content', $this->installState)) {
+      return FALSE;
+    }
     $create = (bool) $this->installState['presto_ecommerce_install_demo_content'];
     return $this->shouldInstallModules() && $create;
   }
@@ -154,14 +153,16 @@ class Installer {
   private function addDemoContentOperations() {
     $operations = [];
 
-    $contentDefs = $this->demoContentManager->getDefinitions();
+    $contentDefs = $this->demoContentManager->getFilteredDefinitions(
+      DemoContentTypes::ECOMMERCE
+    );
 
     // Add module install task to install our commerce exports module.
     $operations[] = [
       [static::class, 'installDependency'],
       [
         'presto_commerce',
-        static::DEPENDENCY_TYPE_MODULE,
+        DependencyTypes::MODULE,
       ],
     ];
 
@@ -174,57 +175,6 @@ class Installer {
     }
 
     return $operations;
-  }
-
-  /**
-   * Installs a Drupal dependency (e.g. a module or a theme).
-   *
-   * This is a Drupal batch callback operation and as such, needs to be both a
-   * public and a static function so that the Batch API can access it outside
-   * the context of this class.
-   *
-   * @param string $dependency
-   *   Dependency machine name.
-   * @param string $type
-   *   Dependency type.
-   * @param array $context
-   *   Batch context.
-   *
-   * @throws Drupal\Core\Extension\ExtensionNameLengthException
-   * @throws Drupal\Core\Extension\MissingDependencyException
-   * @throws InstallerException
-   */
-  public static function installDependency($dependency, $type, array &$context) {
-    // Reset time limit so we don't timeout.
-    drupal_set_time_limit(0);
-
-    switch ($type) {
-      case static::DEPENDENCY_TYPE_MODULE:
-        /** @var \Drupal\Core\Extension\ModuleInstaller $moduleInstaller */
-        $moduleInstaller = Drupal::service('module_installer');
-        $moduleInstaller->install([$dependency], TRUE);
-        break;
-
-      case static::DEPENDENCY_TYPE_THEME:
-        /** @var \Drupal\Core\Extension\ThemeInstaller $themeInstaller */
-        $themeInstaller = Drupal::service('theme_installer');
-        $themeInstaller->install([$dependency], TRUE);
-        break;
-
-      default:
-        throw new InstallerException(
-          "Unknown dependency type '{$type}'."
-        );
-    }
-
-    $context['results'][] = $dependency;
-    $context['message'] = t(
-      'Installed @dependency_type %dependency.',
-      [
-        '@dependency_type' => $type,
-        '%dependency' => $dependency,
-      ]
-    );
   }
 
   /**
@@ -246,16 +196,16 @@ class Installer {
     drupal_set_time_limit(0);
 
     // Needs to be resolved manually since we don't have a context.
-    /** @var \Drupal\presto\Installer\Ecommerce\Content\Manager $demoContentManager */
+    /** @var \Drupal\presto\Installer\DemoContentManager $demoContentManager */
     $demoContentManager = Drupal::service(
-      'plugin.manager.presto.ecommerce_demo_content'
+      'plugin.manager.presto.demo_content'
     );
 
     $definition = $demoContentManager->getDefinition($pluginId);
     /** @var \Drupal\Core\StringTranslation\TranslatableMarkup $label */
     $label = $definition['label'];
 
-    /** @var \Drupal\presto\Installer\Ecommerce\Content\Plugin\AbstractDemoContent $instance */
+    /** @var \Drupal\presto\Plugin\Presto\DemoContent\AbstractDemoContent $instance */
     $instance = $demoContentManager->createInstance($pluginId);
     $instance->createContent();
 

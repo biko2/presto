@@ -1,21 +1,22 @@
 <?php
 
-namespace Drupal\presto\Installer\Ecommerce\Content;
+namespace Drupal\presto\Installer;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\presto\Annotation\PrestoEcommerceDemoContent;
-use Drupal\presto\Installer\Ecommerce\Content\Plugin\AbstractDemoContent;
+use Drupal\presto\Annotation\PrestoDemoContent;
+use Drupal\presto\Mixins\WeightedPluginManagerTrait;
+use Traversable;
 
 /**
- * Class Manager.
- *
  * Creates demo content using demo content creation plugins.
  *
- * @package Drupal\presto\Installer\Ecommerce\Content
+ * @package Drupal\presto\Installer
  */
-class Manager extends DefaultPluginManager {
+class DemoContentManager extends DefaultPluginManager {
+
+  use WeightedPluginManagerTrait;
 
   /**
    * Manager constructor.
@@ -29,16 +30,16 @@ class Manager extends DefaultPluginManager {
    *   The module handler.
    */
   public function __construct(
-    \Traversable $namespaces,
+    Traversable $namespaces,
     CacheBackendInterface $cacheBackend,
     ModuleHandlerInterface $moduleHandler
   ) {
     parent::__construct(
-      'Installer/Ecommerce/Content/Plugin',
+      'Plugin/Presto/DemoContent',
       $namespaces,
       $moduleHandler,
-      AbstractDemoContent::class,
-      PrestoEcommerceDemoContent::class
+      DemoContentInterface::class,
+      PrestoDemoContent::class
     );
 
     $this->alterInfo('presto_ecommerce_demo_content_info');
@@ -53,16 +54,24 @@ class Manager extends DefaultPluginManager {
    */
   public function getDefinitions() {
     $definitions = parent::getDefinitions();
+    return $this->sortByWeight($definitions);
+  }
 
-    // Sort definitions by weight before returning.
-    uasort($definitions, function ($first, $second) {
-      if ($first['weight'] === $second['weight']) {
-        return 0;
-      }
-      return ($first['weight'] < $second['weight']) ? -1 : 1;
+  /**
+   * Filters plugin definitions by a type.
+   *
+   * @param string $type
+   *   Type to filter by.
+   *
+   * @return array
+   *   A list of filtered plugin definitions.
+   */
+  public function getFilteredDefinitions($type) {
+    $all = $this->getDefinitions();
+
+    return array_filter($all, function ($definition) use ($type) {
+      return $definition['type'] === $type;
     });
-
-    return $definitions;
   }
 
 }
