@@ -76,6 +76,16 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state)
   {
+    $form['presto_theme'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Install Presto Theme'),
+      '#description' =>t(
+        'Install and set as default the Presto Theme.'
+      ),
+      '#attributes' => ['checked' => 'checked'],
+    ];
+
+    return $form;
   }
 
   /**
