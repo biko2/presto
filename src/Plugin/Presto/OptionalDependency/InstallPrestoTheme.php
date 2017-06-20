@@ -2,7 +2,7 @@
 
 namespace Drupal\presto\Plugin\Presto\OptionalDependency;
 
-
+use Drupal;
 use Drupal\Core\Form\FormStateInterface;
 
 
@@ -102,5 +102,20 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
   {
+    // Set Presto Theme as default.
+    if($form_state->getValue('presto_theme') === 1)
+    {
+      // Enable presto_theme.
+      Drupal::service('theme_installer')
+        ->install(['presto_theme']);
+
+      // Set presto_theme as default.
+      Drupal::configFactory()
+        ->getEditable('system.theme')
+        ->set('default', 'presto_theme')
+        ->save();
+
+      // Positioning the blocks if needed.
+    }
   }
 }
