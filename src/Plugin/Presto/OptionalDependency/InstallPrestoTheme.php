@@ -25,7 +25,9 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    */
   public function defaultConfiguration()
   {
-    return [];
+    return [
+      'presto_theme' => '',
+    ];
   }
 
   /**
