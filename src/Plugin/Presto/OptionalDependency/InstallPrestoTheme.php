@@ -4,6 +4,7 @@ namespace Drupal\presto\Plugin\Presto\OptionalDependency;
 
 use Drupal;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\presto\Installer\DependencyTypes;
 
 
 /**
@@ -16,6 +17,7 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class InstallPrestoTheme extends AbstractOptionalDependency{
+  const THEME_NAME = 'presto_theme';
 
   /**
    * Gets default configuration for this plugin.
@@ -57,6 +59,20 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    */
   public function getInstallOperations()
   {
+
+    return [
+      [
+        [static::class, 'installDependency'],
+        [
+          static::THEME_NAME,
+          DependencyTypes::THEME,
+        ],
+      ],
+      [
+        [static::class, 'definePrestoThemeAsDefault'],
+        [],
+      ],
+    ];
   }
 
   /**
@@ -106,25 +122,31 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    *   The current state of the form. Calling code should pass on a subform
    *   state created through
    *   \Drupal\Core\Form\SubformState::createForSubform().
-   * @throws \Drupal\Core\Config\ConfigValueException
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
   {
-    // Set Presto Theme as default.
-    if($form_state->getValue('presto_theme') === 1)
-    {
-      // Enable presto_theme.
-      Drupal::service('theme_installer')
-        ->install(['presto_theme']);
     $this->configuration[static::THEME_NAME] = $form_state->getValue('presto_theme') ;
-
-      // Set presto_theme as default.
-      Drupal::configFactory()
-        ->getEditable('system.theme')
-        ->set('default', 'presto_theme')
-        ->save();
-
-      // Positioning the blocks if needed.
-    }
   }
+
+  /**
+   * Define Presto Theme as Default. Used by the batch during install process.
+   * @throws \Drupal\Core\Config\ConfigValueException
+   */
+  public static function definePrestoThemeAsDefault() {
+    Drupal::service('theme_installer')
+      ->install(['presto_theme', 'seven']);
+
+    // Set presto_theme as default.
+    Drupal::configFactory()
+      ->getEditable('system.theme')
+      ->set('default', 'presto_theme')
+      ->save();
+
+    // Set seven as admin theme.
+    Drupal::configFactory()
+      ->getEditable('system.theme')
+      ->set('admin', 'seven')
+      ->save();
+  }
+
 }
