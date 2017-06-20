@@ -41,6 +41,12 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    */
   public function shouldInstall(array $installState)
   {
+    if($this->configuration[static::THEME_NAME] === 1) {
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
   }
 
   /**
