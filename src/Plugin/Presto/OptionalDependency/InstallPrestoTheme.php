@@ -133,8 +133,6 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    * @throws \Drupal\Core\Config\ConfigValueException
    */
   public static function definePrestoThemeAsDefault() {
-    Drupal::service('theme_installer')
-      ->install(['presto_theme', 'seven']);
 
     // Set presto_theme as default.
     Drupal::configFactory()
