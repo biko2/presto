@@ -110,6 +110,7 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
       // Enable presto_theme.
       Drupal::service('theme_installer')
         ->install(['presto_theme']);
+    $this->configuration[static::THEME_NAME] = $form_state->getValue('presto_theme') ;
 
       // Set presto_theme as default.
       Drupal::configFactory()
