@@ -28,7 +28,7 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
   public function defaultConfiguration()
   {
     return [
-      'presto_theme' => '',
+      static::THEME_NAME => '',
     ];
   }
 
@@ -46,9 +46,7 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
     if($this->configuration[static::THEME_NAME] === 1) {
       return TRUE;
     }
-    else {
       return FALSE;
-    }
   }
 
   /**
