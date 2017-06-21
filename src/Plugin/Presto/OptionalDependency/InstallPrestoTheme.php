@@ -6,7 +6,6 @@ use Drupal;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\presto\Installer\DependencyTypes;
 
-
 /**
  * Installs presto theme if selected..
  *
@@ -16,7 +15,7 @@ use Drupal\presto\Installer\DependencyTypes;
  *     weight = 0
  * )
  */
-class InstallPrestoTheme extends AbstractOptionalDependency{
+class InstallPrestoTheme extends AbstractOptionalDependency {
   const THEME_NAME = 'presto_theme';
 
   /**
@@ -25,8 +24,7 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    * @return array
    *   An associative array with the default configuration.
    */
-  public function defaultConfiguration()
-  {
+  public function defaultConfiguration() {
     return [
       static::THEME_NAME => '',
     ];
@@ -41,12 +39,11 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    * @return bool
    *   TRUE if this dependency should be installed, FALSE otherwise.
    */
-  public function shouldInstall(array $installState)
-  {
-    if($this->configuration[static::THEME_NAME] === 1) {
+  public function shouldInstall(array $installState) {
+    if ($this->configuration[static::THEME_NAME] === 1) {
       return TRUE;
     }
-      return FALSE;
+    return FALSE;
   }
 
   /**
@@ -55,8 +52,7 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    * @return array
    *   Batch operation definitions.
    */
-  public function getInstallOperations()
-  {
+  public function getInstallOperations() {
 
     return [
       [
@@ -96,12 +92,11 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    * @return array
    *   The form structure.
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state)
-  {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['presto_theme'] = [
       '#type' => 'checkbox',
       '#title' => t('Install Presto Theme'),
-      '#description' =>t(
+      '#description' => t(
         'Install and set as default the Presto Theme.'
       ),
       '#attributes' => ['checked' => 'checked'],
@@ -121,17 +116,16 @@ class InstallPrestoTheme extends AbstractOptionalDependency{
    *   state created through
    *   \Drupal\Core\Form\SubformState::createForSubform().
    */
-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
-  {
-    $this->configuration[static::THEME_NAME] = $form_state->getValue('presto_theme') ;
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    $this->configuration[static::THEME_NAME] = $form_state->getValue('presto_theme');
   }
 
   /**
    * Define Presto Theme as Default. Used by the batch during install process.
+   *
    * @throws \Drupal\Core\Config\ConfigValueException
    */
   public static function definePrestoThemeAsDefault() {
-
     // Set presto_theme as default.
     Drupal::configFactory()
       ->getEditable('system.theme')
