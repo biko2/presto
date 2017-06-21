@@ -75,7 +75,7 @@ class InstallPrestoTheme extends AbstractOptionalDependency {
   }
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   public function submitConfigurationForm(
     array &$form,
@@ -102,4 +102,5 @@ class InstallPrestoTheme extends AbstractOptionalDependency {
       ->set('admin', 'seven')
       ->save();
   }
+
 }
