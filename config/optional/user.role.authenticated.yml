@@ -1,9 +1,6 @@
-uuid: a7a3590d-a319-465a-a874-93fccb369622
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
 label: 'Authenticated user'
 weight: 1
@@ -19,4 +16,3 @@ permissions:
   - 'use text format basic_html'
   - 'view media'
   - 'view own commerce_order'
-

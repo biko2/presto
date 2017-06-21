@@ -1,15 +1,12 @@
-uuid: f1c5a70a-562c-4c1e-8a76-7f6abaab79d5
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: ql369IKCseDxfsxdeAurgCSBb2lBnJeGyjlj3-1bYYs
 id: editor
 label: Editor
 weight: 3
 is_admin: false
 permissions:
- - 'access cart'
+  - 'access cart'
   - 'access checkout'
   - 'access comments'
   - 'access content'
