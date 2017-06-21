@@ -39,4 +39,5 @@ class SetupCartForm extends AbstractDemoContent {
       $source->read('views.view.commerce_cart_form')
     );
   }
+
 }
