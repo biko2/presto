@@ -1,6 +1,7 @@
 # CHANGELOG
 
 ## Unreleased
+* Update title and title plural for some components
 
 ## 8.x-1.0-alpha2 (1.0.0-alpha.2)
 * Fixed tarball installation
