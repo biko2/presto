@@ -4,7 +4,7 @@
 * Updated:
   * Drupal core to 8.3.4 (from 8.3.2)
   * Big Pipe Sessionless to 1.1 (from 1.0)
-  * Contact Storage to 1.0-beta8 (1.0-beta9)
+  * Contact Storage to 1.0-beta8 (from 1.0-beta9)
   * Metatag to 1.1 (from 1.0)
   * Profile to 1.0-beta1 (from 1.0-alpha7)
 
