@@ -81,7 +81,7 @@ class InstallPrestoTheme extends AbstractOptionalDependency {
     array &$form,
     FormStateInterface $form_state
   ) {
-    $this->configuration[static::THEreME_NAME] = $form_state->getValue('presto_theme');
+    $this->configuration[static::THEME_NAME] =& $form_state->getValue('presto_theme');
   }
 
   /**
