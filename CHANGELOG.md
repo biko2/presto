@@ -1,6 +1,7 @@
 # CHANGELOG
 
 ## Unreleased
+* Added Media Entity Embed functionality for WYSIWYG
 
 ## 8.x-1.0-alpha2 (1.0.0-alpha.2)
 * Fixed tarball installation
