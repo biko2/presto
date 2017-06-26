@@ -4,7 +4,6 @@ namespace Drupal\presto\Plugin\Presto\OptionalDependency;
 
 use Drupal\block\Entity\Block;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\presto\Mixins\DrupalConfigReaderTrait;
 
 /**
  * Installs Presto Theme Commerce Blocks if possible.
@@ -16,8 +15,6 @@ use Drupal\presto\Mixins\DrupalConfigReaderTrait;
  * )
  */
 class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
-
-  use DrupalConfigReaderTrait;
 
   /**
    * {@inheritdoc}
