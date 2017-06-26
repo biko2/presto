@@ -10,7 +10,7 @@ use Drupal\presto\Installer\DependencyTypes;
  * Installs presto theme if selected..
  *
  * @PrestoOptionalDependency(
- *     id = "install_prestotheme",
+ *     id = "install_presto_theme",
  *     label = @Translation("Install Presto Theme"),
  *     weight = 0
  * )

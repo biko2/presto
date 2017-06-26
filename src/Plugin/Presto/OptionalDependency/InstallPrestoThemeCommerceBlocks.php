@@ -2,6 +2,7 @@
 
 namespace Drupal\presto\Plugin\Presto\OptionalDependency;
 
+use Drupal\block\Entity\Block;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\presto\Mixins\DrupalConfigReaderTrait;
 
@@ -29,7 +30,7 @@ class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
    * {@inheritdoc}
    */
   public function shouldInstall(array $installState) {
-    $installTheme = $installState['optional_dependencies']['install_prestotheme']['presto_theme'];
+    $installTheme = $installState['optional_dependencies']['install_presto_theme']['presto_theme'];
     $installCommerce = !empty($installState['presto_ecommerce_enabled']);
     return $installTheme && $installCommerce;
   }
@@ -43,7 +44,8 @@ class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
   public function getInstallOperations() {
     return [
       [
-        [static::class, 'readBlockConfig'],
+        [static::class, 'createBlocks'],
+        [],
       ],
     ];
   }
@@ -70,18 +72,33 @@ class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
   }
 
   /**
-   * Read config.
+   * Create block.
    *
-   * @throws \Drupal\Core\Config\UnsupportedDataTypeConfigException
-   * @throws \Drupal\Core\Config\StorageException
+   * We do a manual entity create as for some reason it won't import via config.
+   *
+   * @param array $context
+   *   Batch API context.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  public static function readBlockConfig() {
-    $themePath = drupal_get_path('module', 'presto_theme');
-    $configPath = "{$themePath}/config/optional";
-    static::readConfig(
-      $configPath,
-      'block.block.views_block__presto_product_listing_listing_block.yml'
-    );
+  public static function createBlocks(array &$context) {
+    $block = Block::create([
+      'id' => 'presto_theme_views_block__presto_product_listing_listing_block',
+      'status' => TRUE,
+      'plugin' => 'views_block:presto_product_listing-listing_block',
+      'weight' => 10,
+      'theme' => 'presto_theme',
+      'region' => 'content',
+      'visibility' => [
+        'request_path' => [
+          'id' => 'request_path',
+          'pages' => '/products',
+          'negate' => FALSE,
+          'context_mapping' => [],
+        ],
+      ],
+    ]);
+    $block->save();
   }
 
 }
