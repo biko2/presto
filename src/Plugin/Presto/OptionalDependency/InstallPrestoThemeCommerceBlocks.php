@@ -47,7 +47,7 @@ class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
   public function getInstallOperations() {
     return [
       [
-        [static::class, 'readConfig']
+        [static::class, 'readConfig'],
       ],
     ];
   }
