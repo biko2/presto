@@ -24,7 +24,8 @@ class InstallPrestoTheme extends AbstractOptionalDependency {
    */
   public function defaultConfiguration() {
     return [
-      static::THEME_NAME => '',
+      // Theme is installed by default.
+      static::THEME_NAME => TRUE,
     ];
   }
 
@@ -32,14 +33,13 @@ class InstallPrestoTheme extends AbstractOptionalDependency {
    * {@inheritdoc}
    */
   public function shouldInstall(array $installState) {
-    return ($this->configuration[static::THEME_NAME] === 1);
+    return $this->configuration[static::THEME_NAME];
   }
 
   /**
    * {@inheritdoc}
    */
   public function getInstallOperations() {
-
     return [
       [
         [static::class, 'installDependency'],
@@ -68,7 +68,7 @@ class InstallPrestoTheme extends AbstractOptionalDependency {
       '#description' => t(
         'Install and set as default the Presto Theme.'
       ),
-      '#attributes' => ['checked' => 'checked'],
+      '#default_value' => $this->configuration[static::THEME_NAME],
     ];
 
     return $form;
@@ -81,7 +81,9 @@ class InstallPrestoTheme extends AbstractOptionalDependency {
     array &$form,
     FormStateInterface $form_state
   ) {
-    $this->configuration[static::THEME_NAME] =& $form_state->getValue('presto_theme');
+    $this->configuration[static::THEME_NAME] = (bool) $form_state->getValue(
+      'presto_theme'
+    );
   }
 
   /**
