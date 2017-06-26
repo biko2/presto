@@ -18,25 +18,20 @@ class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
 
   use DrupalConfigReaderTrait;
 
-  const THEME_NAME = 'presto_theme';
-  const MODULE_NAME = 'presto_commerce';
-
   /**
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return [
-      static::THEME_NAME => '',
-      static::MODULE_NAME => '',
-    ];
+    return [];
   }
 
   /**
    * {@inheritdoc}
    */
   public function shouldInstall(array $installState) {
-    return ($this->configuration[static::THEME_NAME] === 1) &&
-      ($this->configuration[static::MODULE_NAME] === 1);
+    $installTheme = $installState['optional_dependencies']['install_prestotheme']['presto_theme'];
+    $installCommerce = !empty($installState['presto_ecommerce_enabled']);
+    return $installTheme && $installCommerce;
   }
 
   /**
