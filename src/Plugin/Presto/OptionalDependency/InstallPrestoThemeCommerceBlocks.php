@@ -73,12 +73,9 @@ class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
    *
    * We do a manual entity create as for some reason it won't import via config.
    *
-   * @param array $context
-   *   Batch API context.
-   *
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  public static function createBlocks(array &$context) {
+  public static function createBlocks() {
     $block = Block::create([
       'id' => 'presto_theme_views_block__presto_product_listing_listing_block',
       'status' => TRUE,
