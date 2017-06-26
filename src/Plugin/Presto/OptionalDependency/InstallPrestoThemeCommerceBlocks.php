@@ -3,8 +3,7 @@
 namespace Drupal\presto\Plugin\Presto\OptionalDependency;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal;
-use Drupal\Core\Config\FileStorage;
+use Drupal\presto\Mixins\DrupalConfigReaderTrait;
 
 /**
  * Installs Presto Theme Commerce Blocks if possible.
@@ -16,6 +15,8 @@ use Drupal\Core\Config\FileStorage;
  * )
  */
 class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
+
+  use DrupalConfigReaderTrait;
 
   const THEME_NAME = 'presto_theme';
   const MODULE_NAME = 'presto_commerce';
@@ -47,7 +48,7 @@ class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
   public function getInstallOperations() {
     return [
       [
-        [static::class, 'readConfig'],
+        [static::class, 'readBlockConfig'],
       ],
     ];
   }
@@ -77,20 +78,15 @@ class InstallPrestoThemeCommerceBlocks extends AbstractOptionalDependency {
    * Read config.
    *
    * @throws \Drupal\Core\Config\UnsupportedDataTypeConfigException
+   * @throws \Drupal\Core\Config\StorageException
    */
-  public static function readConfig() {
+  public static function readBlockConfig() {
     $themePath = drupal_get_path('module', 'presto_theme');
     $configPath = "{$themePath}/config/optional";
-
-    $source = new FileStorage($configPath);
-
-    // Re-read checkout flow from the export config file.
-    // This should be safe enough as this only runs within a site install
-    // context.
-    $configStorage = Drupal::service('config.storage');
-    $configStorage->write(
-      'block.block.views_block__presto_product_listing_listing_block.yml',
-      $source->read('block.block.views_block__presto_product_listing_listing_block.yml'));
+    static::readConfig(
+      $configPath,
+      'block.block.views_block__presto_product_listing_listing_block.yml'
+    );
   }
 
 }
