@@ -26,7 +26,12 @@ let generateJsWebpackTask = (watch = true) => {
             enforce: 'pre',
             test: /\.js/,
             exclude: /(node_modules|bower_components)/,
-            loader: 'eslint-loader'
+            use: {
+              loader: 'eslint-loader',
+              options: {
+                cache: true
+              }
+            }
           },
           {
             test: /\.js$/,
