@@ -4,6 +4,7 @@ import webpack from 'webpack';
 import named from 'vinyl-named';
 import gulpWebpack from 'webpack-stream';
 import gulpRequireTasks from 'gulp-require-tasks';
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 
 const CWD = process.cwd();
 const JS_SRC = 'js/src/**/*.js';
@@ -44,7 +45,12 @@ let generateJsWebpackTask = (watch = true) => {
             }
           }
         ]
-      }
+      },
+      plugins: [
+        new UglifyJSPlugin({
+          mangle: false
+        })
+      ]
     }, webpack))
     .on('error', function (err) {
       gutil.log('WEBPACK ERROR', err.message);

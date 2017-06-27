@@ -31,6 +31,8 @@
     "eslint-loader": "^1.8.0",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "vinyl-named": "^1.1.0",
     "webpack": "^3.0.0",
     "webpack-stream": "^3.2.0"
