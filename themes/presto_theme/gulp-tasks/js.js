@@ -37,9 +37,9 @@ module.exports = (gulp/* , callback */) => {
         ]
       },
       plugins: [
-        // new UglifyJSPlugin({
-        //   mangle: false
-        // })
+        new UglifyJSPlugin({
+          mangle: false
+        })
       ]
     }, webpack))
     .on('error', function (err) {
