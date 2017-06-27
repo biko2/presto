@@ -1,19 +1,22 @@
-const CWD = process.cwd();
+/* global __dirname */
+
+import path from 'path';
 
 export const OUTPUT_JS_FILE = 'presto.min.js';
 
-export const DEST = {
-  js: `${CWD}/js/compiled`,
-  css: `${CWD}/css`,
-  maps: `${CWD}/maps`,
-  images: `${CWD}/images`,
-  fonts: `${CWD}/fonts`
-};
+export const DEST = Object.freeze({
+  js: path.resolve(__dirname, '..', 'js', 'compiled'),
+  css: path.resolve(__dirname, '..', 'css'),
+  // Needs to be relative to the two above paths.
+  maps: 'maps',
+  images: path.resolve(__dirname, '..', 'images'),
+  fonts: path.resolve(__dirname, '..', 'font')
+});
 
-export const SRC = {
-  js: `${CWD}/js/src/**/*.js`,
-  scss: `${CWD}/scss/**/*.scss`,
-  images: `${CWD}/images`,
-  fonts: `${CWD}/fonts`,
-  bootstrap: `${CWD}/node_modules/bootstrap-sass/assets/stylesheets`
-};
+export const SRC = Object.freeze({
+  js: path.resolve(__dirname, '..', 'js', 'src', '**', '*.js'),
+  scss: path.resolve(__dirname, '..', 'scss', '**', '*.scss'),
+  images: path.resolve(__dirname, '..', 'images'),
+  fonts: path.resolve(__dirname, '..', 'fonts'),
+  bootstrap: path.resolve(__dirname, '..', 'node_modules', 'bootstrap-sass', 'assets', 'stylesheets')
+});
