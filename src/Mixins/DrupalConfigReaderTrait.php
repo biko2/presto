@@ -13,8 +13,10 @@ use Drupal\Core\Config\FileStorage;
 trait DrupalConfigReaderTrait {
 
   /**
-   * @param $path
+   * Re-read config from file into active storage.
    *
+   * @param string $path
+   *   Config path.
    * @param string $file
    *   Config file name.
    *
