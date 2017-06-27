@@ -19,9 +19,7 @@
     "url": "https://github.com/Sitback/presto/issues"
   },
   "homepage": "https://github.com/Sitback/presto#readme",
-  "dependencies": {
-    "gulp-require-tasks": "^1.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
@@ -30,6 +28,7 @@
     "eslint": "^4.1.1",
     "eslint-loader": "^1.8.0",
     "gulp": "^3.9.1",
+    "gulp-require-tasks": "^1.1.1",
     "gulp-util": "^3.0.8",
     "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
     "uglifyjs-webpack-plugin": "^0.4.6",
