@@ -2,8 +2,6 @@
 
 import path from 'path';
 
-export const OUTPUT_JS_FILE = 'presto.min.js';
-
 export const DEST = Object.freeze({
   js: path.resolve(__dirname, '..', 'js', 'compiled'),
   css: path.resolve(__dirname, '..', 'css'),
