@@ -64,7 +64,7 @@ gulp.task('js:watch', () => {
 });
 
 gulp.task('js:build', () => {
-  return generateJsWebpackTask(true);
+  return generateJsWebpackTask(false);
 });
 
 gulp.task('default', ['js:watch']);
