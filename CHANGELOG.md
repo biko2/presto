@@ -1,6 +1,7 @@
 # CHANGELOG
 
 ## Unreleased
+* Fixes bug with form display for books and ebooks (the variation field was disabled.)
 * Updated:
   * Drupal core to 8.3.4 (from 8.3.2)
   * Big Pipe Sessionless to 1.1 (from 1.0)
