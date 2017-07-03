@@ -8,6 +8,7 @@
   * Contact Storage to 1.0-beta8 (from 1.0-beta9)
   * Metatag to 1.1 (from 1.0)
   * Profile to 1.0-beta1 (from 1.0-alpha7)
+* Added an option during the profile installation to choose to install Presto Theme as default theme.
 
 ## 8.x-1.0-alpha2 (1.0.0-alpha.2)
 * Fixed tarball installation
