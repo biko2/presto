@@ -1,6 +1,7 @@
 # CHANGELOG
 
 ## Unreleased
+* Added Media Entity Embed functionality for WYSIWYG
 * Update title and title plural for some components
 
 ## 8.x-1.0-rc1 (1.0.0-rc.1)
