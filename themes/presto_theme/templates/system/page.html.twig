@@ -62,8 +62,8 @@
   {% block navbar %}
     {%
       set navbar_classes = [
-        'navbar',
-        theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
+        'navbar navbar-toggleable-md',
+        theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-light',
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
       ]
     %}
@@ -78,11 +78,8 @@
 
         {# .btn-navbar is used as the toggle for collapsed navbar content #}
         {% if page.navigation_collapsible %}
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-            <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="{{ 'Toggle navigation'|t }}">
+            <span class="navbar-toggler-icon"></span>
           </button>
         {% endif %}
 
@@ -98,9 +95,7 @@
 
       {# Navigation (collapsible) #}
       {% if page.navigation_collapsible %}
-        <div id="navbar-collapse" class="navbar-collapse collapse">
           {{ page.navigation_collapsible }}
-        </div>
       {% endif %}
       {% if not navbar_attributes.hasClass(container) %}
         </div>
@@ -117,7 +112,7 @@
       {# Sidebar First #}
       {% if page.sidebar_first %}
         {% block sidebar_first %}
-          <aside class="col-xs-12 col-sm-3" role="complementary">
+          <aside class="col-12 col-md-3" role="complementary">
             {{ page.sidebar_first }}
           </aside>
         {% endblock %}
@@ -126,10 +121,10 @@
       {# Content #}
       {%
         set content_classes = [
-          page.sidebar_first and page.sidebar_second ? 'col-xs-12 col-sm-6',
-          page.sidebar_first and page.sidebar_second is empty ? 'col-xs-12 col-sm-9',
-          page.sidebar_second and page.sidebar_first is empty ? 'col-xs-12 col-sm-9',
-          page.sidebar_first is empty and page.sidebar_second is empty ? 'col-xs-12'
+          page.sidebar_first and page.sidebar_second ? 'col-12 col-md-6',
+          page.sidebar_first and page.sidebar_second is empty ? 'col-12 col-md-9',
+          page.sidebar_second and page.sidebar_first is empty ? 'col-12 col-md-9',
+          page.sidebar_first is empty and page.sidebar_second is empty ? 'col-12'
         ]
       %}
       <section{{ content_attributes.addClass(content_classes) }}>
@@ -172,7 +167,7 @@
       {# Sidebar Second #}
       {% if page.sidebar_second %}
         {% block sidebar_second %}
-          <aside class="col-xs-12 col-sm-3" role="complementary">
+          <aside class="col-12 col-md-3" role="complementary">
             {{ page.sidebar_second }}
           </aside>
         {% endblock %}

@@ -4,11 +4,15 @@
 @import 'base/mixins';
 
 
-@import 'bootstrap-variables';
-@import 'bootstrap';
+@import 'base/bootstrap_variables';
+@import 'base/bootstrap_import';
+
+
+// @import 'bootstrap-variables';
+// @import 'bootstrap';
 // Add flexbox support to Bootstrap columns
-@import '../node_modules/flexboxgrid-sass/flexboxgrid';
-// @import 'scss/font-awesome';
+// @import '../node_modules/flexboxgrid-sass/flexboxgrid';
+
 
 @import 'base/flexbox-grid-overrides';
 

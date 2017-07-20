@@ -49,7 +49,7 @@
 
           a {
             @extend .btn;
-            @extend .btn-xs;
+            @extend .btn-sm;
             margin-right: .3em;
 
             &[href*='delete'] {

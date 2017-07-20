@@ -5,14 +5,14 @@
   background: $mainMenuBackground;
   border-bottom: 2px solid $mainMenuBorderColor;
 
-  &.navbar-default {
+  &.navbar-light {
 
     .navbar-header {
       margin: 0;
       // width: 100%;
       display: block;
 
-      @media screen and (min-width: $screen-sm-min) {
+      @include media-breakpoint-up(md) {
         display: flex;
       }
 
@@ -20,18 +20,36 @@
       //   @extend .clearfix;
       // }
 
-      .logo {
-        img {
+      .navbar-brand {
+        display: flex;
+        align-content: flex-start;
+
+        .logo {
+          display: block;
           width: auto;
-          height: $navbar-height; // - ($padding-base-vertical * 2);
-          padding: $padding-base-vertical $padding-base-horizontal;
+          height: 1.325rem;
+          padding: 20px 15px 5px;
+          box-sizing: content-box;
         }
+      }
+
+      .name {
+        display: block;
+        color: $boulder;
+        padding: 20px;
       }
     }
 
     .navbar-nav {
-      > li {
-        > a {
+      > .nav-item {
+        &.active {
+          > a.nav-link {
+            color: $mainMenuLinkColorHover;
+            border-bottom-color: $mainMenuLinkBorderColorActive;
+          }
+        }
+
+        > a.nav-link {
           color: $mainMenuLinkColor;
           border-bottom: 2px solid $mainMenuLinkBorderColor;
           margin-bottom: -2px;
@@ -39,16 +57,13 @@
           padding-right: 2.5em;
           box-sizing: content-box;
           text-align: center;
+          font-size: 14px;
 
-          @media screen and (min-width: $screen-sm-min) {
+          @include media-breakpoint-up(md) {
             text-align: left;
           }
 
 
-          &.is-active {
-            color: $mainMenuLinkColorHover;
-            border-bottom-color: $mainMenuLinkBorderColorActive;
-          }
 
           &:hover {
             color: $mainMenuLinkColorHover;
@@ -62,7 +77,7 @@
 }
 
 .navbar-right {
-  @media screen and (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     margin-right: 0;
   }
 }
@@ -73,27 +88,28 @@
   .container-fluid & {
     margin: 0;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @include media-breakpoint-up(md) {
       margin-right: -15px;
       margin-left: -15px;
     }
   }
 
-  &.collapse:not(.in),
-  &.collapsing {
-    position: relative;
-    height: 0;
-    overflow: hidden;
-    transition: ease .35s height, visibility;
-  }
+  // &.collapse:not(.in),
+  // &.collapsing {
+  //   position: relative;
+  //   height: 0;
+  //   overflow: hidden;
+  //   transition: ease .35s height, visibility;
+  // }
 }
 
 .region-navigation,
 .region-navigation-collapsible {
 
-  @media screen and (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     display: flex;
     justify-content: flex-end;
+    width: 100%;
   }
 }
 
