@@ -1,14 +1,16 @@
-import collapse from 'bootstrap-sass/assets/javascripts/bootstrap/collapse.js';
-import transition from 'bootstrap-sass/assets/javascripts/bootstrap/transition.js';
+
+
+let $ = require('jquery');
+window.jQuery = $;
+window.$ = $;
+
+let tether = require('tether'); // This is a pre-requisite for bootstrap 4 tooltips.
+window.Tether = tether;
+
+require('bootstrap');
+require('lity');
 
 (function ($, window, document) {
-
-  let addDependency = (dep) => dep;
-
-  // Add dependencies here to include them in the compiled output.
-  addDependency(collapse);
-  addDependency(transition);
-
   let f = {
     addToCartInList: (el) => {
       let $el = $(el.delegateTarget);

@@ -138,7 +138,7 @@
 // variables. Mostly focused on spacing.
 // You can add more entries to the $spacers map, should you need more variation.
 
-// $spacer:   1rem;
+$spacer:   1rem;
 // $spacer-x: $spacer;
 // $spacer-y: $spacer;
 // $spacers: (
@@ -602,8 +602,8 @@ $font-size-h6: .85rem;
 // Navbar
 
 // $navbar-border-radius:              $border-radius;
-$navbar-padding-x:                 0; // $spacer;
-$navbar-padding-y:                 0; // ($spacer / 2);
+$navbar-padding-x:                  $spacer;
+$navbar-padding-y:                  ($spacer / 2);
 
 $navbar-brand-padding-y:            .5rem;
 

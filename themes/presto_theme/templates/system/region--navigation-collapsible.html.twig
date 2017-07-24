@@ -18,10 +18,12 @@
   set classes = [
     'region',
     'region-' ~ region|clean_class,
+    'collapse',
+    'navbar-collapse',
   ]
 %}
 {% if content %}
-  <div{{ attributes.addClass(classes) }}>
+  <div id="navbar-collapse" {{ attributes.addClass(classes) }}>
     {{ content }}
   </div>
 {% endif %}

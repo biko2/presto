@@ -22,18 +22,19 @@
 @import 'structure/flex';
 @import 'structure/overrides';
 
-@import 'modules/page';
-@import 'modules/navbar';
+@import 'modules/blockquote';
 @import 'modules/breadcrumb';
-@import 'modules/textbox';
-@import 'modules/images';
 @import 'modules/buttons';
+@import 'modules/cards';
 @import 'modules/dividers';
+@import 'modules/images';
+@import 'modules/links';
+@import 'modules/lists';
+@import 'modules/navbar';
+@import 'modules/page';
 @import 'modules/promo-bar';
 @import 'modules/slideshow';
-@import 'modules/lists';
-@import 'modules/links';
-@import 'modules/blockquote';
+@import 'modules/textbox';
 
 @import 'modules/article';
 
