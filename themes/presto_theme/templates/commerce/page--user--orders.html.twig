@@ -62,8 +62,8 @@
   {% block navbar %}
     {%
       set navbar_classes = [
-        'navbar',
-        theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
+        'navbar navbar-toggleable-md',
+        theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-light',
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
       ]
     %}
@@ -72,24 +72,31 @@
         <div class="{{ container }}">
       {% endif %}
       <div class="navbar-header">
-        {{ page.navigation }}
-        {# .btn-navbar is used as the toggle for collapsed navbar content #}
         {% if page.navigation_collapsible %}
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-            <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+        {{ page.navigation }}
+        {% endif %}
+
+        {# .btn-navbar is used as the toggle for collapsed navbar content #}
+        {# {% if page.navigation_collapsible %}
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="{{ 'Toggle navigation'|t }}">
+          <span class="navbar-toggler-icon"></span>
           </button>
+        {% endif %} #}
+
+        {# Header #}
+        {% if page.header %}
+          {{ page.header }}
+        {% endif %}
+
+        {% if not page.navigation_collapsible %}
+          {{ page.navigation }}
         {% endif %}
       </div>
 
       {# Navigation (collapsible) #}
-      {% if page.navigation_collapsible %}
-        <div id="navbar-collapse" class="navbar-collapse collapse">
+     {#  {% if page.navigation_collapsible %}
           {{ page.navigation_collapsible }}
-        </div>
-      {% endif %}
+      {% endif %} #}
       {% if not navbar_attributes.hasClass(container) %}
         </div>
       {% endif %}
@@ -102,14 +109,6 @@
   <div role="main" class="user-orders main-container {{ container }} js-quickedit-main-content">
     <div class="row">
 
-      {# Header #}
-      {% if page.header %}
-        {% block header %}
-          <div class="col-12" role="heading">
-            {{ page.header }}
-          </div>
-        {% endblock %}
-      {% endif %}
 
       {# Sidebar First #}
       {% if page.sidebar_first %}
