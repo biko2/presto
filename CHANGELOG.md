@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## 8.x-1.1-dev (1.1.0-rc.1)
+## 8.x-1.1-rc2 (1.1.0-rc.2)
+
+* Update contrib modules
+
+## 8.x-1.1-rc1 (1.1.0-rc.1)
 
 * Add Media Entity Embed functionality for WYSIWYG
 * Update title and title plural for some components
