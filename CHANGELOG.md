@@ -1,8 +1,13 @@
 # CHANGELOG
 
-## Unreleased
-* Added Media Entity Embed functionality for WYSIWYG
+## 8.x-1.1-dev (1.1.0-rc.1)
+
+* Add Media Entity Embed functionality for WYSIWYG
 * Update title and title plural for some components
+* Remove unneeded commerce patch
+* Move social media links to footer
+* Add accordion component
+* Update icon box admin UX
 
 ## 8.x-1.0 (1.0.0)
 * No changes since 8.x-1.0-rc1 (1.0.0-rc.1)
