@@ -68,6 +68,7 @@
         "drupal/slick": "1.x-dev",
         "drupal/slick_media": "1.x-dev",
         "drupal/social_media": "1.x-dev#5842dec",
+        "drupal/social_media_links": "^2.4",
         "drupal/token": "^1.0",
         "drupal/video_embed_field": "^1.5",
         "drupal/view_mode_selector": "1.x-dev",
@@ -138,10 +139,6 @@
             "drupal/social_media": {
                 "Fix undefined index error (#2836382)":
                     "https://www.drupal.org/files/issues/2836382-drupal-settings-undefined-index_1.patch"
-            },
-            "drupal/commerce": {
-                "AddToCartForm should support all purchasable entities (#2827721)":
-                    "https://www.drupal.org/files/issues/presto-commerce-add-to-cart-variations.patch"
             }
         },
         "asset-library-overrides": {
