@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 8.x-2.0-beta2 (1.2.0-beta.2)
+* Fix commerce currency issue
+
 ## 8.x-2.0-beta1 (1.2.0-beta.1)
 * Replace base theme with bootstrap_barrio
 * Updated:
