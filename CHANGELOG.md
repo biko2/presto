@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 8.x-1.1-rc3 (1.1.0-rc.3)
+* Fix installation bugs caused by updates.
+
 ## 8.x-1.1-rc2 (1.1.0-rc.2)
 * Updated:
   * Social media to 1.2 (from 1.x-dev)
