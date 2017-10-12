@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 8.x-2.0-beta3 (1.2.0-beta.3)
+* Update composer to use Drupal core 8.x stable release    
+* Update the way we get parent entity for accordion panel component
+* Tested with Drupal 8.4.0
+
 ## 8.x-2.0-beta2 (1.2.0-beta.2)
 * Fix commerce currency issue
 
