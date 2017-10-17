@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 8.x-1.1-rc4 (1.1.0-rc.4)
+* Upgrade core to 8.4.0
+* Fix bug caused by upgrade
+
 ## 8.x-1.1-rc3 (1.1.0-rc.3)
 * Fix installation bugs caused by updates.
 
