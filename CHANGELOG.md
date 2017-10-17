@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 8.x-1.1-rc5 (1.1.0-rc.5)
+* Remove dependency on drupal core 8.3.*
+
 ## 8.x-1.1-rc4 (1.1.0-rc.4)
 * Upgrade core to 8.4.0
 * Fix bug caused by upgrade
