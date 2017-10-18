@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 8.x-1.1-rc6 (1.1.0-rc.6)
+* Updated:
+  * Commerce shipping to 2.0-beta4 (from 2.0-beta3)
+
 ## 8.x-1.1-rc5 (1.1.0-rc.5)
 * Remove dependency on drupal core 8.3.*
 
