@@ -1,5 +1,5 @@
 /*! For license information please see presto.js.LICENSE */
-/* Presto JS -- built Tue Nov 07 2017 15:04:02 GMT+1100 (AEDT)*/
+/* Presto JS -- built Fri Dec 08 2017 15:27:01 GMT+1100 (AEDT)*/
 (function(modules) {
     var installedModules = {};
     function __webpack_require__(moduleId) {
@@ -5813,7 +5813,7 @@
         value: true
     });
     (function(global) {
-        var isBrowser = typeof window !== "undefined" && typeof window.document !== "undefined";
+        var isBrowser = typeof window !== "undefined" && typeof document !== "undefined";
         var longerTimeoutBrowsers = [ "Edge", "Trident", "Firefox" ];
         var timeoutDuration = 0;
         for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
@@ -5829,7 +5829,7 @@
                     return;
                 }
                 called = true;
-                Promise.resolve().then(function() {
+                window.Promise.resolve().then(function() {
                     called = false;
                     fn();
                 });
@@ -5857,7 +5857,7 @@
             if (element.nodeType !== 1) {
                 return [];
             }
-            var css = window.getComputedStyle(element, null);
+            var css = getComputedStyle(element, null);
             return property ? css[property] : css;
         }
         function getParentNode(element) {
@@ -5868,7 +5868,7 @@
         }
         function getScrollParent(element) {
             if (!element) {
-                return window.document.body;
+                return document.body;
             }
             switch (element.nodeName) {
               case "HTML":
@@ -5891,7 +5891,7 @@
                 if (element) {
                     return element.ownerDocument.documentElement;
                 }
-                return window.document.documentElement;
+                return document.documentElement;
             }
             if ([ "TD", "TABLE" ].indexOf(offsetParent.nodeName) !== -1 && getStyleComputedProperty(offsetParent, "position") === "static") {
                 return getOffsetParent(offsetParent);
@@ -5913,7 +5913,7 @@
         }
         function findCommonOffsetParent(element1, element2) {
             if (!element1 || !element1.nodeType || !element2 || !element2.nodeType) {
-                return window.document.documentElement;
+                return document.documentElement;
             }
             var order = element1.compareDocumentPosition(element2) & Node.DOCUMENT_POSITION_FOLLOWING;
             var start = order ? element1 : element2;
@@ -5960,7 +5960,7 @@
         function getBordersSize(styles, axis) {
             var sideA = axis === "x" ? "Left" : "Top";
             var sideB = sideA === "Left" ? "Right" : "Bottom";
-            return +styles["border" + sideA + "Width"].split("px")[0] + +styles["border" + sideB + "Width"].split("px")[0];
+            return parseFloat(styles["border" + sideA + "Width"], 10) + parseFloat(styles["border" + sideB + "Width"], 10);
         }
         var isIE10 = undefined;
         var isIE10$1 = function() {
@@ -5973,9 +5973,9 @@
             return Math.max(body["offset" + axis], body["scroll" + axis], html["client" + axis], html["offset" + axis], html["scroll" + axis], isIE10$1() ? html["offset" + axis] + computedStyle["margin" + (axis === "Height" ? "Top" : "Left")] + computedStyle["margin" + (axis === "Height" ? "Bottom" : "Right")] : 0);
         }
         function getWindowSizes() {
-            var body = window.document.body;
-            var html = window.document.documentElement;
-            var computedStyle = isIE10$1() && window.getComputedStyle(html);
+            var body = document.body;
+            var html = document.documentElement;
+            var computedStyle = isIE10$1() && getComputedStyle(html);
             return {
                 height: getSize("Height", body, html, computedStyle),
                 width: getSize("Width", body, html, computedStyle)
@@ -6074,8 +6074,8 @@
             var parentRect = getBoundingClientRect(parent);
             var scrollParent = getScrollParent(children);
             var styles = getStyleComputedProperty(parent);
-            var borderTopWidth = +styles.borderTopWidth.split("px")[0];
-            var borderLeftWidth = +styles.borderLeftWidth.split("px")[0];
+            var borderTopWidth = parseFloat(styles.borderTopWidth, 10);
+            var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
             var offsets = getClientRect({
                 top: childrenRect.top - parentRect.top - borderTopWidth,
                 left: childrenRect.left - parentRect.left - borderLeftWidth,
@@ -6085,8 +6085,8 @@
             offsets.marginTop = 0;
             offsets.marginLeft = 0;
             if (!isIE10 && isHTML) {
-                var marginTop = +styles.marginTop.split("px")[0];
-                var marginLeft = +styles.marginLeft.split("px")[0];
+                var marginTop = parseFloat(styles.marginTop, 10);
+                var marginLeft = parseFloat(styles.marginLeft, 10);
                 offsets.top -= borderTopWidth - marginTop;
                 offsets.bottom -= borderTopWidth - marginTop;
                 offsets.left -= borderLeftWidth - marginLeft;
@@ -6135,7 +6135,7 @@
             } else {
                 var boundariesNode = void 0;
                 if (boundariesElement === "scrollParent") {
-                    boundariesNode = getScrollParent(getParentNode(popper));
+                    boundariesNode = getScrollParent(getParentNode(reference));
                     if (boundariesNode.nodeName === "BODY") {
                         boundariesNode = popper.ownerDocument.documentElement;
                     }
@@ -6211,7 +6211,7 @@
             return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent);
         }
         function getOuterSizes(element) {
-            var styles = window.getComputedStyle(element);
+            var styles = getComputedStyle(element);
             var x = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
             var y = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
             var result = {
@@ -6320,7 +6320,7 @@
             for (var i = 0; i < prefixes.length - 1; i++) {
                 var prefix = prefixes[i];
                 var toCheck = prefix ? "" + prefix + upperProp : property;
-                if (typeof window.document.body.style[toCheck] !== "undefined") {
+                if (typeof document.body.style[toCheck] !== "undefined") {
                     return toCheck;
                 }
             }
@@ -6385,7 +6385,7 @@
         }
         function disableEventListeners() {
             if (this.state.eventsEnabled) {
-                window.cancelAnimationFrame(this.scheduleUpdate);
+                cancelAnimationFrame(this.scheduleUpdate);
                 this.state = removeEventListeners(this.reference, this.state);
             }
         }
@@ -6499,6 +6499,7 @@
             return isRequired;
         }
         function arrow(data, options) {
+            var _data$offsets$arrow;
             if (!isModifierRequired(data.instance.modifiers, "arrow", "keepTogether")) {
                 return data;
             }
@@ -6529,14 +6530,16 @@
             if (reference[side] + arrowElementSize > popper[opSide]) {
                 data.offsets.popper[side] += reference[side] + arrowElementSize - popper[opSide];
             }
+            data.offsets.popper = getClientRect(data.offsets.popper);
             var center = reference[side] + reference[len] / 2 - arrowElementSize / 2;
-            var popperMarginSide = getStyleComputedProperty(data.instance.popper, "margin" + sideCapitalized).replace("px", "");
-            var sideValue = center - getClientRect(data.offsets.popper)[side] - popperMarginSide;
+            var css = getStyleComputedProperty(data.instance.popper);
+            var popperMarginSide = parseFloat(css["margin" + sideCapitalized], 10);
+            var popperBorderSide = parseFloat(css["border" + sideCapitalized + "Width"], 10);
+            var sideValue = center - data.offsets.popper[side] - popperMarginSide - popperBorderSide;
             sideValue = Math.max(Math.min(popper[len] - arrowElementSize, sideValue), 0);
             data.arrowElement = arrowElement;
-            data.offsets.arrow = {};
-            data.offsets.arrow[side] = Math.round(sideValue);
-            data.offsets.arrow[altSide] = "";
+            data.offsets.arrow = (_data$offsets$arrow = {}, defineProperty(_data$offsets$arrow, side, Math.round(sideValue)), 
+            defineProperty(_data$offsets$arrow, altSide, ""), _data$offsets$arrow);
             return data;
         }
         function getOppositeVariation(variation) {
