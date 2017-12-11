@@ -8,7 +8,7 @@ export const DEST = Object.freeze({
   // Needs to be relative to the two above paths.
   maps: 'maps',
   images: path.resolve(__dirname, '..', 'images'),
-  fonts: path.resolve(__dirname, '..', 'font')
+  fonts: path.resolve(__dirname, '..', 'font'),
 });
 
 export const SRC = Object.freeze({
