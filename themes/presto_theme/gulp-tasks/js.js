@@ -7,8 +7,8 @@ import path from 'path';
 import * as paths from './paths';
 
 module.exports = gulp =>
- gulp.src(paths.SRC.js)
- .pipe(named())
+  gulp.src(paths.SRC.js)
+  .pipe(named())
   .pipe(gulpWebpack({
     devtool: 'source-map',
     plugins: [
