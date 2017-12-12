@@ -1,7 +1,7 @@
 # CHANGELOG
 
 ## 8.x-2.0 (1.2.0)
-* Updated colour palette (_Known issue: The orange used in the updated colour palette doesn't pass the WCAG 2.0 AA standards. It will be updated in the next release_)
+* Updated colour palette
 * Updated logo
 * Updated gulp file
 * Packaging update to mirror Drupal core package versions

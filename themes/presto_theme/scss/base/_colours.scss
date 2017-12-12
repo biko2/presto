@@ -26,8 +26,8 @@ $boulder: #777;
 $black: #333;
 $extra-light-grey: #fafafa;
 $elephant: #0d2d38; /* dark blue */
-$tree-poppy: #f7931e; /* Orange */
-$hot-cinnamon: #cc731b; /* dark orange */
+$grenadier: #D43900; /* Orange for link */
+$fire: #AA2E00; /* Orange for hover */
 
 /* Social Colours */
 $twitter-blue: #1DA1F2;
@@ -47,13 +47,13 @@ $backgroundColor: $white;
 $formInputBorderColor: $flamingo;
 
 $siteButtonTextColor: $white;
-$siteButtonBorderColor: $tree-poppy;
+$siteButtonBorderColor: $grenadier;
 $siteButtonArrowColor: $white;
-$siteButtonBackgroundColor: $tree-poppy;
+$siteButtonBackgroundColor: $grenadier;
 $siteButtonTextColorHover: $white;
 $siteButtonArrowColorHover: $white;
-$siteButtonBorderColorHover: $hot-cinnamon;
-$siteButtonBackgroundColorHover: $hot-cinnamon;
+$siteButtonBorderColorHover: $fire;
+$siteButtonBackgroundColorHover: $fire;
 
 $tagButtonTextColor: $calypso;
 $tagButtonBorderColor: $turquoise-blue;
@@ -81,11 +81,11 @@ $blockQuoteColor: $flamingo;
 
 $textShadowColor: $black;
 
-$linkColor: $tree-poppy;
-$linkColorHover: $hot-cinnamon;
+$linkColor: $grenadier;
+$linkColorHover: $fire;
 
 $linkColorInverted: $white;
-$linkColorHoverInverted: $tree-poppy;
+$linkColorHoverInverted: $grenadier;
 
 $productItemBackground: $elephant;
 $productItemBackgroundHover: $pickled-bluewood;
@@ -108,7 +108,7 @@ $mainMenuLinkColor: $black;
 $mainMenuLinkBorderColor: transparent;
 $mainMenuLinkColorHover: $calypso;
 $mainMenuLinkBorderColorHover: $elephant;
-$mainMenuLinkBorderColorActive: $sea-buckthorn;
+$mainMenuLinkBorderColorActive: $fire;
 $mainMenuBackgroundHover: $light-grey;
 
 $footerBackground: $elephant;
@@ -121,7 +121,7 @@ $footerLinkBorderColorHover: $turquoise-blue;
 $footerLinkBorderColorActive: $turquoise-blue;
 
 $promobarBackgroundColor: $elephant;
-$promobarBackgroundColorHover: $sea-buckthorn;
+$promobarBackgroundColorHover: $fire;
 $promobarTextColor: $white;
 
 $promobarLinkColor: $linkColorInverted;
