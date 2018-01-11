@@ -21,6 +21,10 @@ Theming for the boilerplate promo bars
     color: $promobarTextColor;
   }
 
+  .text_and_arrow:hover {
+    background-color: $promobarBackgroundColorHover;
+  }
+
   .container {
     > p {
       display: none;
@@ -121,7 +125,6 @@ Theming for the boilerplate promo bars
 
     &:hover {
       color: $promobarLinkColor;
-      background-color: $promobarLinkColorHover;
     }
   }
 }

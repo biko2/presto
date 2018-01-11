@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 8.x-2.0 (1.2.0)
+* Updated colour palette
+* Updated logo
+* Updated gulp file
+* Packaging update to mirror Drupal core package versions
+* Updated webpack configuration to only load lcoal rules
+* Added license extraction from vendor js files into presto.js.LICENSE
+
 ## 8.x-2.0-beta3 (1.2.0-beta.3)
 * Update composer to use Drupal core 8.x stable release    
 * Update the way we get parent entity for accordion panel component
